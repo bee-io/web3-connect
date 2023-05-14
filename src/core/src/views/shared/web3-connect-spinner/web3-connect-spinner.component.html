@@ -1,0 +1,8 @@
+<div class="loading-container flex flex-column justify-center items-center absolute">
+  <div class="loading relative" [style.width]="size" [style.height]="size">
+    <div class="loading-first" [style.width]="size" [style.height]="size"></div>
+    <div class="loading-second" [style.width]="size" [style.height]="size"></div>
+    <div class="loading-third" [style.width]="size" [style.height]="size"></div>
+  </div>
+<span *ngIf="description">{{description}}</span>
+</div>

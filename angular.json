@@ -3,5 +3,183 @@
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
+    "web3-connect": {
+      "root": "",
+      "sourceRoot": "src",
+      "projectType": "library",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-angular:ng-packagr",
+          "options": {
+            "tsConfig": "src/tsconfig.json",
+            "project": "src/ng-package.json"
+          },
+          "configurations": {
+            "production": {
+              "tsConfig": "src/tsconfig.prod.json"
+            }
+          }
+        },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "fileReplacements": [
+              {
+                "replace": "src/environment.ts",
+                "with": "src/environment.test.ts"
+              }
+            ],
+            "main": "src/test.ts",
+            "tsConfig": "src/tsconfig.spec.json",
+            "karmaConfig": "src/karma.conf.js",
+            "codeCoverageExclude": ["src/test.ts", "src/test/**"]
+          },
+          "configurations": {
+            "saucelabs": {
+              "sourceMap": false,
+              "progress": false,
+              "watch": false,
+              "karmaConfig": "src/karma.sauce.conf.js"
+            }
+          }
+        },
+        "lint": {
+          "builder": "@angular-eslint/builder:lint",
+          "options": {
+            "lintFilePatterns": ["src/**/*.{ts,html}", "schematics/**/*.ts"]
+          }
+        }
+      }
+    },
+    "demo": {
+      "projectType": "application",
+      "schematics": {
+        "@schematics/angular:component": {
+          "style": "scss"
+        }
+      },
+      "root": "demo",
+      "sourceRoot": "demo/src",
+      "prefix": "",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-angular:browser",
+          "options": {
+            "allowedCommonJsDependencies": [
+              "web3",
+              "events",
+              "@walletconnect/window-getters",
+              "@walletconnect/window-metadata",
+              "@walletconnect/socket-transport",
+              "@walletconnect/qrcode-modal",
+              "is-typedarray",
+              "typedarray-to-buffer",
+              "cross-fetch",
+              "@walletconnect/environment",
+              "bn.js",
+              "js-sha3",
+              "query-string",
+              "@coinbase/wallet-sdk",
+              "mersenne-twister",
+              "@metamask/jazzicon",
+              "eventemitter3",
+              "aes-js",
+              "scrypt-js",
+              "hash.js",
+              "copy-to-clipboard",
+              "qrcode",
+              "sturdy-websocket",
+              "bech32",
+              "bowser",
+              "joi",
+              "lodash.uniqby",
+              "lodash.partition"
+            ],
+            "outputPath": "dist/demo",
+            "index": "demo/src/index.html",
+            "main": "demo/src/main.ts",
+            "polyfills": ["zone.js","src/polyfills.ts"],
+            "tsConfig": "demo/tsconfig.app.json",
+            "inlineStyleLanguage": "scss",
+            "assets": [
+              "demo/src/favicon.ico",
+              "demo/src/assets"
+            ],
+            "styles": [
+              "demo/src/styles.scss"
+            ],
+            "scripts": []
+          },
+          "configurations": {
+            "production": {
+              "budgets": [
+                {
+                  "type": "initial",
+                  "maximumWarning": "3mb",
+                  "maximumError": "5mb"
+                },
+                {
+                  "type": "anyComponentStyle",
+                  "maximumWarning": "3mb",
+                  "maximumError": "5mb"
+                }
+              ],
+              "outputHashing": "all"
+            },
+            "development": {
+              "buildOptimizer": false,
+              "optimization": false,
+              "vendorChunk": true,
+              "extractLicenses": false,
+              "sourceMap": true,
+              "namedChunks": true
+            }
+          },
+          "defaultConfiguration": "production"
+        },
+        "serve": {
+          "builder": "@angular-devkit/build-angular:dev-server",
+          "configurations": {
+            "production": {
+              "browserTarget": "demo:build:production"
+            },
+            "development": {
+              "browserTarget": "demo:build:development"
+            }
+          },
+          "defaultConfiguration": "development"
+        },
+        "extract-i18n": {
+          "builder": "@angular-devkit/build-angular:extract-i18n",
+          "options": {
+            "browserTarget": "demo:build"
+          }
+        },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "polyfills": [
+              "zone.js",
+              "zone.js/testing",
+              "src/polyfills.ts"
+            ],
+            "tsConfig": "demo/tsconfig.spec.json",
+            "inlineStyleLanguage": "scss",
+            "assets": [
+              "demo/src/favicon.ico",
+              "demo/src/assets"
+            ],
+            "styles": [
+              "demo/src/styles.scss"
+            ],
+            "scripts": []
+          }
+        }
+      }
+    }
+  },
+  "cli": {
+    "packageManager": "yarn",
+    "analytics": false
   }
 }

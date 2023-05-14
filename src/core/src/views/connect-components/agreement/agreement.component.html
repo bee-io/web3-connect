@@ -1,0 +1,7 @@
+<ng-container *ngIf="showTermsOfService">
+  <label class="agreement-box">
+    <input type="checkbox" [checked]="agreed" (change)="toggleClick()"/>
+    <span>{{translation.connect.selectingWallet.agreement.agree }}  <a *ngIf="agreements.termsUrl" [href]="agreements.termsUrl" target="_blank"> {{translation.connect.selectingWallet.agreement.terms }}</a> <span *ngIf="agreements.privacyUrl">  {{translation.connect.selectingWallet.agreement.and }} </span> <a  *ngIf="agreements.privacyUrl" [href]="agreements.privacyUrl" target="_blank"> {{translation.connect.selectingWallet.agreement.privacy }}</a></span>
+  </label>
+</ng-container>
+

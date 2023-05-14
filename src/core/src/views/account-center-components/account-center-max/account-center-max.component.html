@@ -1,0 +1,176 @@
+<nav class="web3-connect-menu" [ngClass]="[isAccountCenterMax ? (accountCenter$ | async).position +'-active': '', (accountCenter$ | async).position ]">
+  <div class="web3-connect-menu__close" (click)="close()">
+    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="sc-3dvm1v-4 jPdqkH"><polyline points="13 17 18 12 13 7"></polyline><polyline points="6 17 11 12 6 7"></polyline></svg>
+  </div>
+  <div class="web3-connect-menu-box" *ngIf="wallets.length">
+
+
+
+
+
+    <div class="outer-container">
+      <!-- wallets section -->
+      <div class="wallets-section">
+        <div class="wallets-section-top">
+          <!-- connected accounts -->
+          <div class="wallets" *ngFor="let wallet of wallets; let i = index">
+            <account-center-wallet [wallet]="wallet"  [primary]="i === 0"></account-center-wallet>
+          </div>
+          <!-- actions -->
+          <div class="actions flex flex-column items-start">
+            <!-- connect another wallet -->
+            <div (click)="connect()"  class="action-container flex items-center pointer">
+              <div class="plus-icon flex items-center justify-center">
+                <web3-connect-svg [icon]="plusCircleIcon" [width]="'20px'" [height]="'20px'" [iconName]="'plusCircleIcon'"></web3-connect-svg>
+              </div>
+              <span class="action-text">
+                {{translation.accountCenter.connectAnotherWallet}}
+              </span>
+            </div>
+
+            <div (click)="disconnectAllWallets()"  class="action-container flex items-center pointer">
+              <div class="plus-icon flex items-center justify-center">
+                <web3-connect-svg [icon]="arrowForwardIcon" [width]="'20px'" [height]="'20px'" [iconName]="'arrowForwardIcon'"></web3-connect-svg>
+              </div>
+              <span class="action-text">
+                 {{translation.accountCenter.disconnectAllWallets}}
+               </span>
+            </div>
+          </div>
+
+          <!-- network section -->
+          <div
+            class="network-container"
+            [class.background-blue]="validAppChain && validAppChain.icon || defaultChainStyles"
+            [class.background-yellow]="!validAppChain"
+            [class.background-gray]="validAppChain  && !defaultChainStyles">
+            <div class="flex items-center p5-5">
+              <!-- network icon -->
+              <div class="relative flex">
+                <web3-connect-badge [icon]="validAppChain
+                                    ? validAppChain.icon || (defaultChainStyles && defaultChainStyles.icon) || unrecognizedChainStyle.icon
+                                    : warningIcon"
+                                    [size]="32"
+                                    [padding]="4"
+                                    [background]="'custom'"
+                                    [color]="!validAppChain? '#FFAF00': !validAppChain.icon ? '#EFF1FC' : undefined"
+                                    [customBackgroundColor]="validAppChain
+                                    ? validAppChain.color || (defaultChainStyles && defaultChainStyles.color) || unrecognizedChainStyle.color
+                                    : '#FFE7B3'"
+                                    [border]="'transparent'"
+                                    [radius]="8"
+                                    [width]="'25px'"
+                                    [height]="'25px'"
+                                    [iconName]="validAppChain.id"
+                ></web3-connect-badge>
+                <div *ngIf="validAppChain" class="status-icon drop-shadow absolute">
+                  <web3-connect-svg [icon]="successIcon" [width]="'10px'" [height]="'16px'" [iconName]="'successIcon'"></web3-connect-svg>
+                </div>
+              </div>
+              <!-- network selector -->
+              <div class="network-selector-container">
+                <div>
+                  <div class="network-selector-label">{{translation.accountCenter.currentNetwork}}</div>
+                  <div class="flex items-center" style=" width: 100%;">
+                    <web3-connect-network-select [color]="'var(--text-color)'" [wallet]="primaryWallet" [chains]="chains"></web3-connect-network-select>
+                  </div>
+                </div>
+
+                <ng-container *ngIf="(accountCenter$ | async).showTokenList">
+                  <div class="settings-button" *ngIf="isSettings" (click)="toggleSettings()" >
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" data-testid="wallet-back" class="sc-1xe6nb0-2 ewaNd"><line x1="19" y1="12" x2="5" y2="12"></line><polyline points="12 19 5 12 12 5"></polyline></svg>
+                  </div>
+                  <div class="settings-button" *ngIf="!isSettings" (click)="toggleSettings()">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"></circle><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"></path></svg>
+                  </div>
+                </ng-container>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- token list section -->
+        <ng-container *ngIf="(accountCenter$ | async).showTokenList">
+          <token-list [isSettings]="isSettings" [changeSettingsEvents]="changeSettingsEventsSubject.asObservable()"></token-list>
+        </ng-container>
+
+        <div class="wallets-section-bottom">
+          <!-- app info section -->
+          <div class="app-info-container">
+            <div class="flex items-start">
+              <!-- app icon -->
+              <div class="relative flex">
+                <web3-connect-badge [icon]="(configuration.appMetadata && configuration.appMetadata.icon) || questionIcon"
+                                    [size]="32"
+                                    [padding]="4"
+                                    [background]="'white'"
+                                    [border]="'border'"
+                                    [radius]="8"
+                                    [width]="'25px'"
+                                    [height]="'25px'"
+                                    [iconName]="'appMetadataIcon'"
+                ></web3-connect-badge>
+              </div>
+              <div class="ml4">
+                <div class="app-name">
+                  {{(configuration.appMetadata && configuration.appMetadata.name) || 'App Name'}}
+                </div>
+                <div class="app-description">
+                  {{(configuration.appMetadata && configuration.appMetadata.description) || 'This app has not added a description.'}}
+                </div>
+              </div>
+            </div>
+            <!-- app info -->
+            <ng-container *ngIf="configuration.appMetadata && (configuration.appMetadata.gettingStartedGuide || configuration.appMetadata.explore)">
+              <div class="app-info">
+                <h4 class="app-info-heading">
+                  {{translation.accountCenter.appInfo }}
+
+                </h4>
+
+                <ng-container *ngIf="configuration.appMetadata.gettingStartedGuide">
+                  <div class="flex justify-between items-center mt7">
+                    <div>{{translation.accountCenter.learnMore}}</div>
+                    <a [href]="configuration.appMetadata.gettingStartedGuide"
+                       target="_blank"
+                       rel="noreferrer noopener">
+                      {{translation.accountCenter.gettingStartedGuide}}
+                    </a>
+                  </div>
+                </ng-container>
+                <ng-container *ngIf="configuration.appMetadata.explore">
+                  <div class="flex justify-between items-center mt7">
+                    <div>{{translation.accountCenter.smartContracts}}</div>
+                    <a [href]="configuration.appMetadata.explore"
+                       target="_blank"
+                       rel="noreferrer noopener">
+                      {{translation.accountCenter.explore}}
+                    </a>
+                  </div>
+                </ng-container>
+              </div>
+            </ng-container>
+            <button
+              class="app-button button-neutral-solid"
+              (click)="close()"
+            >{{translation.accountCenter.backToApp}}</button>
+          </div>
+
+          <!--powered-by-container-->
+          <a href="https://b-ee.io"
+             target="_blank"
+             rel="noopener noreferrer"
+             class="flex justify-center items-center powered-by-container">
+            <web3-connect-svg [icon]="poweredByBee" [iconName]="'poweredByBee'"  [width]="'150px'" [height]="'20px'"></web3-connect-svg>
+          </a>
+        </div>
+
+      </div>
+    </div>
+
+
+  </div>
+</nav>
+
+
+

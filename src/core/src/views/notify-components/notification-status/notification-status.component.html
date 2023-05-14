@@ -1,0 +1,30 @@
+<ng-container *ngIf="notification.type">
+  <div class="relative">
+    <div *ngIf="notification.type === 'pending'" class="border-action absolute"></div>
+    <div class="flex items-center justify-center border relative notification-icons-wrapper"
+    [style.background]="defaultNotifyEventStyles[notification.type]['backgroundColor']"
+    [style.color]="defaultNotifyEventStyles[notification.type]['iconColor'] || ''"
+    [style.border]=" notification.type !== 'pending' ? '2px solid '+ defaultNotifyEventStyles[notification.type]['borderColor']: null"
+    [style.height]="notification.type === 'pending' ? '28px': null"
+    [style.width]="notification.type === 'pending' ? '28px': null"
+    [style.margin]="notification.type === 'pending' ? '2px': null">
+      <div class="notification-icon flex items-center justify-center"
+      [ngClass]="notification.type === 'pending' ? 'pending-icon' : ''">
+        <web3-connect-svg [icon]="defaultNotifyEventStyles[notification.type]['eventIcon']" [width]="'18px'" [height]="'18px'" [iconName]="'eventIcon'"></web3-connect-svg>
+      </div>
+    </div>
+    <ng-container *ngIf="!notification.id.includes('customNotification') && !notification.id.includes('preflight')">
+      <div class="absolute chain-icon-container">
+        <notification-chain
+          [icon]="chainStyles.icon"
+          [size]="16"
+          [background]="chainStyles.color"
+          [borderColorVar]="'--notify-b-ee-background, var(--b-ee-gray-600, var(--gray-600))'"
+          [padding]="3">
+        </notification-chain>
+      </div>
+    </ng-container>
+  </div>
+</ng-container>
+
+

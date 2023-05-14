@@ -1,0 +1,16 @@
+@import '../../../assets/styles/variables.scss';
+
+.account-center-container {
+  padding: 0;
+  font-family: var(--b-ee-font-family-normal, var(--font-family-normal));
+  width: 100%;
+  height: 100vh;
+}
+
+@media all and (min-width: 420px) {
+  .account-center-container {
+    padding: 16px;
+    max-width: 350px;
+    height: auto;
+  }
+}

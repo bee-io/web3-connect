@@ -1,0 +1,63 @@
+<ng-container *ngIf="wallet">
+  <div *ngFor="let account of wallet.accounts; let i = index">
+    <div class="relative">
+      <div class="container"  (click)="setPrimaryWallet(account)" [class.primary]="primary && i === 0">
+        <div class="container-item flex items-center relative">
+          <!-- WALLET ICON -->
+          <web3-connect-badge [icon]="wallet.icon"
+                              [size]="32"
+                              [padding]="4"
+                              [background]="'custom'"
+                              [color]="'#EFF1FC'"
+                              [customBackgroundColor]="primary && i === 0 ? 'rgba(24, 206, 102, 0.2)': 'rgba(235, 235, 237, 0.1)'"
+                              [width]="'25px'"
+                              [height]="'25px'"
+                              [iconName]="wallet.label"
+                              [border]="primary && i === 0 ? 'green' : 'gray'"
+                              [radius]="8"></web3-connect-badge>
+          <div class="status-icon drop-shadow absolute" *ngIf="primary && i === 0">
+            <web3-connect-svg [icon]="successIcon" [width]="'10px'" [height]="'16px'" [iconName]="'successIcon'"></web3-connect-svg>
+          </div>
+        </div>
+
+        <div class="account-details">
+          <!-- ADDRESS / DOMAIN -->
+          <div class="address-domain">
+            <ng-container *ngIf="shortenAddress(account.address)">
+              {{shortenAddress(account.address)}}
+            </ng-container>
+          </div>
+          <!-- BALANCE -->
+          <ng-container *ngIf="account.balance">
+            {{formatBalance(account.balance)}}
+          </ng-container>
+        </div>
+
+        <!-- ELLIPSIS -->
+        <div class="elipsis-container" [class.active]= "showMenu === account.address">
+        <div class="elipsis pointer flex items-center justify-center relative"
+              #toggleButton
+           (click)="toggleMenuAction($event, account.address)">
+          <web3-connect-svg [icon]="elipsisIcon" [width]="'25px'" [height]="'25px'" [iconName]="'elipsisIcon'"></web3-connect-svg>
+        </div>
+        </div>
+      </div>
+      <ng-container *ngIf="showMenu === account.address">
+        <ul #menu class="menu absolute">
+<!--          <li (click)=" selectAnotherAccount(wallet)">-->
+<!--             {{translation.accountCenter.addAccount }}-->
+<!--          </li>-->
+          <li *ngIf="!(primary && i === 0)" (click)=" setPrimaryWallet(account)">
+            {{translation.accountCenter.setPrimaryAccount }}
+          </li>
+          <li (click)="disconnect()">
+            {{translation.accountCenter.disconnectWallet }}
+          </li>
+          <li (click)="copyWalletAddress(account)">
+            {{translation.accountCenter.copyAddress }}
+          </li>
+        </ul>
+      </ng-container>
+    </div>
+  </div>
+</ng-container>

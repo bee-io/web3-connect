@@ -1,0 +1,30 @@
+{
+	"$schema": "../node_modules/ng-packagr/ng-package.schema.json",
+	"dest": "../dist/web3-connect",
+  "assets": ["./assets", "./node_modules"],
+  "lib": {
+		"flatModuleFile": "web3-connect",
+		"entryFile": "./index.ts"
+  },
+  "allowedNonPeerDependencies": [
+    "@angular/material",
+    "@coinbase/wallet-sdk",
+    "@ethersproject/providers",
+    "@walletconnect/client",
+    "@walletconnect/qrcode-modal",
+    "bignumber.js",
+    "bnc-sdk",
+    "bowser",
+    "eip-712",
+    "ethers",
+    "install",
+    "joi",
+    "lodash.partition",
+    "lodash.uniqby",
+    "util",
+    "tslib",
+    "process",
+    "web3",
+    "rxjs"
+  ]
+}

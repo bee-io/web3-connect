@@ -1,0 +1,18 @@
+<div class="flex flex-column notify-transaction-data">
+    <span class="transaction-status">{{notification.message}}</span>
+  <ng-container *ngIf="notification.link">
+        <span class="hash-link">
+          <a class="address-hash"
+             [href]='notification.link'
+             target="_blank"
+             rel="noreferrer noopener">{{notification.link}}</a>
+<!--          <notification-timer [startTime]="notification.startTime"></notification-timer>-->
+        </span>
+  </ng-container>
+</div>
+
+
+
+
+
+

@@ -1,0 +1,17 @@
+@import '../../../../../assets/styles/variables.scss';
+
+.notice-container {
+  margin-top: 0.75rem;
+  .web3-connect-warning-container{
+    padding: 0.75rem;
+    color: var(--warning-700);
+    font-size: var(--font-size-7);
+    line-height: 16px;
+    border: 1px solid var(--warning-400);
+    background: var(--warning-100);
+    border-radius: 12px;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+  }
+}

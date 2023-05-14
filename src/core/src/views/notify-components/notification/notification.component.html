@@ -1,0 +1,18 @@
+<div (mouseenter)="hovered =true" (mouseleave)="hovered = false"
+     (click)="onClick($event)"
+     class="bn-notify-notification"
+     [ngClass]="'bn-notify-notification-'+notification.type">
+  <div class="flex bn-notify-notification-inner">
+    <notification-status [notification]="notification" [chainStyles]="chainStyles[networkToChainId[notification.network]]"></notification-status>
+    <notification-content [notification]="notification"></notification-content>
+    <div (click)="removeNotification()"
+         class="notify-close-btn flex"
+         [ngClass]="'notify-close-btn-'+configuration.device.type">
+        <div class="flex items-center close-icon">
+          <web3-connect-svg [icon]="closeIcon" [width]="'18px'" [height]="'18px'" [iconName]="'closeIcon'"></web3-connect-svg>
+        </div>
+     </div>
+  </div>
+</div>
+
+

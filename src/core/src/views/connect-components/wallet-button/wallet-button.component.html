@@ -1,0 +1,21 @@
+<div class="flex">
+  <button (click)="onClick.emit()"
+          [disabled]="disabled"
+          [class.connected] ='connected' class="wallet-button-styling">
+    <div class="wallet-button-container-inner">
+      <web3-connect-badge [iconPromise]="icon"
+                          [size]="56"
+                          [width]="'40px'"
+                          [height]="'40px'"
+                          [iconName]="label"
+                          [loading]="connecting"
+                          [border]="connected ? 'green' : 'custom'"
+                          [background]="'transparent'"
+      ></web3-connect-badge>
+      <div class="name">{{label}}</div>
+      <div class="status-icon" *ngIf="connected">
+        <web3-connect-svg [icon]="successIcon" [width]="'15px'" [height]="'15px'" [iconName]="'successIcon'"></web3-connect-svg>
+      </div>
+    </div>
+  </button>
+</div>

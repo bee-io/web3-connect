@@ -1,0 +1,96 @@
+@import '../../../../../assets/styles/variables.scss';
+
+.container {
+  padding: var(--b-ee-spacing-4, var(--spacing-4));
+}
+
+button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: calc(var(--b-ee-spacing-4, var(--spacing-4)) - 1px);
+  border-radius: 24px;
+  cursor: pointer;
+  font: inherit;
+  border: none;
+  transition: background-color 150ms ease-in-out, color 150ms ease-in-out;
+}
+
+.web3-connect-button-primary{
+  margin-top: 20px;
+  background: var(--b-ee-white, var(--white));
+  padding: calc(var(--b-ee-spacing-5, var(--spacing-5)) - 1px)
+  calc(var(--b-ee-spacing-4, var(--spacing-4)) - 1px);
+  color: var(--b-ee-gray-500, var(--gray-500));
+  font-size: var(--b-ee-font-size-6, var(--font-size-6));
+  line-height: var(--b-ee-font-line-height-3, var(--font-line-height-3));
+  border: 1px solid var(--b-ee-gray-500, var(--gray-500));
+  font-weight: 600;
+}
+
+.connecting-container {
+  width: 100%;
+  padding: var(--b-ee-spacing-4, var(--spacing-4));
+  transition: background-color 100ms ease-in-out,
+  border-color 100ms ease-in-out;
+  border-radius: 24px;
+  background: var(--b-ee-primary-100, var(--primary-100));
+  border: 1px solid;
+  border-color: var(--b-ee-primary-300, var(--primary-300));
+  color: var(--b-ee-gray-600, var(--gray-600));
+}
+
+.connecting-container.warning {
+  background: var(--b-ee-warning-100, var(--warning-100));
+  border-color: var(--b-ee-warning-400, var(--warning-400));
+}
+
+.text {
+  line-height: 16px;
+  margin-bottom: var(--b-ee-spacing-5, var(--spacing-5));
+}
+
+.text.text-rejected {
+  line-height: 24px;
+  margin-bottom: 0;
+}
+
+.subtext {
+  font-size: var(--b-ee-font-size-7, var(--font-size-7));
+  line-height: 16px;
+}
+
+.rejected-cta {
+  cursor: pointer;
+  color: var(--b-ee-primary-500, var(--primary-500));
+}
+
+.b-ee-button-primary {
+  bottom: var(--b-ee-spacing-3, var(--spacing-3));
+}
+
+.ml {
+  margin-left: var(--b-ee-spacing-4, var(--spacing-4));
+}
+
+@media all and (max-width: 420px) {
+  .connecting-container {
+    border-radius: var(--b-ee-border-radius-4, var(--border-radius-4));
+  }
+
+  .container {
+    padding-bottom: 0;
+  }
+
+  .wallet-badges {
+    display: none;
+  }
+
+  .connecting-wallet-info {
+    margin: 0;
+  }
+
+  .b-ee-button-primary {
+    display: none;
+  }
+}

@@ -1,0 +1,35 @@
+<div class="container">
+  <div class="connecting-container flex justify-between items-center">
+    <div class="flex items-center">
+      <div class="flex justify-center relative">
+        <web3-connect-badge [size]="40"
+                            [padding]="8"
+                            [border]="'darkGreen'"
+                            [background]="configuration.appMetadata && configuration.appMetadata.icon ? 'lightBlue' : 'lightGray'"
+                            [icon]="(configuration.appMetadata && configuration.appMetadata.icon) || questionIcon"
+                            [iconName]="'appMetadataIcon'"
+        ></web3-connect-badge>
+        <div class="success-check-box relative">
+          <web3-connect-svg [iconName]="'successIcon'" [icon]="successIcon" [width]="'15px'" [height]="'15px'"></web3-connect-svg>
+        </div>
+
+        <div class="relative" style="right: 1.75rem;">
+          <web3-connect-badge [size]="40"
+                              [padding]="8"
+                              [border]="'darkGreen'"
+                              [background]="'white'"
+                              [icon]="selectedWallet.icon"
+                              [iconName]="selectedWallet.label"
+          ></web3-connect-badge>
+        </div>
+      </div>
+      <div class="text relative">
+        {{translation.connect.connectedWallet.mainText}}
+      </div>
+    </div>
+    <div class="tick flex items-center">
+        <web3-connect-svg [iconName]="'successIcon'" [icon]="successIcon" [width]="'17px'" [height]="'17px'"></web3-connect-svg>
+    </div>
+  </div>
+</div>
+

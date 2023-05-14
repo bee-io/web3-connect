@@ -1,0 +1,8 @@
+@import '../../../../../assets/styles/variables.scss';
+
+
+.wallets-container {
+  overflow-y: auto;
+  max-height: calc(100vh - 250px);
+  margin-top: 10px;
+}

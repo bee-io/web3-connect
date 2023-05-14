@@ -1,0 +1,11 @@
+<div *ngIf="configuration.appMetadata?.recommendedInjectedWallets">
+<p>{{configuration.appMetadata.name}} {{translation.connect.selectingWallet.recommendedWalletsPart1 }}</p>
+<p>{{configuration.appMetadata.name ||  'This app'}}</p>
+  <ng-container *ngFor="let item of configuration.appMetadata.recommendedInjectedWallets; let i = index">
+    <a [href]='item.url' target="_blank" rel="noreferrer noopener">{{item.name}} {{i < configuration.appMetadata.recommendedInjectedWallets.length - 1 ? ', ' : ''}}</a>
+  </ng-container>
+  <p>{{translation.connect.selectingWallet.recommendedWalletsPart2}}</p>
+  <p>{{translation.connect.selectingWallet.installWallet }}</p>
+  <p>{{configuration.appMetadata.name ||  'This app'}}</p>
+</div>
+

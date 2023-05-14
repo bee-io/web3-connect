@@ -1,0 +1,12 @@
+<ng-container *ngIf="wallets$ | async as wallets">
+  <ng-container *ngIf="wallets.length">
+        <ng-container *ngIf= "!(accountCenter$ | async).expanded">
+          <account-center-min></account-center-min>
+        </ng-container>
+        <ng-container *ngIf= "(accountCenter$ | async).expanded">
+          <account-center-max></account-center-max>
+        </ng-container>
+  </ng-container>
+</ng-container>
+
+

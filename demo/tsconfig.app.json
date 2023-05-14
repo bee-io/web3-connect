@@ -1,0 +1,16 @@
+{
+  "extends": "../tsconfig.json",
+  "compilerOptions": {
+    "baseUrl": "./",
+    "outDir": "../out-tsc/demo",
+    "paths": {
+      "@b-ee/web3-connect": ["../src/index"]
+    }
+  },
+  "files": [
+    "src/main.ts",
+    "../src/polyfills.ts"
+  ],
+  "include": ["src/**/*.d.ts"],
+  "exclude": ["src/**/*.po.ts", "src/**/*.e2e-spec.ts"]
+}

@@ -1,0 +1,67 @@
+{
+  "name": "@b-ee/web3-connect",
+  "version": "1.0.0",
+  "description": "Easy way to connect users to Decentralized Applications.",
+  "keywords": [
+    "Angular",
+    "Ethereum",
+    "Web3",
+    "EVM",
+    "dapp",
+    "Multichain",
+    "Wallet",
+    "Transaction",
+    "Provider",
+    "Hardware Wallet",
+    "Notifications",
+    "MetaMask",
+    "Coinbase",
+    "WalletConnect",
+    "Trezor",
+    "Connect Wallet",
+    "Ethereum Hooks",
+    "Blocknative",
+    "pending",
+    "confirmed",
+    "Injected Wallet",
+    "Crypto",
+    "Crypto Wallet"
+  ],
+  "author": "Dmytro Zeleniuk",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Zelenyuk1993/web3-connect.git"
+  },
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/Zelenyuk1993/web3-connect/issues"
+  },
+  "homepage": "https://github.com/Zelenyuk1993/web3-connect.git",
+  "dependencies": {
+    "@angular/material": "^15.2.8",
+    "@coinbase/wallet-sdk": "3.0.1",
+    "@ethersproject/providers": "5.5.0",
+    "@walletconnect/client": "^1.8.0",
+    "@walletconnect/qrcode-modal": "^1.8.0",
+    "bignumber.js": "9.1.1",
+    "bnc-sdk": "4.6.7",
+    "bowser": "2.11.0",
+    "eip-712": "1.0.0",
+    "ethers": "5.7.2",
+    "install": "^0.13.0",
+    "joi": "17.9.1",
+    "lodash.partition": "^4.6.0",
+    "lodash.uniqby": "^4.7.0",
+    "process": "^0.11.10",
+    "web3": "^1.9.0",
+    "rxjs": "~7.5.5",
+    "tslib": "^2.3.0",
+    "util": "^0.12.5"
+  },
+  "peerDependencies": {
+    "@angular/animations": "10.x || 11.x || 12.x || 13.x || 14.x || 15.x",
+    "@angular/cdk": "10.x || 11.x || 12.x || 13.x || 14.x || 15.x",
+    "@angular/common": "10.x || 11.x || 12.x || 13.x || 14.x || 15.x",
+    "@angular/core": "10.x || 11.x || 12.x || 13.x || 14.x || 15.x"
+  }
+}

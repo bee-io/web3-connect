@@ -1,0 +1,18 @@
+<div class="notice-container">
+  <div class="web3-connect-warning-container">
+    <div *ngIf="message">
+      <div>{{message}}</div>
+      <a *ngIf="linkHref && linkText" class="" [href]='linkHref' target="_blank">{{linkText}}</a>
+    </div>
+    <ng-container *ngIf="isInstallWallet">
+      <install-wallet></install-wallet>
+    </ng-container>
+    <div class="web3-connect-warning-container-icon">
+      <web3-connect-svg [icon]="infoIcon" [width]="'1rem'" [height]="'1rem'" [iconName]="'info'"></web3-connect-svg>
+    </div>
+  </div>
+</div>
+
+
+
+

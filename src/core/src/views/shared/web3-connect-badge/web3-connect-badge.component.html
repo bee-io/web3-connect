@@ -1,0 +1,38 @@
+<div class="wallet-icon-box"
+    [class.border-custom]="border === 'custom'"
+    [class.border-yellow]="border === 'yellow'"
+    [class.border-gray]="border === 'gray'"
+    [class.border-green]="border === 'green'"
+    [class.border-dark-green]="border === 'darkGreen'"
+    [class.border-blue]="border === 'blue'"
+    [class.border-dark-blue]="border === 'darkBlue'"
+    [class.border-transparent]="border === 'transparent'"
+    [class.border-black]="border === 'black'"
+    [class.background-gray]="background === 'gray'"
+    [class.background-light-gray]="background === 'lightGray'"
+    [class.background-light-blue]="background === 'lightBlue'"
+    [class.background-green]="background === 'green'"
+    [class.background-white]="background === 'white'"
+    [class.background-transparent]="background === 'transparent'"
+    [style.background-color]=" background === 'custom' ? customBackgroundColor : null"
+    [style.padding]="padding - 1"
+    [style.width]="size+'px'"
+    [style.height]="size+'px'"
+    [style.border-radius]="radius+'px'"
+    [style.color]="color">
+
+    <div *ngIf="loading" class="spinner-container">
+      <web3-connect-spinner [size]="'1.5rem'"></web3-connect-spinner>
+    </div>
+    <div *ngIf="loading" class="status-icon-container">
+      <div class="pending-status-icon">
+      <web3-connect-svg [icon]="pendingIcon" [width]="'20px'" [height]="'20px'" [iconName]="'pendingIcon'"></web3-connect-svg>
+    </div>
+    </div>
+    <div *ngIf="!loading">
+      <web3-connect-svg *ngIf="iconPromise" [iconPromise]="iconPromise" [width]="width" [height]="height" [iconName]="iconName"></web3-connect-svg>
+      <web3-connect-svg *ngIf="icon" [icon]="icon" [width]="width" [height]="height" [iconName]="iconName"></web3-connect-svg>
+    </div>
+
+</div>
+

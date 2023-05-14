@@ -1,0 +1,91 @@
+@import '../../../../../assets/styles/variables.scss';
+
+.bn-notify-notification {
+  --backround-color: var(--notify-b-ee-background, var(--be-e-backround-color, var(--gray-700)));
+  --foreground-color: var(--be-e-foreground-color, var(--gray-600));
+  --text-color: var(--be-e-text-color, #FFF);
+  --border-color: var(--be-e-border-color);
+
+  font-family: inherit;
+  transition: background 300ms ease-in-out, color 300ms ease-in-out;
+  pointer-events: all;
+  backdrop-filter: blur(5px);
+  width: 100%;
+  min-height: 56px;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  overflow: hidden;
+  border: 1px solid transparent;
+  border-radius: var(
+      --notify-b-ee-border-radius,
+      var(--border-radius-3, var(--border-radius-3))
+  );
+  background: var(--foreground-color);
+  color: var(--text-color);
+}
+
+.bn-notify-notification-inner {
+  overflow-wrap: anywhere;
+  padding: 0.75rem;
+}
+
+.bn-notify-notification:hover
+> div.bn-notify-notification-inner
+> div.notify-close-btn-desktop {
+  visibility: visible;
+  opacity: 1;
+}
+
+div.notify-close-btn {
+  margin-left: auto;
+  margin-bottom: auto;
+  height: 24px;
+  width: 24px;
+  position: absolute;
+  top: 8px;
+  right: 8px;
+  justify-content: center;
+  align-items: center;
+}
+
+div.notify-close-btn-desktop {
+  visibility: hidden;
+  transition: visibility 0.15s linear, opacity 0.15s linear;
+  opacity: 0;
+}
+
+.notify-close-btn .close-icon {
+  cursor: pointer;
+  width: 20px;
+  margin: auto;
+  color: var(--text-color);
+}
+
+.notify-close-btn > .close-icon {
+  color: var(--notify-b-ee-close-icon-color);
+}
+
+.notify-close-btn:hover > .close-icon {
+  color: var(--notify-b-ee-close-icon-hover);
+}
+
+.transaction-status {
+  color: var(
+      --notify-b-ee-transaction-status-color,
+      var(--b-ee-primary-100, var(--primary-100))
+  );
+  line-height: 14px;
+}
+
+.dropdown {
+  height: 0px;
+  overflow: hidden;
+  transition: height 150ms ease-in-out;
+}
+
+.dropdown-visible {
+  height: 48px;
+}
+
+

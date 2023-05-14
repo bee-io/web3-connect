@@ -1,0 +1,55 @@
+@import '../../../../../assets/styles/variables.scss';
+
+.web3-connect-select {
+  border: none;
+  min-width: 80px;
+  max-width: 80px;
+  background-color: transparent;
+  -webkit-appearance: none;
+  -webkit-box-shadow: none;
+  -moz-box-shadow: none;
+  box-shadow: none;
+  appearance: none;
+  color: var(--gray-600);
+  font-size: var(--b-ee-font-size-7, var(--font-size-7));
+  transition: width 250ms ease-in-out;
+  background-repeat: no-repeat, repeat;
+  background-position: right 10px top 5px, 0 0;
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+  padding: 0 25px 0 0;
+  line-height: 26px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16px' height='16px' viewBox='0 0 24 24' fill='none'%3E%3Cpath d='M6.1018 8C5.02785 8 4.45387 9.2649 5.16108 10.0731L10.6829 16.3838C11.3801 17.1806 12.6197 17.1806 13.3169 16.3838L18.8388 10.0731C19.5459 9.2649 18.972 8 17.898 8H6.1018Z' fill='%23212121'/%3E%3C/svg%3E");
+}
+
+web3-connect-select.minimized_ac {
+  min-width: 80px;
+  max-width: 80px;
+}
+
+web3-connect-select.maximized_ac {
+  width: auto !important;
+}
+
+web3-connect-select:focus {
+  outline: none;
+}
+
+span {
+  font-size: var(--b-ee-font-size-7, var(--font-size-7));
+  line-height: var(--b-ee-font-line-height-3, var(--font-line-height-3));
+  min-width: 80px;
+  max-width: 80px;
+  padding: 0 8px 0 4px;
+  color: var(--gray-600);
+}
+
+select:focus-visible {
+  outline: none !important;
+}

@@ -1,0 +1,37 @@
+:root{
+--main-bg-color: linear-gradient(rgb(32, 39, 56) 0%, rgb(7, 8, 22) 100%);
+--main-scrollbar-color: #171c28;
+}
+
+
+::-webkit-scrollbar {
+  width: 5px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  background: transparent
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: transparent;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: var(--main-scrollbar-color);
+}
+
+html, body {
+  height: 100%;
+}
+body {
+  margin: 0;
+  width: 100%;
+  height: 100vh;
+  overflow: hidden;
+  background: var(--main-bg-color);
+}
+
+

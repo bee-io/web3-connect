@@ -1,0 +1,84 @@
+<nav class="web3-connect-menu" [ngClass]="[isAccountCenterConnect ? (accountCenter$ | async).position +'-active': '', (accountCenter$ | async).position ]">
+  <div class="web3-connect-menu__close" (click)="close()">
+    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="sc-3dvm1v-4 jPdqkH"><polyline points="13 17 18 12 13 7"></polyline><polyline points="6 17 11 12 6 7"></polyline></svg>
+  </div>
+  <ng-container *ngIf="(modalStep$| async) as modalStep">
+    <div class="web3-connect-menu-box">
+      <div class="close-btn" (click)="close()">
+        <web3-connect-svg [icon]="closeIcon" [width]="'25px'" [height]="'25px'" [iconName]="'closeIcon'"></web3-connect-svg>
+      </div>
+      <h1 class="web3-connect-menu-box__title">
+        <ng-container *ngIf="modalStep === 'selectingWallet'">{{translation.connect.selectingWallet.header}} ({{availableWallets}})</ng-container>
+        <ng-container *ngIf="modalStep === 'connectingWallet'">
+          <ng-container *ngIf="!connectionRejected">
+            {{translation.connect.connectingWallet.header}} {{selectedWallet.label}}
+          </ng-container>
+          <ng-container *ngIf="connectionRejected">
+            {{translation.connect.connectingWallet.headerRejected}}
+          </ng-container>
+        </ng-container>
+        <ng-container *ngIf="modalStep === 'connectedWallet'">
+          {{translation.connect.connectedWallet.header}}
+        </ng-container>
+      </h1>
+      <ng-container *ngIf="modalStep === 'selectingWallet'">
+        <ng-container *ngIf="wallets.length" >
+          <agreement (agreedEvent)="agreed = $event"></agreement>
+          <div [class.disabled]="!agreed">
+            <selecting-wallet
+              [wallets]="wallets"
+              [connectingWalletLabel]="connectingWalletLabel"
+              [connectingErrorMessage]="connectingErrorMessage"
+              (selectWallet)="selectWallet($event)"
+            ></selecting-wallet>
+          </div>
+        </ng-container>
+        <web3-connect-warning *ngIf="!wallets.length" [isInstallWallet]="true" ></web3-connect-warning>
+      </ng-container>
+      <ng-container *ngIf="displayConnectingWallet">
+        <connecting-wallet
+          [connectionRejected]="connectionRejected"
+          [previousConnectionRequest]="previousConnectionRequest"
+          [selectedWallet]="selectedWallet"
+          (connectWallet)="connectWallet()"
+          (setStep)="setStep($event)"
+          (deselectWallet)="deselectWallet($event)">
+        </connecting-wallet>
+      </ng-container>
+      <ng-container *ngIf="modalStep === 'connectedWallet' && selectedWallet">
+        <connected-wallet [selectedWallet]="selectedWallet"></connected-wallet>
+      </ng-container>
+      <div class="steps-box">
+        <div class="no-link">
+          <a [href]="state.connect.iDontHaveAWalletLink ||  'https://ethereum.org/en/wallets/find-wallet/#main-content'"
+             target="_blank" rel="noreferrer noopener">{{translation.connect.connectedWallet.dontHaveWalletText}}</a>
+          <web3-connect-svg [icon]="infoIcon" [width]="'1rem'" [height]="'1rem'" [iconName]="'info'"></web3-connect-svg>
+        </div>
+        <div class="inner-container">
+          <div class="indicators flex items-center">
+            <div class="indicator relative on"></div>
+            <div class="join relative" [class.active]="step !== 'selectingWallet'"
+                 [style.right]="'2px'"
+                 [ngStyle]="{'width': step !== 'selectingWallet' ? '78px' : '82px' }" >
+            </div>
+            <div class="indicator relative"
+                 [style.right]="'4px'"
+                 [class.on]="step !== 'selectingWallet'">
+            </div>
+            <div class="join relative"
+                 [class.active]="step === 'connectedWallet'"
+                 [style.right]="'6px'"
+                 [ngStyle]="{'width': step === 'connectedWallet' ? '74px' : '81px' }">
+            </div>
+            <div class="indicator relative"
+                 [style.right]="'8px'"
+                 [class.on]="step === 'connectedWallet'">
+            </div>
+          </div>
+        </div>
+        <web3-connect-svg [icon]="poweredByBee" [iconName]="'poweredByBee'"  [width]="'150px'" [height]="'20px'"></web3-connect-svg>
+      </div>
+    </div>
+  </ng-container>
+</nav>
+

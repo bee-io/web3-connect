@@ -1,0 +1,82 @@
+<ng-container  *ngIf="!isLoading && walletBalancesAndRate">
+  <div class="network-container-box">
+    <ng-container *ngIf="!isSettings">
+      <div class="token-list-label">
+        {{chainIdToLabel[primaryChain.id]}}: {{translation.accountCenter.tokenListTitle}}: {{walletBalancesAndRate.totalBalance}}$
+      </div>
+      <div class="network-container" *ngFor="let network of walletBalancesAndRate.data">
+        <ng-container *ngIf="network.chainId === primaryChain.id && network.tokens.included.length > 0">
+          <div class="network-container__tokens-container">
+            <div class="token-container" *ngFor="let token of filteredTokenByPrice(network.tokens.included, false)">
+              <div class="token-container-left">
+                <img [src]="getUrlTokenIcon(token)" [alt]="token.symbol" class="token-container-logo"/>
+                <div>
+                  <div class="token-container__name">{{token.name}}</div>
+                  <div>{{token.symbol}}</div>
+                </div>
+              </div>
+              <div class="token-container-balance">
+                <div class="token-container-balance-title" *ngIf="token.price">{{token.price}}$</div>
+                <div class="token-container-balance-title" *ngIf="!token.price">-</div>
+                <div class="token-container-balance-amount">{{ token.balance}} <span>{{ token.symbol}}</span></div>
+              </div>
+            </div>
+          </div>
+        </ng-container>
+      </div>
+    </ng-container>
+
+    <ng-container *ngIf="isSettings">
+      <div class="network-container" *ngFor="let network of walletBalancesAndRate.data; let networkIndex = index">
+        <ng-container *ngIf="network.chainId === primaryChain.id">
+          <div class="network-container__tokens-container">
+            <div class="network-container__tokens-container-title"  *ngIf="network.chainId === primaryChain.id && network.tokens.included.length > 0">{{translation.accountCenter.tokenListIncluded}}</div>
+            <div class="network-container__tokens-container" cdkDropList  (cdkDropListDropped)="moveToken(networkIndex, $event)">
+              <div class="token-container" *ngFor="let token of network.tokens.included; let tokenIndex = index" cdkDrag>
+                <div class="token-container-left">
+                  <div class="edit-event-icon icon-color-minus"  (click)="removeToken(token, networkIndex, tokenIndex)">
+                    <div>&#8722;</div>
+                  </div>
+                  <img [src]="getUrlTokenIcon(token)"  [alt]="token.symbol" class="token-container-logo"/>
+                  <div class="token-container__name-box">
+                    <div class="token-container__name">{{token.name}}</div>
+                    <div class="token-container__amount">{{token.symbol}}</div>
+                  </div>
+                </div>
+                <div class="drag-drop-icon" *ngIf="network.tokens.included.length > 1 " cdkDragHandle>
+                  <div>&#9776;</div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="network-container__tokens-container">
+            <div class="network-container__tokens-container-title" *ngIf="network.chainId === primaryChain.id && network.tokens.excluded.length > 0">{{translation.accountCenter.tokenListMore}}</div>
+            <div class="network-container__tokens-container">
+              <div class="token-container"  *ngFor="let token of network.tokens.excluded; let tokenIndex = index">
+                <div class="token-container-left">
+                  <div class="edit-event-icon icon-color-plus" (click)="addToken(token, networkIndex, tokenIndex)">
+                    &#43;
+                  </div>
+                  <img [src]="getUrlTokenIcon(token)"  [alt]="token.symbol" class="token-container-logo"/>
+                  <div class="token-container__name-box">
+                    <div class="token-container__name">{{token.name}}</div>
+                    <div class="token-container__amount">{{token.symbol}}</div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </ng-container>
+      </div>
+    </ng-container>
+  </div>
+</ng-container>
+<ng-container  *ngIf="!isLoading && !walletBalancesAndRate">
+  <h4 class="no-data-label">
+    {{translation.accountCenter.tokenListNoData}}
+    <a href="https://b-ee.io" target="_blank">{{translation.accountCenter.contactUs}}</a>
+  </h4>
+</ng-container>
+<ng-container *ngIf="isLoading">
+  <div *ngFor="let item of tokenLoaderList" class="token-loader-list-item loading-placeholder"></div>
+</ng-container>

@@ -1,0 +1,53 @@
+@import '../../../../../assets/styles/variables.scss';
+
+
+div.notify-transaction-data {
+  font-size: var(
+      --notify-b-ee-transaction-font-size,
+      var(--b-ee-font-size-6, var(--font-size-6))
+  );
+  font-family: inherit;
+  margin: 0px 20px 0px 8px;
+  justify-content: center;
+}
+
+.hash-link {
+  display: inline-flex;
+  margin-top: 10px;
+  max-width: 250px;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
+  font-size: var(
+      --notify-b-ee-hash-time-font-size,
+      var(--b-ee-font-size-7, var(--font-size-7))
+  );
+  line-height: var(
+      --notify-b-ee-hash-time-font-line-height,
+      var(--b-ee-font-line-height-4, var(--font-line-height-4))
+  );
+}
+.address-hash {
+  text-overflow: ellipsis;
+  overflow: hidden;
+  color: var(
+      --notify-b-ee-address-hash-color,
+      var(--b-ee-primary-200, var(--primary-200))
+  );
+}
+
+
+
+.transaction-status {
+  color: var(--notify-b-ee-transaction-status, inherit);
+  line-height: var(
+      --notify-b-ee-font-size-5,
+      var(--b-ee-font-size-5, var(--font-size-5))
+  );
+  font-weight: 400;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+}

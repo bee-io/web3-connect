@@ -1,0 +1,11 @@
+
+@import '../../../../../assets/styles/variables.scss';
+
+.border {
+  box-sizing: content-box;
+  border: 2px solid;
+  overflow: hidden;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+}

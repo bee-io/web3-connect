@@ -1,0 +1,24 @@
+@import '../../../../../assets/styles/variables.scss';
+
+div {
+  display: flex;
+  justify-content: center;
+  font-size: inherit;
+  font-family: inherit;
+  margin: 0 1.5rem 0 0.75rem;
+}
+
+span {
+  font-family: inherit;
+  display: flex;
+  align-items: center;
+  margin: 0 2px;
+}
+
+.time {
+  color: var(
+      --notify-b-ee-timer-color,
+      var(--b-ee-gray-300, var(--gray-300))
+  );
+  margin-left: 4px;
+}

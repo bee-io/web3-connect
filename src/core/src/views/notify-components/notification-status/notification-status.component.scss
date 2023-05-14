@@ -1,0 +1,57 @@
+@import '../../../../../assets/styles/variables.scss';
+
+
+div.notification-icons-wrapper {
+  height: 32px;
+  width: 32px;
+}
+.border {
+  border-radius: 8px;
+}
+div.notification-icon {
+  padding: 6px;
+}
+
+div.pending-icon {
+  animation: blink 2s ease-in infinite;
+  height: 100%;
+  width: 100%;
+  padding: 7px;
+}
+@keyframes blink {
+  from,
+  to {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.2;
+  }
+}
+div.border-action {
+  height: 32px;
+  min-width: 32px;
+  border-radius: 8px;
+  margin-top: -2px;
+  overflow: hidden;
+  will-change: transform;
+}
+div.border-action:before {
+  content: '';
+  background-image: conic-gradient(#b1b7f2 20deg, #6370e5 120deg);
+  height: 140%;
+  width: 140%;
+  position: absolute;
+  left: -25%;
+  top: -25%;
+  animation: rotate 2s infinite linear;
+}
+
+div.chain-icon-container {
+  left: 18px;
+  top: 18px;
+}
+@keyframes rotate {
+  100% {
+    transform: rotate(-360deg);
+  }
+}

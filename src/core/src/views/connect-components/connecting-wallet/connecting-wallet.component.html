@@ -1,0 +1,41 @@
+<div class="container flex flex-column items-center">
+  <div class="connecting-container flex justify-between items-center"
+    [class.warning]="connectionRejected || previousConnectionRequest">
+    <div class="flex">
+      <div class="flex justify-center relative wallet-badges">
+        <web3-connect-badge [size]="40"
+                            [padding]="8"
+                            [border]="connectionRejected || previousConnectionRequest ? 'yellow' : 'blue'"
+                            [background]="'lightGray'"
+                            [icon]="(configuration.appMetadata && configuration.appMetadata.icon) || questionIcon"
+                            [iconName]="'appMetadataIcon'"
+        ></web3-connect-badge>
+        <div class="relative" style="right: 0.5rem">
+          <web3-connect-badge [size]="40"
+                              [padding]="8"
+                              [border]="connectionRejected || previousConnectionRequest ? 'yellow' : 'blue'"
+                              [background]="'white'"
+                              [icon]="selectedWallet.icon"
+                              [iconName]="selectedWallet.label"
+          ></web3-connect-badge>
+        </div>
+      </div>
+      <div class="flex flex-column justify-center ml connecting-wallet-info">
+        <div class="text" [class.text-rejected]="connectionRejected">
+          {{connectionRejected ? (translation.connect.connectingWallet.rejectedText) : (translation.connect.connectingWallet.mainText)}}
+        </div>
+        <div *ngIf="connectionRejected" class="rejected-cta pointer subtext" (click)=connectWallet.emit()>
+          {{translation.connect.connectingWallet.rejectedCTA }}
+        </div>
+        <div *ngIf="!connectionRejected" class="subtext">
+          <span *ngIf="previousConnectionRequest">{{selectedWallet.label}} {{translation.connect.connectingWallet.previousConnection}}</span>
+          <div  *ngIf="!previousConnectionRequest"> {{translation.connect.connectingWallet.paragraph}}</div>
+        </div>
+        </div>
+      </div>
+  </div>
+  <button class="web3-connect-button-primary" (click)="deselectWallet.emit(selectedWallet.label);  setStep.emit('selectingWallet')">
+    {{translation.connect.connectingWallet.primaryButton}}
+  </button>
+</div>
+

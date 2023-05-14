@@ -1,0 +1,79 @@
+<div class="minimized">
+  <ng-container *ngIf="wallets.length">
+    <div class="inner-row">
+      <div class="flex relative" (click)="maximize()">
+        <div class="drop-shadow">
+          <web3-connect-badge [icon]="appIcon"
+                              [size]="32"
+                              [padding]="4"
+                              [width]="'25px'"
+                              [height]="'25px'"
+                              [iconName]="'appIcon'"
+                              [background]="'white'"
+                              [border]="'darkGreen'"
+                              [radius]="8"
+          ></web3-connect-badge>
+        </div>
+
+        <div style="margin-left: -0.5rem;" class="drop-shadow">
+          <web3-connect-badge [icon]="primaryWallet.icon"
+                              [size]="32"
+                              [padding]="4"
+                              [width]="'25px'"
+                              [height]="'25px'"
+                              [iconName]=" primaryWallet.label"
+                              [background]="'green'"
+                              [border]="'darkGreen'"
+                              [radius]="8"
+          ></web3-connect-badge>
+        </div>
+
+        <div class="status-icon drop-shadow absolute">
+          <web3-connect-svg [icon]="successIcon" [width]="'10px'" [height]="'16px'" [iconName]="'successIcon'"></web3-connect-svg>
+        </div>
+      </div>
+
+      <!-- address and balance -->
+      <div class="wallet-info" (click)="maximize()">
+        <div class="address">
+          <ng-container>{{shortenedFirstAddress}}</ng-container>
+        </div>
+
+        <div *ngIf="firstAddressBalance" class="balance">
+          <ng-container>{{firstAddressBalance.length > 8 ? firstAddressBalance.slice(0, 8): firstAddressBalance}}</ng-container>
+          <ng-container> {{firstAddressAsset}}</ng-container>
+        </div>
+
+      </div>
+
+      <!-- network badge -->
+      <div class="network">
+        <div class="container flex items-center"
+             [class.validAppChain-style]="validAppChain"
+             [class.invalidAppChain-style]="!validAppChain">
+          <div class="flex items-center">
+            <div
+              [class.color-yellow]="!validAppChain"
+              [class.color-white]="validAppChain && !validAppChain.icon"
+              [style.background-color]="validAppChain
+               ? validAppChain.color || (defaultChainStyles && defaultChainStyles.color) || unrecognizedChainStyle.color
+               : 'var(--b-ee-warning-200, var(--warning-200))'"
+              class="chain-icon flex justify-center items-center">
+              <web3-connect-svg [icon]="validAppChain
+                  ? validAppChain.icon || (defaultChainStyles && defaultChainStyles.icon) || unrecognizedChainStyle.icon
+                  : warningIcon"
+                                [width]="'15px'"
+                                [height]="'15px'"
+                                [iconName]="primaryChain.id">
+              </web3-connect-svg>
+            </div>
+            <web3-connect-network-select [wallet]="primaryWallet" [chains]="chains"></web3-connect-network-select>
+          </div>
+        </div>
+      </div>
+    </div>
+  </ng-container>
+</div>
+
+
+

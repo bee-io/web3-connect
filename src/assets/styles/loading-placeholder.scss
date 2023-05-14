@@ -1,0 +1,28 @@
+@import 'animations';
+
+$selector-base: 'loading-placeholder';
+$font-size-base: 16px !default;
+$placeholder-loading__color: rgb(58 63 78 / 73%) !default; // TODO: create separate variables for colors
+$placeholder-loading__border-radius: 4px !default; // TODO: create separate variables for base radius's
+.#{$selector-base} {
+  background-color: $placeholder-loading__color;
+  color: $placeholder-loading__color;
+  border-radius: $placeholder-loading__border-radius;
+  display: inline-block;
+  height: $font-size-base;
+  vertical-align: middle;
+  width: auto;
+  position: relative;
+  overflow: hidden;
+
+  &::before {
+    content: '';
+    display: block;
+    position: absolute;
+    top: 0;
+    height: 100%;
+    width: 100%;
+    background: linear-gradient(to right, transparent 0%, $placeholder-loading__color 50%, transparent 100%);
+    animation: placeHolderAnimation 1s linear infinite;
+  }
+}

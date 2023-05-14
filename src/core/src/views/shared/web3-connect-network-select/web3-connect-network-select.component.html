@@ -1,0 +1,16 @@
+<ng-container  *ngIf="wallet">
+    <ng-container *ngIf="switching$ | async ">
+      <span [style.color]="color">{{translation.accountCenter.changeNetworkProcess}}</span>
+    </ng-container>
+    <ng-container *ngIf="!(switching$ | async)">
+      <ng-container>
+        <select class="web3-connect-select" [style.color]="color" [(ngModel)]="selectedValue" (change)="handleSelect()">
+          <ng-container *ngIf="!connectedToValidAppChain">
+            <option [value]="wallet.chains[0].id"> {{chainIdToLabel[wallet.chains[0].id] || 'unrecognized'}}</option>
+          </ng-container>
+          <option *ngFor="let chain of chains" [value]="chain.id">{{chain.label || chainIdToLabel[chain.id] || chain.id}}</option>
+        </select>
+      </ng-container>
+    </ng-container>
+</ng-container>
+

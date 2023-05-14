@@ -1,0 +1,62 @@
+@import '../../../../../assets/styles/variables.scss';
+
+
+ul {
+  padding-left: 0;
+  display: flex;
+  flex-flow: column nowrap;
+  font-size: var(
+      --notify-b-ee-font-size,
+      var(--b-ee-font-size-5, var(--font-size-5))
+  );
+  list-style-type: none;
+  overflow: visible;
+  scrollbar-width: none;
+  box-sizing: border-box;
+  z-index: var(--notify-b-ee-z-index, 300);
+  font-family: var(
+      --notify-b-ee-font-family,
+      var(--b-ee-font-family-normal, inherit)
+  );
+  margin: 8px 0;
+  pointer-events: all;
+}
+
+li{
+  -webkit-animation: fade-in 1s;
+  animation: fade-in 1s;
+}
+
+.y-scroll {
+  overflow-y: scroll;
+}
+.y-visible {
+  overflow-y: visible;
+}
+
+li.notification-list-top:not(:first-child) {
+  margin-top: 8px;
+}
+
+li.notification-list-bottom:not(:first-child) {
+  margin-bottom: 8px;
+}
+
+ul.bn-notify-bottomLeft,
+ul.bn-notify-bottomRight {
+  flex-direction: column-reverse;
+}
+
+@media only screen and (max-width: 420px) {
+  ul {
+    width: 100%;
+  }
+}
+
+.bn-notify-clickable:hover {
+  cursor: pointer;
+}
+
+::-webkit-scrollbar {
+  display: none;
+}

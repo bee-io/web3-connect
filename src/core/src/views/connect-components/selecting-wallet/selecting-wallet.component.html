@@ -1,0 +1,19 @@
+  <web3-connect-warning  *ngIf="connectingErrorMessage" [message]="connectingErrorMessage"></web3-connect-warning>
+  <div class="wallets-container">
+    <ng-container *ngFor="let wallet of wallets">
+      <wallet-button
+      [connected]="checkConnected(wallet.label)"
+      [connecting]="connectingWalletLabel === wallet.label"
+      [label]="wallet.label"
+      [icon]="wallet.icon"
+      (onClick)="selectWallet.emit(wallet)"
+      [disabled]="connectingWalletLabel &&connectingWalletLabel !== wallet.label">
+      </wallet-button>
+    </ng-container>
+    <web3-connect-warning
+      [message]="'Why don\'t I see my Wallet?'"
+      [linkText]="'Click here to learn more'"
+      [linkHref]="wheresMyWalletDefault">
+    </web3-connect-warning>
+  </div>
+

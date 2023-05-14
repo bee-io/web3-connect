@@ -1,0 +1,13 @@
+<ng-container *ngIf="notifications.length">
+  <ul class="y-scroll" [class]="'bn-notify-'+position"
+  [style.justify-content]="position.includes('top') ? 'flex-start': null"
+  [style.max-height]="'calc(100vh - 82px'">
+    <li *ngFor="let notification of notifications"
+        [class]="'bn-notify-li-'+position"
+        [ngClass]="position.includes('top') ? 'notification-list-top' : 'notification-list-bottom'">
+         <notification [notification]="notification"></notification>
+    </li>
+  </ul>
+</ng-container>
+
+
