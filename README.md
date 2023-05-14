@@ -59,6 +59,7 @@ Then initialize in your app:
 
 ```ts
 import {Init, injectedModule} from "@b-ee/web3-connect";
+
 const MAINNET_RPC_URL = 'https://mainnet.infura.io/v3/<INFURA_KEY>'
 
 @Component({
@@ -109,12 +110,12 @@ Browser would open automatically.
 
 [![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg?style=flat-square)](https://github.com/Zelenyuk1993/web3-connect.git/pulls)
 
-We welcome all contributions. Please read our [CONTRIBUTING.md](https://github.com/NG-ZORRO/ng-zorro-antd/blob/master/CONTRIBUTING.md) first. You can submit any ideas as [pull requests](https://github.com/NG-ZORRO/ng-zorro-antd/pulls) or as [GitHub issues](https://github.com/NG-ZORRO/ng-zorro-antd/issues).
+We welcome all contributions. You can submit any ideas as [pull requests](https://github.com/Zelenyuk1993/web3-connect/pulls) or as [GitHub issues](https://github.com/Zelenyuk1993/web3-connect/issues).
 
 
 > If you're new to posting issues, we ask that you read [*How To Ask Questions The Smart Way*](http://www.catb.org/~esr/faqs/smart-questions.html) (**This guide does not provide actual support services for this project!**), [How to Ask a Question in Open Source Community](https://github.com/seajs/seajs/issues/545) and [How to Report Bugs Effectively](http://www.chiark.greenend.org.uk/~sgtatham/bugs.html) prior to posting. Well written bug reports help us help you!
 
-[![JetBrains](https://img.alicdn.com/tfs/TB1sSomo.z1gK0jSZLeXXb9kVXa-120-130.svg)]
+![JetBrains](https://img.alicdn.com/tfs/TB1sSomo.z1gK0jSZLeXXb9kVXa-120-130.svg)
 
 
 > We list some users here, if your company or product uses @b-ee/web3-connect, let us know [here](https://github.com/Zelenyuk1993/web3-connect/issues)!
