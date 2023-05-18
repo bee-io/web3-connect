@@ -2,12 +2,69 @@
 <html lang="en">
 <head>
   <meta charset="utf-8">
-  <title>Demo</title>
-  <base href="/">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="icon" type="image/x-icon" href="favicon.ico">
+
+  <link rel="shortcut icon" href="assets/favicon.png">
+  <link rel="image_src" href="https://b-ee.io/assets/images/bee-logo/logo-with-dark-bg.png">
+  <link rel="apple-touch-icon" href="https://b-ee.io/assets/images/bee-logo/logo-with-dark-bg.png"/>
+
+  <link rel="preconnect" href="https://gw.alipayobjects.com" crossorigin="anonymous">
+  <link rel="preconnect" href="https://img.alicdn.com" crossorigin="anonymous">
+  <link rel="preconnect" href="https://cdnjs.cloudflare.com" crossorigin="anonymous">
+  <link rel="preconnect" href="https://vars.hotjar.com">
+  <link rel="preconnect" href="https://script.hotjar.com">
+  <link rel="preconnect" href="https://www.google-analytics.com">
+  <link rel="dns-prefetch" href="https://www.google-analytics.com">
+  <link rel="preconnect" href="https://cdn.jsdelivr.net">
+  <link rel="preconnect" href="https://api.github.com">
+  <link rel="preload" href="https://script.hotjar.com/font-hotjar_5.65042d.woff2" as="font" type="font/woff2" crossorigin>
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="translucent">
+  <meta name="mobile-web-app-capable" content="yes">
+  <meta name="keywords" content="Angular, Ethereum Web3, EVM, dapp, Multichain, Wallet, Transaction, Provider, Hardware Wallet, Notifications, MetaMask, Coinbase, WalletConnect, Trezor, Connect Wallet, Injected Wallet, Crypto, Crypto Wallet">
+  <meta name="author" content="Dmytro Zeleniuk B-EE.IO Team">
+  <meta name="description" content="Easy way to connect users to Decentralized Applications.">
+  <!--Twitter card metadata-->
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:site" content="https://b-ee.io/">
+  <meta name="twitter:creator" content="@b-ee/web3-connect">
+  <meta name="twitter:title" content="@b-ee/web3-connect - Easy way to connect users to Decentralized Applications.">
+  <meta name="twitter:description" content="Web3-Connect provides a fast and simple solution for integrating multiple wallets and supporting various blockchain networks in your project. By incorporating pre-built components for over 35 different hardware and software wallets, Web3-Connect streamlines your development process and eliminates unnecessary difficulties.">
+  <meta name="twitter:image" content="https://b-ee.io/assets/images/bee-logo/logo-original.png">
+  <!--Open Graph-->
+  <meta property="og:url" content="https://b-ee.io/">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="@b-ee/web3-connect - Easy way to connect users to Decentralized Applications.">
+  <meta property="og:site_name" content="@b-ee/web3-connect - Easy way to connect users to Decentralized Applications.">
+  <meta property="og:locale" content="en_US">
+  <meta property="og:description" content="Web3-Connect provides a fast and simple solution for integrating multiple wallets and supporting various blockchain networks in your project. By incorporating pre-built components for over 35 different hardware and software wallets, Web3-Connect streamlines your development process and eliminates unnecessary difficulties.">
+  <meta property="og:image" content="https://b-ee.io/assets/images/bee-logo/logo-original.png">
+  <meta property="og:image:secure_url" content="https://b-ee.io/assets/images/bee-logo/logo-original.png">
+  <meta property="og:image:type" content="image/png">
+  <meta property="og:image:width" content="2048">
+  <meta property="og:image:height" content="1536">
+  <meta name="theme-color" content="#1c2e8e">
+
+<!--  <link rel="icon shortcut" href="https://img.alicdn.com/tfs/TB1Jr2ASQvoK1RjSZFDXXXY3pXa-200-200.png" type="image/x-icon">-->
+<!--  <link rel="apple-touch-icon" sizes="180x180" href="assets/icons/apple-icon-180.png">-->
+<!--  <link rel="apple-touch-icon" sizes="167x167" href="assets/icons/apple-icon-167.png">-->
+<!--  <link rel="apple-touch-icon" sizes="152x152" href="assets/icons/apple-icon-152.png">-->
+<!--  <link rel="apple-touch-icon" sizes="120x120" href="assets/icons/apple-icon-120.png">-->
+<!--  <link rel="manifest" href="manifest.json">-->
+  <title>Web3-Connect Docs</title>
+  <base href="/">
+  <style type="text/css">
+    /* Prevent trigger animations before page load, will be removed when the page is ready */
+    .preload * {
+      -webkit-transition: none !important;
+      -moz-transition: none !important;
+      -ms-transition: none !important;
+      -o-transition: none !important;
+    }
+  </style>
 </head>
-<body>
-  <app-root></app-root>
+<body class="preload">
+<app-root></app-root>
+<noscript>Please enable JavaScript to continue using this application.</noscript>
 </body>
 </html>

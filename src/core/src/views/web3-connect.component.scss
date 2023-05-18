@@ -1,5 +1,6 @@
 @import '../../../assets/styles/variables.scss';
 
+
 .account-center-container {
   padding: 0;
   font-family: var(--b-ee-font-family-normal, var(--font-family-normal));
@@ -7,10 +8,11 @@
   height: 100vh;
 }
 
-@media all and (min-width: 420px) {
+@media all and (min-width: 740px) {
   .account-center-container {
     padding: 16px;
     max-width: 350px;
     height: auto;
+    z-index: 9999999;
   }
 }

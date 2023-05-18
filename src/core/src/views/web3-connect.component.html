@@ -4,12 +4,12 @@
 <ng-container *ngIf="!(accountCenter$ | async).enabled && !(notify$  | async).enabled">
   <div class="account-center-container flex flex-column fixed z-indexed"></div>
 </ng-container>
-<ng-container *ngIf="(notify$ | async).enabled && (accountCenter$ | async).enabled && (wallets$ | async).length">
+<ng-container *ngIf="(accountCenter$ | async) && (accountCenter$ | async).enabled && (wallets$ | async) && (wallets$ | async).length">
     <div class="account-center-container flex flex-column fixed z-indexed"
          [style.padding-bottom]="(accountCenter$ | async).position.includes('top') ? '0': null"
          [style.padding-top]="(accountCenter$ | async).position.includes('bottom') ? '0': null"
          [style]="setPositioningDefaults(accountCenterPositioning)[(accountCenter$ | async).position]">
-          <ng-container *ngIf="(accountCenter$ | async).position.includes('bottom') ">
+          <ng-container *ngIf="(notify$ | async) && (notify$ | async).enabled && (accountCenter$ | async).position.includes('bottom') ">
               <ng-container *ngIf="(notifications$ | async) as notifications">
                 <notify [notifications]="notifications" [position]="(accountCenter$ | async).position"></notify>
               </ng-container>
@@ -20,7 +20,7 @@
               && (accountCenter$ | async).position.includes('Left')) ? 'auto': null">
             <account-center></account-center>
           </div>
-          <ng-container *ngIf="(accountCenter$ | async).position.includes('top')">
+          <ng-container *ngIf="(notify$ | async) && (notify$ | async).enabled && (accountCenter$ | async).position.includes('top')">
             <ng-container *ngIf="(notifications$ | async) as notifications">
               <notify *ngIf="!(accountCenter$ | async).expanded" [notifications]="notifications" [position]="(accountCenter$ | async).position"></notify>
             </ng-container>

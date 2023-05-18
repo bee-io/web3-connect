@@ -1,0 +1,34 @@
+import { Platform } from '@angular/cdk/platform';
+import { HttpClient } from '@angular/common/http';
+import { ChangeDetectionStrategy, ChangeDetectorRef, Component, OnInit, ViewEncapsulation } from '@angular/core';
+
+@Component({
+  selector: 'nz-github-btn',
+  encapsulation: ViewEncapsulation.None,
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  templateUrl: './github-btn.component.html',
+  styleUrls: ['./github-btn.component.scss']
+})
+export class NzGithubBtnComponent implements OnInit {
+  starCount = 0;
+  org = 'Zelenyuk1993';
+  repo = '/web3-connect';
+
+  constructor(private http: HttpClient, private cdr: ChangeDetectorRef, private platform: Platform) {}
+
+  getStar(): void {
+    this.http
+      .get<{ stargazers_count: number }>(`https://api.github.com/repos/${this.org}/${this.repo}`)
+      .subscribe((res: { stargazers_count: number }) => {
+        this.starCount = res.stargazers_count;
+        this.cdr.markForCheck();
+      });
+  }
+
+  ngOnInit(): void {
+    if (!this.platform.isBrowser) {
+      return;
+    }
+    this.getStar();
+  }
+}

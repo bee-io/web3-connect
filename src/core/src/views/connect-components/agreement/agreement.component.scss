@@ -12,7 +12,9 @@
   a{
     color: var(--action-color)
   }
+
 }
 input[type=checkbox] {
+  margin-right: 5px;
   accent-color: var(--action-color)
 }

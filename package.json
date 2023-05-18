@@ -11,7 +11,7 @@
     "build": "yarn lib:build && yarn demo:build",
     "demo": "yarn demo:serve",
     "lib:build": "ng build web3-connect -c production",
-    "demo:serve": "ng serve demo --host 0.0.0.0",
+    "demo:serve": "ng serve demo",
     "demo:build": "ng build demo -c production",
     "pack-lib": "cd dist/web3-connect && npm pack",
     "publish:lib": "cd dist/web3-connect && npm publish --access public"
@@ -47,17 +47,23 @@
     "@angular/platform-server": "^15.0.0",
     "@angular/router": "^15.0.0",
     "@schematics/angular": "^15.0.0",
-    "jasmine-core": "~4.0.0",
     "@types/jasmine": "~3.10.0",
     "@types/node": "^12.11.1",
+    "jasmine-core": "~4.0.0",
     "karma": "~6.3.0",
     "karma-chrome-launcher": "~3.1.0",
     "karma-coverage": "~2.1.0",
     "karma-jasmine": "~4.0.0",
     "karma-jasmine-html-reporter": "~1.7.0",
     "ng-packagr": "^15.0.0",
+    "ng-zorro-antd": "^15.1.0",
+    "codesandbox": "^2.2.1",
+    "@stackblitz/sdk": "^1.5.2",
+    "@ant-design/icons-angular": "^15.0.0",
+    "@ant-design/dark-theme": "^2.0.2",
+    "ngx-quicklink": "^0.3.0",
     "rxjs": "~7.5.5",
-    "zone.js": "~0.11.4",
-    "typescript": "~4.9.5"
+    "typescript": "~4.9.5",
+    "zone.js": "~0.11.4"
   }
 }

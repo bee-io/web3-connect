@@ -1,0 +1,11 @@
+.home-center{
+  justify-content: center;
+  flex-flow: column;
+  align-items: center;
+}
+
+@media (max-width: 767px) {
+  .main-menu {
+    display: none;
+  }
+}

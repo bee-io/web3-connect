@@ -16,7 +16,7 @@ import {
 } from "../../../icons";
 import {updateAccountCenter} from "../../../store/actions";
 import {shareReplay, takeUntil} from "rxjs/operators";
-import {chainIdToLabel, getDefaultChainStyles, shortenAddress, unrecognizedChainStyle} from "../../../utils";
+import {getDefaultChainStyles, shortenAddress, unrecognizedChainStyle} from "../../../utils";
 import {Chain} from "../../../../../common";
 import {getTranslations, Translation} from "../../../locales";
 import {Destroyable} from "../../../destroyable.base";

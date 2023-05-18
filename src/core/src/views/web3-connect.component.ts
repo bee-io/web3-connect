@@ -18,11 +18,11 @@ export class Web3ConnectComponent {
   protected readonly configuration: Configuration = configuration;
   protected readonly accountCenterPositioning: string = 'account-center';
 
-  protected readonly accountCenter$: Observable<AccountCenter> = state
+  protected accountCenter$: Observable<AccountCenter> = state
     .select('accountCenter')
     .pipe(startWith(state.get().accountCenter), shareReplay(1));
 
-  protected readonly  notify$: Observable<Notify> = state
+  protected readonly notify$: Observable<Notify> = state
     .select('notify')
     .pipe(startWith(state.get().notify), shareReplay(1));
 
