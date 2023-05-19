@@ -20,9 +20,6 @@ import { NzMessageModule } from 'ng-zorro-antd/message';
 import { NzPopoverModule } from 'ng-zorro-antd/popover';
 import { NzSelectModule } from 'ng-zorro-antd/select';
 import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
-import {EditOutline, LeftOutline, RightOutline} from "@ant-design/icons-angular/icons";
-import {IconDefinition} from "@ant-design/icons-angular";
-import {NzIconModule} from "ng-zorro-antd/icon";
 import {NZ_CONFIG} from "ng-zorro-antd/core/config";
 import {FooterModule} from "./components/footer/footer.module";
 import {DEMOComponent} from "./pages/demo/demo.component";
@@ -31,7 +28,6 @@ import {FaqComponent} from "./pages/faq/faq.component";
 import {ExamplesComponent} from "./pages/examples/examples.component";
 
 
-const icons: IconDefinition[] = [LeftOutline, RightOutline, EditOutline];
 @NgModule({
   declarations: [
     AppComponent,
@@ -45,7 +41,6 @@ const icons: IconDefinition[] = [LeftOutline, RightOutline, EditOutline];
     Web3ConnectModule,
     BrowserModule.withServerTransition({ appId: 'docs' }),
     BrowserAnimationsModule,
-    NzIconModule.forRoot(icons),
     NzAffixModule,
     NzNavBottomModule,
     FixedWidgetsModule,

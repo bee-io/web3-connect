@@ -1,6 +1,6 @@
 {
   "name": "@b-ee/web3-connect",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "Easy way to connect users to Decentralized Applications.",
   "keywords": [
     "Angular",
@@ -30,13 +30,13 @@
   "author": "Dmytro Zeleniuk",
   "repository": {
     "type": "git",
-    "url": "https://github.com/Zelenyuk1993/web3-connect.git"
+    "url": "https://github.com/bee-io/web3-connect.git"
   },
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/Zelenyuk1993/web3-connect/issues"
+    "url": "https://github.com/bee-io/web3-connect/issues"
   },
-  "homepage": "https://github.com/Zelenyuk1993/web3-connect.git",
+  "homepage": "https://github.com/bee-io/web3-connect.git",
   "dependencies": {
     "@angular/material": "^15.2.8",
     "@coinbase/wallet-sdk": "3.0.1",

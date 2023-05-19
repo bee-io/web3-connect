@@ -34,7 +34,7 @@ import { ChangeDetectionStrategy, Component, EventEmitter, Input, OnInit, Output
     </ng-container>
     <ng-template #additionalItems>
       <li nz-menu-item>
-        <a href="https://github.com/Zelenyuk1993/web3-connect" target="_blank" rel="noopener noreferrer">Github</a>
+        <a href="https://github.com/bee-io/web3-connect" target="_blank" rel="noopener noreferrer">Github</a>
       </li>
     </ng-template>
   `,

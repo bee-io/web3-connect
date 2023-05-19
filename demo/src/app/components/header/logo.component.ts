@@ -7,7 +7,7 @@ import {AppService} from "../../app.service";
   template: `
     <a href="/" id="logo">
       <img width="32" height="28.27" alt="logo" [src]="(appService.theme$ | async) === 'dark' ? './assets/img/logo.svg': './assets/img/logo-black.svg'" />
-      <strong>Web3-Connect</strong>
+      <strong >Web3-Connect</strong>
     </a>
   `,
   styles: [

@@ -114,7 +114,6 @@ export class TokenListService {
 
    public async getWalletBalancesAndRate(chainId: string, address: string): Promise<WalletBalancesModel> {
      const setting: SettingsModel = this.settings;
-     console.log('setting', setting)
      if(setting && setting.defaultConfig.filter((item => item.chainId === chainId )).length > 0) {
        let updateData = setting.defaultConfig;
        const currencySymbols = this.currencySymbols(updateData);

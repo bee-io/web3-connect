@@ -9,6 +9,7 @@ import {
   SimpleChanges
 } from '@angular/core';
 import { NzConfigService } from 'ng-zorro-antd/core/config';
+import {AppService} from "../../app.service";
 
 const RESPONSIVE_XS = 1120;
 const RESPONSIVE_SM = 1200;
@@ -18,14 +19,24 @@ const RESPONSIVE_SM = 1200;
   changeDetection: ChangeDetectionStrategy.OnPush,
   template: `
     <header id="header" class="clearfix">
+
       <span
         class="nav-phone-icon"
         *ngIf="isMobile"
+        style=""
         nzPopoverOverlayClassName="popover-menu"
-        nzPopoverPlacement="bottomLeft"
+        nzPopoverPlacement="bottomRight"
         nz-popover
+        nz-button
         [nzPopoverContent]="menu"
-      ></span>
+      >
+        <span style="margin-left: -30px;">
+           <svg [style.fill]="(appService.theme$ | async) === 'dark' ? '#FFFFFF':'#000000'" aria-hidden="true" height="24" viewBox="0 0 16 16" version="1.1" width="24" data-view-component="true" class="octicon octicon-three-bars" style="user-select: initial;">
+            <path d="M1 2.75A.75.75 0 0 1 1.75 2h12.5a.75.75 0 0 1 0 1.5H1.75A.75.75 0 0 1 1 2.75Zm0 5A.75.75 0 0 1 1.75 7h12.5a.75.75 0 0 1 0 1.5H1.75A.75.75 0 0 1 1 7.75ZM1.75 12h12.5a.75.75 0 0 1 0 1.5H1.75a.75.75 0 0 1 0-1.5Z"></path>
+           </svg>
+        </span>
+
+      </span>
 
       <div nz-row style="flex-flow: nowrap">
         <div nz-col [nzXs]="24" [nzSm]="24" [nzMd]="6" [nzLg]="6" [nzXl]="5" [nzXXl]="4">
@@ -102,7 +113,7 @@ export class HeaderComponent implements OnChanges {
   responsive: null | 'narrow' | 'crowded' = null;
   nextDirection: 'ltr' | 'rtl' = 'rtl';
 
-  constructor(private nzConfigService: NzConfigService, private cdr: ChangeDetectorRef) {}
+  constructor(public appService: AppService, private nzConfigService: NzConfigService, private cdr: ChangeDetectorRef) {}
 
   onFocusChange(focus: boolean): void {
     this.searching = focus;

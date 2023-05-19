@@ -10,6 +10,7 @@
 /node_modules
 npm-debug.log
 yarn-error.log
+yarn.lock
 /src/node_modules
 /src/yarn-error.log
 /src/npm-debug.log

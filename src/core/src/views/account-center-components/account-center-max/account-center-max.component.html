@@ -1,13 +1,5 @@
 <nav class="web3-connect-menu" [ngClass]="[isAccountCenterMax ? (accountCenter$ | async).position +'-active': '', (accountCenter$ | async).position ]">
-  <div class="web3-connect-menu__close" (click)="close()">
-    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="sc-3dvm1v-4 jPdqkH"><polyline points="13 17 18 12 13 7"></polyline><polyline points="6 17 11 12 6 7"></polyline></svg>
-  </div>
   <div class="web3-connect-menu-box" *ngIf="wallets.length">
-
-
-
-
-
     <div class="outer-container">
       <!-- wallets section -->
       <div class="wallets-section">

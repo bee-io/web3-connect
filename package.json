@@ -18,12 +18,12 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/Zelenyuk1993/web3-connect.git"
+    "url": "https://github.com/bee-io/web3-connect.git"
   },
   "bugs": {
-    "url": "https://github.com/Zelenyuk1993/web3-connect/issues"
+    "url": "https://github.com/bee-io/web3-connect/issues"
   },
-  "homepage": "https://github.com/Zelenyuk1993/web3-connect.git",
+  "homepage": "https://github.com/bee-io/web3-connect.git",
   "license": "MIT",
   "dependencies": {
     "tslib": "^2.3.0"
