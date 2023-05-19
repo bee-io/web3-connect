@@ -8,13 +8,17 @@
     "yarn": ">=1.15.2 <2.0.0"
   },
   "scripts": {
+    "install:lib": "cd src && yarn install",
+    "install:demo": "yarn install",
     "build": "yarn lib:build && yarn demo:build",
     "demo": "yarn demo:serve",
     "lib:build": "ng build web3-connect -c production",
     "demo:serve": "ng serve demo",
     "demo:build": "ng build demo -c production",
     "pack-lib": "cd dist/web3-connect && npm pack",
-    "publish:lib": "cd dist/web3-connect && npm publish --access public"
+    "publish:lib": "cd dist/web3-connect && npm publish --access public",
+    "server": "http-server dist/demo --proxy http://localhost:8080",
+    "deploy": "npm run install:lib && npm run install:demo && npm run build"
   },
   "repository": {
     "type": "git",
