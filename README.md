@@ -98,7 +98,7 @@ export class AppComponent {
 ## ⌨️ Development
 
 ```bash
-$ git clone git@github.com:Zelenyuk1993/web3-connect.git
+$ git clone git@github.com:bee-io/web3-connect.git
 $ cd web3-connect
 $ yarn install
 $ npm run demo
