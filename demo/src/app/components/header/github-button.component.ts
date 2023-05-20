@@ -31,8 +31,8 @@ import { ChangeDetectionStrategy, ChangeDetectorRef, Component, Input, OnInit, V
 })
 export class GithubButtonComponent implements OnInit {
   starCount = 0;
-  org = 'Zelenyuk1993';
-  repo = '/web3-connect';
+  org = 'bee-io';
+  repo = 'web3-connect';
   @Input() responsive: null | 'narrow' | 'crowded' = null;
 
   constructor(private http: HttpClient, private cdr: ChangeDetectorRef, private platform: Platform) {}
