@@ -28,6 +28,7 @@ import {HttpClientModule} from "@angular/common/http";
 import {MatIconModule} from "@angular/material/icon";
 import {TokenListComponent} from "./token-list/token-list.component";
 import {DragDropModule} from "@angular/cdk/drag-drop";
+import {ClickedOutsideDirective} from "./account-center-components/account-center-max/click-outside.directive";
 export { Web3ConnectComponent } from "./web3-connect.component";
 
 
@@ -53,6 +54,7 @@ export { Web3ConnectComponent } from "./web3-connect.component";
     AccountCenterMinComponent,
     AccountCenterMaxComponent,
     AccountCenterWalletComponent,
+    ClickedOutsideDirective,
 
     Web3ConnectSvgComponent,
     Web3ConnectWarningComponent,

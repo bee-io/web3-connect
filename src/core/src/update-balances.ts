@@ -1,6 +1,6 @@
-import { state } from './store/index'
 import { getBalance } from './provider'
 import { updateAllWallets } from './store/actions'
+import {state} from "./store";
 
 async function updateBalances(addresses?: string[]): Promise<void> {
   const { wallets, chains } = state.get()

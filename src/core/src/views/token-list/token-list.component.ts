@@ -32,15 +32,17 @@ export class TokenListComponent extends Destroyable implements OnInit {
 
   ngOnInit(): void {
    this.changeSettingsEvents.pipe(takeUntil(this.unsubscribe$)).subscribe(() => {
-     this.tokenListService.updateSettings('defaultConfig', this.walletBalancesAndRate.data);
-     this.getTokenLostBalances();
+     if(this.walletBalancesAndRate?.data){
+       this.tokenListService.updateSettings('defaultConfig', this.walletBalancesAndRate.data);
+       this.getTokenLostBalances();
+     }
    });
     wallets$.pipe(takeUntil(this.unsubscribe$)).subscribe((wallets:WalletState[]) => {
       this.wallets = wallets;
       this.getTokenLostBalances();
       this.changeDetectorRef.detectChanges();
     })
-     this.tokenLoaderList = new Array(this.settings ? this.settings.defaultConfig[this.indexByCurrentNetwork].tokens.included.length : 3);
+     this.tokenLoaderList = new Array(this.settings ? this.settings.defaultConfig[this.indexByCurrentNetwork]?.tokens.included.length : 3);
   }
 
   public get settings(): SettingsModel | null  {

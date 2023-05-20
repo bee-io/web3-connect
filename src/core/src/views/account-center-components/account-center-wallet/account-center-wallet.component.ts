@@ -72,11 +72,13 @@ export class AccountCenterWalletComponent implements AfterContentInit{
     this.hideMenuAction();
     setPrimaryWallet(this.wallet, account.address)
   }
-  public async disconnect(): Promise<void> {
+  public async disconnect(event:Event): Promise<void> {
+    event.stopPropagation();
     this.hideMenuAction();
     await disconnect( {label: this.wallet.label });
   }
-  public async copyWalletAddress(account: Account): Promise<void> {
+  public async copyWalletAddress(event:Event, account: Account): Promise<void> {
+    event.stopPropagation();
     this.hideMenuAction();
     await copyWalletAddress( account.address ? account.address: null);
   }

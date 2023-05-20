@@ -70,6 +70,7 @@ export type Translation = {
     disconnectWallet:string,
     copyAddress:string,
     changeNetworkProcess:string,
+    save:string,
   },
   notify: {
     transaction: {
@@ -176,7 +177,8 @@ export const beeWeb3ConnectLocales:{en:Translation, ukr:Translation} = {
       setPrimaryAccount: "Set Primary Account",
       disconnectWallet: "Disconnect Wallet",
       copyAddress: "Copy Wallet address",
-      changeNetworkProcess: "switching..."
+      changeNetworkProcess: "switching...",
+      save:"Save"
     },
     notify: {
       transaction: {
@@ -282,7 +284,8 @@ export const beeWeb3ConnectLocales:{en:Translation, ukr:Translation} = {
       setPrimaryAccount: "Встановити основний обліковий запис",
       disconnectWallet: "Відключити гаманець",
       copyAddress: "Скопіювати адресу гаманця",
-      changeNetworkProcess: "перемикаємо..."
+      changeNetworkProcess: "перемикаємо...",
+      save:"Зберегти"
     },
     notify: {
       transaction: {

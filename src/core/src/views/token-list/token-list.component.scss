@@ -13,12 +13,6 @@
     line-height: var(--b-ee-font-line-height-3, var(--font-line-height-3));
     margin-bottom: 5px;
   }
-
-
-
-
-
-
   .network-container{
     font-weight: 600;
     line-height: 1.45;
@@ -147,7 +141,7 @@
 
 .cdk-drag-preview {
  color: white;
- font-family: 'Inter';
+ font-family: system-ui;
  background: rgb(53 53 53 / 22%);
  border: solid 1px #33394b;
 }

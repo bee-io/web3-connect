@@ -50,10 +50,10 @@
           <li *ngIf="!(primary && i === 0)" (click)=" setPrimaryWallet(account)">
             {{translation.accountCenter.setPrimaryAccount }}
           </li>
-          <li (click)="disconnect()">
+          <li (click)="disconnect($event)">
             {{translation.accountCenter.disconnectWallet }}
           </li>
-          <li (click)="copyWalletAddress(account)">
+          <li (click)="copyWalletAddress($event, account)">
             {{translation.accountCenter.copyAddress }}
           </li>
         </ul>

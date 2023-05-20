@@ -1,6 +1,6 @@
-<nav class="web3-connect-menu" [ngClass]="[isAccountCenterMax ? (accountCenter$ | async).position +'-active': '', (accountCenter$ | async).position ]">
+<nav (clickOutside)="close($event)" class="web3-connect-menu" [ngClass]="[isAccountCenterMax ? (accountCenter$ | async).position +'-active': '', (accountCenter$ | async).position ]">
   <div class="web3-connect-menu-box" *ngIf="wallets.length">
-    <div class="outer-container">
+    <div class="outer-container" >
       <!-- wallets section -->
       <div class="wallets-section">
         <div class="wallets-section-top">
@@ -69,11 +69,9 @@
                 </div>
 
                 <ng-container *ngIf="(accountCenter$ | async).showTokenList">
-                  <div class="settings-button" *ngIf="isSettings" (click)="toggleSettings()" >
-                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" data-testid="wallet-back" class="sc-1xe6nb0-2 ewaNd"><line x1="19" y1="12" x2="5" y2="12"></line><polyline points="12 19 5 12 12 5"></polyline></svg>
-                  </div>
-                  <div class="settings-button" *ngIf="!isSettings" (click)="toggleSettings()">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"></circle><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"></path></svg>
+                  <div id="settings-button" class="settings-button" (click)="toggleSettings($event)" >
+                    <svg *ngIf="isSettings" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" data-testid="wallet-back" class="sc-1xe6nb0-2 ewaNd"><line x1="19" y1="12" x2="5" y2="12"></line><polyline points="12 19 5 12 12 5"></polyline></svg>
+                    <svg *ngIf="!isSettings" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"></circle><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"></path></svg>
                   </div>
                 </ng-container>
               </div>
@@ -143,9 +141,14 @@
               </div>
             </ng-container>
             <button
-              class="app-button button-neutral-solid"
-              (click)="close()"
-            >{{translation.accountCenter.backToApp}}</button>
+              id="save-btn"
+              class="app-button button-neutral-solid" *ngIf="isSettings" (click)="toggleSettings($event)">
+              {{translation.accountCenter.save}}
+            </button>
+            <button
+              class="app-button button-neutral-solid" *ngIf="!isSettings" (click)="close()">
+              {{translation.accountCenter.backToApp}}
+            </button>
           </div>
 
           <!--powered-by-container-->
@@ -159,8 +162,6 @@
 
       </div>
     </div>
-
-
   </div>
 </nav>
 

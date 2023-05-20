@@ -1,4 +1,4 @@
-import {ChangeDetectorRef, Component, OnInit} from '@angular/core';
+import {ChangeDetectorRef, Component, ElementRef, OnInit} from '@angular/core';
 import { configuration } from '../../../configuration';
 import {state} from "../../../store";
 import { wallets$ } from '../../../streams';
@@ -69,11 +69,18 @@ export class AccountCenterMaxComponent extends Destroyable implements OnInit {
   }
 
 
-  public close(): void {
-    this.isAccountCenterMax = false;
-    setTimeout(() => {
-      updateAccountCenter({ expanded: false })
-    },200);
+  public close(event?:any): void {
+    if(event && event.target.id ==='save-btn') {
+      this.isSettings = false;
+      this.changeSettingsEventsSubject.next();
+    } else {
+      if(this.isAccountCenterMax && !this.isSettings){
+        this.isAccountCenterMax = false;
+        setTimeout(() => {
+          updateAccountCenter({ expanded: false })
+        },200);
+      }
+    }
   }
 
 
@@ -113,7 +120,8 @@ export class AccountCenterMaxComponent extends Destroyable implements OnInit {
       : null
   }
 
-  public toggleSettings(): void {
+  public toggleSettings(event): void {
+    event.stopPropagation();
     this.isSettings = !this.isSettings;
     if(!this.isSettings) {
       this.changeSettingsEventsSubject.next();
