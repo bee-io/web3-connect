@@ -10,19 +10,19 @@ export class ConnectBtnComponent {
   private injected = injectedModule();
   private trust = trustModule();
   private walletConnect = walletConnectModule({
-    connectFirstChainId: true,
-    version: 2,
-    projectId: '82e1205a3a78d51b7c289cd068121f4b',
-    qrcodeModalOptions: {
-      mobileLinks: [
-        'rainbow',
-        'metamask',
-        'argent',
-        'trust',
-        'imtoken',
-        'pillar'
-      ]
-    }
+    // connectFirstChainId: true,
+    version: 1,
+    // projectId: '82e1205a3a78d51b7c289cd068121f4b',
+    // qrcodeModalOptions: {
+    //   mobileLinks: [
+    //     'rainbow',
+    //     'metamask',
+    //     'argent',
+    //     'trust',
+    //     'imtoken',
+    //     'pillar'
+    //   ]
+    // }
   });
   private coinbase = coinbaseModule();
 
