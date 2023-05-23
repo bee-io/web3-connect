@@ -9,47 +9,53 @@ import { AppService, DemoCode } from '../../app.service';
 import { OnlineIdeService } from '../../online-ide/online-ide.service';
 
 @Component({
-  selector: 'nz-code-box',
+  selector: 'app-code-box',
   encapsulation: ViewEncapsulation.None,
   changeDetection: ChangeDetectionStrategy.OnPush,
   templateUrl: './codebox.component.html',
   styleUrls: ['./codebox.component.scss']
 })
 export class NzCodeBoxComponent implements OnInit, OnDestroy {
-  highlightCode?: string;
-  copied = false;
-  commandCopied = false;
-  showIframe: boolean = false;
-  simulateIFrame: boolean = false;
-  iframe?: SafeUrl;
-  language = 'zh';
-  theme = 'default';
-  destroy$ = new Subject();
-  codeLoaded = false;
-  onlineIDELoading = false;
-  copyLoading = false;
-  @Input() nzTitle!: string;
+  public highlightCode?: string;
+  public copied = false;
+  public showIframe: boolean = false;
+  public simulateIFrame: boolean = false;
+  public iframe?: SafeUrl;
+  public theme = 'default';
+  public destroy$ = new Subject();
+  public codeLoaded = false;
+  public onlineIDELoading = false;
+  public copyLoading = false;
   @Input() nzExpanded = false;
-  @Input() nzHref!: string;
   @Input() nzLink!: string;
   @Input() nzId!: string;
   @Input() nzIframeHeight: number | null = 360;
   @Input() nzComponentName = '';
   @Input() nzSelector = '';
   @Input() nzGenerateCommand = '';
-
-  @Input()
-  set nzIframeSource(value: string) {
+  @Input() set nzIframeSource(value: string) {
     this.showIframe = value !== 'null' && environment.production;
     this.simulateIFrame = value !== 'null' && !environment.production;
     this.iframe = this.sanitizer.bypassSecurityTrustResourceUrl(value);
   }
 
-  navigateToFragment(): void {
-    if (this.platform.isBrowser) {
-      window.location.hash = this.nzLink;
-    }
+  // tslint:disable-next-line:no-any
+  constructor(
+    @Inject(DOCUMENT) private dom: any,
+    private sanitizer: DomSanitizer,
+    private cdr: ChangeDetectorRef,
+    private appService: AppService,
+    private platform: Platform,
+    private onlineIdeService: OnlineIdeService
+  ) {}
+
+  ngOnInit(): void {
+    this.appService.theme$.pipe(takeUntil(this.destroy$)).subscribe(data => {
+      this.theme = data;
+      this.check();
+    });
   }
+
 
   copyCode(): void {
     setTimeout(() => {
@@ -69,15 +75,7 @@ export class NzCodeBoxComponent implements OnInit, OnDestroy {
     });
   }
 
-  copyGenerateCommand(command: string): void {
-    this.copy(command).then(() => {
-      this.commandCopied = true;
-      setTimeout(() => {
-        this.commandCopied = false;
-        this.check();
-      }, 1000);
-    });
-  }
+
 
   copy(value: string): Promise<string> {
     const promise = new Promise<string>((resolve): void => {
@@ -128,27 +126,6 @@ export class NzCodeBoxComponent implements OnInit, OnDestroy {
 
   check(): void {
     this.cdr.markForCheck();
-  }
-
-  // tslint:disable-next-line:no-any
-  constructor(
-    @Inject(DOCUMENT) private dom: any,
-    private sanitizer: DomSanitizer,
-    private cdr: ChangeDetectorRef,
-    private appService: AppService,
-    private platform: Platform,
-    private onlineIdeService: OnlineIdeService
-  ) {}
-
-  ngOnInit(): void {
-    this.appService.theme$.pipe(takeUntil(this.destroy$)).subscribe(data => {
-      this.theme = data;
-      this.check();
-    });
-    this.appService.language$.pipe(takeUntil(this.destroy$)).subscribe(data => {
-      this.language = data;
-      this.check();
-    });
   }
 
   getDemoCode(): Observable<DemoCode> {

@@ -13,6 +13,7 @@ import { NzCodeBoxModule } from './codebox/codebox.module';
 import { NzGithubBtnModule } from './github-btn/github-btn.module';
 import { NzHighlightModule } from './highlight/highlight.module';
 import {NzTabsModule} from "ng-zorro-antd/tabs";
+import {NzPopoverModule} from "ng-zorro-antd/popover";
 
 @NgModule({
   imports: [
@@ -28,6 +29,7 @@ import {NzTabsModule} from "ng-zorro-antd/tabs";
     NzAffixModule,
     NzGridModule,
     NzIconModule,
+    NzPopoverModule,
     NzTabsModule,
     // third libs
     DragDropModule
@@ -44,6 +46,7 @@ import {NzTabsModule} from "ng-zorro-antd/tabs";
     NzGithubBtnModule,
     NzGridModule,
     NzToolTipModule,
+    NzPopoverModule,
     NzIconModule,
     // third libs
     ScrollingModule,

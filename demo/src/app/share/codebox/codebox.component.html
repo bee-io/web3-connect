@@ -9,27 +9,17 @@
     >
       <ng-content select="[demo]"></ng-content>
     </div>
-    <div class="browser-mockup with-url" *ngIf="showIframe">
-      <iframe [src]="iframe" [height]="nzIframeHeight" title="demo"></iframe>
-    </div>
+<!--    <div class="browser-mockup with-url" *ngIf="showIframe">-->
+<!--      <iframe [src]="iframe" [height]="nzIframeHeight" title="demo"></iframe>-->
+<!--    </div>-->
   </section>
   <section class="code-box-meta markdown">
-    <div class="code-box-title">
-      <a (click)="navigateToFragment()"
-      >{{ nzTitle }}
-        <a class="edit-button" [attr.href]="nzHref" target="_blank" rel="noopener noreferrer">
-          <span nz-icon nzType="edit"></span>
-        </a>
-      </a>
-    </div>
-    <div class="code-box-description">
-      <ng-content select="[intro]"></ng-content>
-    </div>
+<!--    <div class="code-box-description">-->
+<!--      <ng-content select="[intro]"></ng-content>-->
+<!--    </div>-->
     <div class="code-box-actions">
       <span
-        [nzTooltipTitle]="!onlineIDELoading ?
-        language==='zh' ? '在 CodeSandbox 上打开':'Edit On CodeSandbox':
-        language==='zh'? '加载中...' : 'Loading...'"
+        [nzTooltipTitle]="!onlineIDELoading ?'Edit On CodeSandbox':'Loading...'"
         nz-tooltip
         nz-icon
         nzType="code-sandbox"
@@ -37,9 +27,7 @@
         (click)="openOnlineIDE('CodeSandbox')"
       ></span>
       <span
-        [nzTooltipTitle]="!onlineIDELoading ?
-        language==='zh' ? '在 StackBlitz 上打开':'Edit On StackBlitz':
-        language==='zh'? '加载中...' : 'Loading...'"
+        [nzTooltipTitle]="!onlineIDELoading ?'Edit On StackBlitz':'Loading...'"
         nz-tooltip
         nz-icon
         nzType="thunderbolt"
@@ -48,9 +36,7 @@
         (click)="openOnlineIDE()"
       ></span>
       <span
-        [nzTooltipTitle]="!copyLoading ?
-        language==='zh'? '复制代码' : 'Copy Code' :
-        language==='zh'? '加载中...' : 'Loading...'"
+        [nzTooltipTitle]="!copyLoading ?'Copy Code' :'Loading...'"
         nz-tooltip
         nz-icon
         [nzType]="copied ? 'check' : 'snippets'"
@@ -58,21 +44,9 @@
         [class.ant-tooltip-open]="copied"
         (click)="copyCode()"
       ></span>
-      <span
-        [nzTooltipTitle]="language==='zh'? '复制生成代码命令' : 'Copy Generate Command'"
-        *ngIf="nzGenerateCommand"
-        nz-tooltip
-        nz-icon
-        [nzType]="commandCopied ? 'check' : 'code'"
-        class="code-box-code-copy"
-        [class.ant-tooltip-open]="commandCopied"
-        (click)="copyGenerateCommand(nzGenerateCommand)"
-      ></span>
       <span class="code-expand-icon"
             nz-tooltip
-            [nzTooltipTitle]="nzExpanded ?
-            (language==='zh'? '收起代码' : 'Hide Code') :
-            (language==='zh'? '显示代码' : 'Show Code')"
+            [nzTooltipTitle]="nzExpanded ? 'Hide Code': 'Show Code'"
             (click)="expandCode(!nzExpanded)">
         <ng-container [ngSwitch]="theme">
           <ng-container *ngSwitchCase="'dark'">
@@ -111,11 +85,9 @@
   <section class="highlight-wrapper" [ngClass]="{ 'highlight-wrapper-expand': nzExpanded }">
     <div class="highlight">
       <ng-content select="[code]"></ng-content>
-      <nz-highlight [nzCode]="codeLoaded ?
-      highlightCode! :
-      language === 'zh' ? '加载中' : 'Loading...'"
-                    [nzLanguage]="'typescript'">
-      </nz-highlight>
+      <app-highlight [appCode]="codeLoaded ? highlightCode! :'Loading...'"
+                    [appLanguage]="'typescript'">
+      </app-highlight>
     </div>
   </section>
 </section>

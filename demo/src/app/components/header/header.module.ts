@@ -19,6 +19,7 @@ import { NavigationComponent } from './navigation.component';
 import { SearchbarComponent } from './searchbar.component';
 import {ConnectBtnModule} from "../../share/connect-btn/connect-btn.module";
 import {ShareModule} from "../../share/share.module";
+import {ChangeThemeComponent} from "./change-theme.component";
 
 @NgModule({
   imports: [
@@ -35,14 +36,15 @@ import {ShareModule} from "../../share/share.module";
     NzDropDownModule,
     NzPopoverModule,
     NzAlertModule,
-    ConnectBtnModule
+    ConnectBtnModule,
   ],
   declarations: [
     HeaderComponent,
     LogoComponent,
     SearchbarComponent,
     NavigationComponent,
-    GithubButtonComponent
+    GithubButtonComponent,
+    ChangeThemeComponent
   ],
   exports: [HeaderComponent]
 })

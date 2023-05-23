@@ -29,6 +29,7 @@ import {MatIconModule} from "@angular/material/icon";
 import {TokenListComponent} from "./token-list/token-list.component";
 import {DragDropModule} from "@angular/cdk/drag-drop";
 import {ClickedOutsideDirective} from "./account-center-components/account-center-max/click-outside.directive";
+
 export { Web3ConnectComponent } from "./web3-connect.component";
 
 
@@ -76,4 +77,4 @@ export { Web3ConnectComponent } from "./web3-connect.component";
     Web3ConnectComponent
   ]
 })
-export class Web3ConnectModule { }
+export class BeeWeb3ConnectModule { }

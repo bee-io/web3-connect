@@ -1,13 +1,13 @@
-import { ChangeDetectionStrategy, Component } from '@angular/core';
+import {ChangeDetectionStrategy, Component, Input} from '@angular/core';
 import {AppService} from "../../app.service";
 
 @Component({
   selector: 'app-logo',
   changeDetection: ChangeDetectionStrategy.OnPush,
   template: `
-    <a href="/" id="logo">
+    <a [routerLink]="['/']" id="logo">
       <img width="32" height="28.27" alt="logo" [src]="(appService.theme$ | async) === 'dark' ? './assets/img/logo.svg': './assets/img/logo-black.svg'" />
-      <strong >Web3-Connect</strong>
+      <strong *ngIf="!isMobile" >Web3-Connect</strong>
     </a>
   `,
   styles: [
@@ -19,5 +19,8 @@ import {AppService} from "../../app.service";
   ]
 })
 export class LogoComponent {
+
+  @Input() isMobile;
+
   constructor(public appService: AppService) {}
 }

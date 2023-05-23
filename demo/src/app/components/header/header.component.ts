@@ -10,6 +10,7 @@ import {
 } from '@angular/core';
 import { NzConfigService } from 'ng-zorro-antd/core/config';
 import {AppService} from "../../app.service";
+import {SiteTheme} from "../../app.component";
 
 const RESPONSIVE_XS = 1120;
 const RESPONSIVE_SM = 1200;
@@ -39,10 +40,10 @@ const RESPONSIVE_SM = 1200;
       </span>
 
       <div nz-row style="flex-flow: nowrap">
-        <div nz-col [nzXs]="24" [nzSm]="24" [nzMd]="6" [nzLg]="6" [nzXl]="5" [nzXXl]="4">
-          <app-logo></app-logo>
+        <div nz-col [nzXs]="4" [nzSm]="4" [nzMd]="6" [nzLg]="6" [nzXl]="5" [nzXXl]="4">
+          <app-logo [isMobile]="isMobile"></app-logo>
         </div>
-        <div nz-col [nzXs]="0" [nzSm]="0" [nzMd]="18" [nzLg]="18" [nzXl]="19" [nzXXl]="20" class="menu-row">
+        <div nz-col [nzXs]="20" [nzSm]="20" [nzMd]="18" [nzLg]="18" [nzXl]="19" [nzXXl]="20" class="menu-row">
           <div
             app-searchbar
             [language]="language"
@@ -50,8 +51,15 @@ const RESPONSIVE_SM = 1200;
             (focusChange)="onFocusChange($event)"
           ></div>
           <ng-container *ngIf="!isMobile" [ngTemplateOutlet]="menu"></ng-container>
+          <app-change-theme
+            [theme]="theme"
+            (themeChange)="themeChange.emit($event)"
+          ></app-change-theme>
+          <app-connect-btn></app-connect-btn>
         </div>
+
       </div>
+
     </header>
     <ng-template #menu>
       <ng-container *ngIf="!searching || windowWidth > 1200">
@@ -96,14 +104,16 @@ const RESPONSIVE_SM = 1200;
           <web3-connect-github-btn [responsive]="responsive"></web3-connect-github-btn>
         </ng-template>
       </ng-container>
-      <app-connect-btn></app-connect-btn>
     </ng-template>
+
   `
 })
 export class HeaderComponent implements OnChanges {
+  @Input() theme: SiteTheme;
   @Input() language: 'ukr' | 'en' = 'en';
   @Input() windowWidth = 1400;
   @Input() page: 'docs' | 'components' | 'experimental' | string = 'docs';
+  @Output() themeChange = new EventEmitter<string>();
   @Output() languageChange = new EventEmitter<'ukr' | 'en'>();
   @Output() directionChange = new EventEmitter<'ltr' | 'rtl'>();
 
@@ -113,7 +123,9 @@ export class HeaderComponent implements OnChanges {
   responsive: null | 'narrow' | 'crowded' = null;
   nextDirection: 'ltr' | 'rtl' = 'rtl';
 
-  constructor(public appService: AppService, private nzConfigService: NzConfigService, private cdr: ChangeDetectorRef) {}
+  constructor(public appService: AppService, private nzConfigService: NzConfigService, private cdr: ChangeDetectorRef) {
+    this.updateResponsive()
+  }
 
   onFocusChange(focus: boolean): void {
     this.searching = focus;

@@ -4,6 +4,8 @@
       [windowWidth]="windowWidth"
       [page]="page"
       [(language)]="language"
+      [theme]="theme"
+      (themeChange)="onThemeChange($event)"
       (languageChange)="switchLanguage($event)"
       (directionChange)="switchDirection($event)"
     ></app-header>
@@ -51,10 +53,6 @@
           [nzXl]="{ span: 19, offset: 5 }"
           [nzXXl]="{ span: 20, offset: 4 }"
         >
-          <app-fixed-widgets
-            [theme]="theme"
-            (themeChange)="onThemeChange($event)"
-          ></app-fixed-widgets>
           <nz-nav-bottom></nz-nav-bottom>
           <app-footer></app-footer>
         </div>

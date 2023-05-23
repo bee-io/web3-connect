@@ -10,7 +10,7 @@ import {AppService} from "./app.service";
 import {debounceTime, fromEvent} from "rxjs";
 import {environment} from "../environments/environment";
 
-type SiteTheme =  'dark' | 'compact';
+export type SiteTheme =  'dark' | 'light';
 const defaultKeywords: string = 'Angular, Ethereum Web3, EVM, dApp, MultiChain, Wallet, Transaction, Provider, Hardware Wallet, Notifications, MetaMask, Coinbase, WalletConnect, Trezor, Connect Wallet, Injected Wallet, Crypto, Crypto Wallet';
 
 
@@ -46,8 +46,8 @@ export class AppComponent {
     if (!this.platform.isBrowser) {
       return;
     }
-    const theme = (localStorage.getItem('site-theme') as SiteTheme) || 'dark';
-    this.onThemeChange(theme, false);
+    this.theme = (localStorage.getItem('site-theme') as SiteTheme) || 'dark';
+    this.onThemeChange(this.theme, false);
   }
  public onThemeChange(theme: string, notification: boolean = true): void {
     if (!this.platform.isBrowser) {
@@ -64,7 +64,7 @@ export class AppComponent {
       this.renderer.setAttribute(document.body, 'data-theme', theme);
       localStorage.removeItem('site-theme');
       localStorage.setItem('site-theme', theme);
-      ['dark', 'compact']
+      ['dark', 'light']
         .filter(item => item !== theme)
         .forEach(item => {
           const dom = document.getElementById(`site-theme-${item}`);

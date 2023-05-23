@@ -1,0 +1,147 @@
+<article class="markdown">
+<nz-affix class="toc-affix" [nzOffsetTop]="16">
+    <nz-anchor [nzAffix]="false" nzShowInkInFixed (nzClick)="goLink($event)">
+      <nz-link nzHref="#components-popover-demo-basic" nzTitle="Basic"></nz-link>
+      <nz-link nzHref="#components-popover-demo-placement" nzTitle="Placement"></nz-link>
+      <nz-link nzHref="#components-popover-demo-control" nzTitle="Controlling the close of the dialog"></nz-link>
+      <nz-link nzHref="#components-popover-demo-arrow-point-at-center" nzTitle="Arrow pointing at the center"></nz-link>
+      <nz-link nzHref="#components-popover-demo-template" nzTitle="Template"></nz-link>
+      <nz-link nzHref="#components-popover-demo-trigger-type" nzTitle="Three ways to trigger"></nz-link>
+      <nz-link nzHref="#api" nzTitle="API"></nz-link>
+    </nz-anchor>
+</nz-affix>
+
+
+  <section class="markdown">
+	<h1>Popover<span class="subtitle"></span><span class="widget"></span>
+	<a class="edit-button" aria-label="Edit this page on Github" href="https://github.com/NG-ZORRO/ng-zorro-antd/edit/master/components/popover/doc/index.en-US.md" target="_blank" rel="noopener noreferrer">
+		<span nz-icon nzType="edit"></span></a>
+   </h1>
+
+	<h2>
+		<span>Examples</span>
+		<span nz-icon nzType="appstore" class="code-box-expand-trigger" nz-tooltip nzTooltipTitle="Expand All Code" (click)="expandAllCode()"></span>
+	</h2>
+
+</section>
+
+
+
+	<div>
+		<app-code-box
+      [nzId]="'components-popover-demo-basic'"
+      nzSelector="nz-demo-popover-basic"
+      [nzLink]="'components-popover-demo-basic'"
+      nzGenerateCommand="ng g ng-zorro-antd:popover-basic <name>"
+      nzComponentName="NzDemoPopoverBasicComponent"
+      nzIframeSource="null"
+      [nzIframeHeight]="null"
+      [nzExpanded]="false">
+      <nz-demo-popover-basic demo></nz-demo-popover-basic>
+      <!--      <app-connect-btn demo></app-connect-btn>-->
+<!--      <div intro ngNonBindable>-->
+<!--        <p>The most basic example. The size of the floating layer depends on the contents region.</p>-->
+
+<!--      </div>-->
+</app-code-box>
+	</div>
+
+
+<!--<section class="markdown api-container" ngNonBindable><h2 id="api"><span>API</span><a onclick="window.location.hash = 'api'" class="anchor">#</a></h2><h3 id="[nz-popover]"><span>[nz-popover]</span><label class="api-type-label directive">directive</label><a onclick="window.location.hash = '[nz-popover]'" class="anchor">#</a></h3><table>-->
+<!--<thead>-->
+<!--<tr>-->
+<!--<th>Param</th>-->
+<!--<th>Description</th>-->
+<!--<th>Type</th>-->
+<!--<th>Default value</th>-->
+<!--</tr>-->
+<!--</thead>-->
+<!--<tbody><tr>-->
+<!--<td><code>[nzPopoverArrowPointAtCenter]</code></td>-->
+<!--<td>Arrow point at center of the origin</td>-->
+<!--<td><code>boolean</code></td>-->
+<!--<td><code>false</code></td>-->
+<!--</tr>-->
+<!--<tr>-->
+<!--<td><code>[nzPopoverTitle]</code></td>-->
+<!--<td>Title of the popover</td>-->
+<!--<td><code>string | TemplateRef&lt;void&gt;</code></td>-->
+<!--<td>-</td>-->
+<!--</tr>-->
+<!--<tr>-->
+<!--<td><code>[nzPopoverContent]</code></td>-->
+<!--<td>Content of the popover</td>-->
+<!--<td><code>string | TemplateRef&lt;void&gt;</code></td>-->
+<!--<td>-</td>-->
+<!--</tr>-->
+<!--<tr>-->
+<!--<td><code>[nzPopoverTrigger]</code></td>-->
+<!--<td>Popover trigger mode. If set to <code>null</code> it would not be triggered</td>-->
+<!--<td><code>&#39;click&#39; | &#39;focus&#39; | &#39;hover&#39; | null</code></td>-->
+<!--<td><code>&#39;hover&#39;</code></td>-->
+<!--</tr>-->
+<!--<tr>-->
+<!--<td><code>[nzPopoverPlacement]</code></td>-->
+<!--<td>The position of the popover relative to the target</td>-->
+<!--<td><code>&#39;top&#39; | &#39;left&#39; | &#39;right&#39; | &#39;bottom&#39; | &#39;topLeft&#39; | &#39;topRight&#39; | &#39;bottomLeft&#39; | &#39;bottomRight&#39; | &#39;leftTop&#39; | &#39;leftBottom&#39; | &#39;rightTop&#39; | &#39;rightBottom&#39; | Array&lt;string&gt;</code></td>-->
+<!--<td><code>&#39;top&#39;</code></td>-->
+<!--</tr>-->
+<!--<tr>-->
+<!--<td><code>[nzPopoverOrigin]</code></td>-->
+<!--<td>Origin of the tooltip</td>-->
+<!--<td><code>ElementRef</code></td>-->
+<!--<td>-</td>-->
+<!--</tr>-->
+<!--<tr>-->
+<!--<td><code>[nzPopoverVisible]</code></td>-->
+<!--<td>Show or hide popover</td>-->
+<!--<td><code>boolean</code></td>-->
+<!--<td><code>false</code></td>-->
+<!--</tr>-->
+<!--<tr>-->
+<!--<td><code>(nzPopoverVisibleChange)</code></td>-->
+<!--<td>Callback of hide or show</td>-->
+<!--<td><code>EventEmitter&lt;boolean&gt;</code></td>-->
+<!--<td>-</td>-->
+<!--</tr>-->
+<!--<tr>-->
+<!--<td><code>[nzPopoverMouseEnterDelay]</code></td>-->
+<!--<td>Delay in seconds, before popover is shown on mouse enter</td>-->
+<!--<td><code>number</code></td>-->
+<!--<td><code>0.15</code></td>-->
+<!--</tr>-->
+<!--<tr>-->
+<!--<td><code>[nzPopoverMouseLeaveDelay]</code></td>-->
+<!--<td>Delay in seconds, before popover is hidden on mouse leave</td>-->
+<!--<td><code>number</code></td>-->
+<!--<td><code>0.1</code></td>-->
+<!--</tr>-->
+<!--<tr>-->
+<!--<td><code>[nzPopoverOverlayClassName]</code></td>-->
+<!--<td>Class name of the popover card</td>-->
+<!--<td><code>string</code></td>-->
+<!--<td>-</td>-->
+<!--</tr>-->
+<!--<tr>-->
+<!--<td><code>[nzPopoverOverlayStyle]</code></td>-->
+<!--<td>Style of the popover card</td>-->
+<!--<td><code>object</code></td>-->
+<!--<td>-</td>-->
+<!--</tr>-->
+<!--<tr>-->
+<!--<td>Consult <a href="/components/tooltip/en#api">Tooltip's documentation</a> to find more APIs.</td>-->
+<!--<td></td>-->
+<!--<td></td>-->
+<!--<td></td>-->
+<!--</tr>-->
+<!--<tr>-->
+<!--<td><code>[nzPopoverBackdrop]</code></td>-->
+<!--<td>whether or not the overlay should attach a backdrop</td>-->
+<!--<td><code>boolean</code></td>-->
+<!--<td><code>false</code></td>-->
+<!--</tr>-->
+<!--</tbody></table>-->
+<!--<h2 id="note"><span>Note</span><a onclick="window.location.hash = 'note'" class="anchor">#</a></h2><p>Please ensure that the node of <code>[nz-popover]</code> accepts <code>onMouseEnter</code>, <code>onMouseLeave</code>, <code>onFocus</code>, <code>onClick</code> events.</p>-->
+<!--</section>-->
+
+</article>

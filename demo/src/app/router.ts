@@ -17,6 +17,13 @@ export const ROUTER_LIST: RouterList = {
     hidden: false,
     description: "Easy way to connect users to Decentralized Applications.",
   },
+    {
+    path: "/docs/popover",
+    label: "Popover",
+    order:1,
+    hidden: false,
+    description: "Easy way to connect users to Decentralized Applications.",
+  },
   //   {
   //   path: "docs/contribution-guide",
   //   label: "Contribution Guide",
@@ -26,6 +33,3 @@ export const ROUTER_LIST: RouterList = {
   // }
 ]
 };
-export const DEMO_ROUTES = [
-  // {'path': 'components/affix', 'loadChildren': () => import('./affix/index.module').then(m => m.NzDemoAffixModule)},
-];

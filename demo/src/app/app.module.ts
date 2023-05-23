@@ -7,7 +7,6 @@ import {routes} from "./app.routing.module";
 import {NzAffixModule} from "ng-zorro-antd/affix";
 import {SideComponent} from "./components/side/side.component";
 import { NzContributorsListModule } from './share/contributors-list/contributors-list.module';
-import { FixedWidgetsModule } from './share/fixed-widgets/fixed-widgets.module';
 import { NzNavBottomModule } from './share/nav-bottom/nav-bottom.module';
 import { HeaderModule } from './components/header/header.module';
 import { NzBadgeModule } from 'ng-zorro-antd/badge';
@@ -22,28 +21,23 @@ import { NzSelectModule } from 'ng-zorro-antd/select';
 import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
 import {NZ_CONFIG} from "ng-zorro-antd/core/config";
 import {FooterModule} from "./components/footer/footer.module";
-import {DEMOComponent} from "./pages/demo/demo.component";
 import {HomeComponent} from "./pages/home/home.component";
-import {FaqComponent} from "./pages/faq/faq.component";
-import {ExamplesComponent} from "./pages/examples/examples.component";
+import {HighlightService} from "./share/services/highlight.service";
+
+
 
 
 @NgModule({
   declarations: [
     AppComponent,
     HomeComponent,
-    FaqComponent,
-    ExamplesComponent,
-    DEMOComponent,
     SideComponent
   ],
   imports: [
-    Web3ConnectModule,
-    BrowserModule.withServerTransition({ appId: 'docs' }),
+    BrowserModule.withServerTransition({appId: 'docs'}),
     BrowserAnimationsModule,
     NzAffixModule,
     NzNavBottomModule,
-    FixedWidgetsModule,
     NzContributorsListModule,
     HeaderModule,
     FooterModule,
@@ -57,9 +51,11 @@ import {ExamplesComponent} from "./pages/examples/examples.component";
     NzButtonModule,
     NzInputModule,
     NzBadgeModule,
-    RouterModule.forRoot(routes, {scrollPositionRestoration: 'enabled'}) ,
-],
+    RouterModule.forRoot(routes, {scrollPositionRestoration: 'enabled'}),
+    Web3ConnectModule
+  ],
   providers: [
+    HighlightService,
     Title,
     {
       provide: NZ_CONFIG,
