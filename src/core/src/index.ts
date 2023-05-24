@@ -1,7 +1,6 @@
 import connectWallet from './connect'
 import disconnectWallet from './disconnect'
 import setChain from './chain'
-import { state } from './store/index'
 import type { ConnectModalOptions, InitOptions, Notify, Theme } from './types'
 import { APP_INITIAL_STATE, STORAGE_KEYS } from './constants'
 import { configuration, updateConfiguration } from './configuration'
@@ -27,6 +26,7 @@ import {
   updateTheme
 } from './store/actions'
 import {beeWeb3ConnectLocales} from "./locales";
+import {state} from "./store";
 
 const API = {
   connectWallet,

@@ -1,7 +1,6 @@
 import { NgModule } from '@angular/core';
 import {BrowserModule, Title} from '@angular/platform-browser';
 import { AppComponent } from './app.component';
-import {Web3ConnectModule} from "@b-ee/web3-connect";
 import {RouterModule} from "@angular/router";
 import {routes} from "./app.routing.module";
 import {NzAffixModule} from "ng-zorro-antd/affix";
@@ -23,8 +22,7 @@ import {NZ_CONFIG} from "ng-zorro-antd/core/config";
 import {FooterModule} from "./components/footer/footer.module";
 import {HomeComponent} from "./pages/home/home.component";
 import {HighlightService} from "./share/services/highlight.service";
-
-
+import {Web3ConnectModule} from "@b-ee/web3-connect";
 
 
 @NgModule({

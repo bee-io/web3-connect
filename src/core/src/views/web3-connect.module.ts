@@ -1,6 +1,5 @@
 import {NgModule} from '@angular/core';
-import { CommonModule } from '@angular/common';
-import {Web3ConnectComponent} from "./web3-connect.component";
+import {CommonModule} from '@angular/common';
 import {ConnectComponent} from "./connect-components/connect/connect.component";
 import {AgreementComponent} from "./connect-components/agreement/agreement.component";
 import {InstallWalletComponent} from "./connect-components/install-wallet/install-wallet.component";
@@ -29,10 +28,9 @@ import {MatIconModule} from "@angular/material/icon";
 import {TokenListComponent} from "./token-list/token-list.component";
 import {DragDropModule} from "@angular/cdk/drag-drop";
 import {ClickedOutsideDirective} from "./account-center-components/account-center-max/click-outside.directive";
+import {Web3ConnectComponent} from "./web3-connect.component";
 
 export { Web3ConnectComponent } from "./web3-connect.component";
-
-
 @NgModule({
   declarations: [
     Web3ConnectComponent,
@@ -73,8 +71,12 @@ export { Web3ConnectComponent } from "./web3-connect.component";
     FormsModule
   ],
   providers: [],
-  exports: [
-    Web3ConnectComponent
-  ]
+  exports:[Web3ConnectComponent]
 })
-export class BeeWeb3ConnectModule { }
+export class Web3ConnectModule {
+  // static forRoot(): ModuleWithProviders<BeeWeb3ConnectModule> {
+  //   return {
+  //     ngModule: BeeWeb3ConnectModule,
+  //   };
+  // }
+}

@@ -11,6 +11,7 @@ import type {
 } from './types'
 import { wait } from './utils'
 import { validateConnectOptions } from './validation'
+import console from "console";
 
 async function connect(
   options?: ConnectOptions | ConnectOptionsString
@@ -21,7 +22,6 @@ async function connect(
       throw error
     }
   }
-
   const { chains } = state.get()
 
   // Wallets require the chains for initializing providers,

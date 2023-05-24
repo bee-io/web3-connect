@@ -6,7 +6,7 @@ import {NzButtonModule} from "ng-zorro-antd/button";
 @NgModule({
   imports: [
     CommonModule,
-    NzButtonModule,
+    NzButtonModule
   ],
   declarations: [
     ConnectBtnComponent
