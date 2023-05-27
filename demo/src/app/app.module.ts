@@ -23,6 +23,14 @@ import {FooterModule} from "./components/footer/footer.module";
 import {HomeComponent} from "./pages/home/home.component";
 import {HighlightService} from "./share/services/highlight.service";
 import {Web3ConnectModule} from "@b-ee/web3-connect";
+import {NzTabsModule} from "ng-zorro-antd/tabs";
+import {ShareModule} from "./share/share.module";
+import {NzSpaceModule} from "ng-zorro-antd/space";
+import {NzImageModule} from "ng-zorro-antd/image";
+import {NzCardModule} from "ng-zorro-antd/card";
+import {NzListModule} from "ng-zorro-antd/list";
+import {NzHighlightModule} from "./share/highlight/highlight.module";
+import {NzBackTopModule} from "ng-zorro-antd/back-top";
 
 
 @NgModule({
@@ -41,6 +49,10 @@ import {Web3ConnectModule} from "@b-ee/web3-connect";
     FooterModule,
     NzGridModule,
     NzAffixModule,
+    NzSpaceModule,
+    NzImageModule,
+    NzCardModule,
+    NzListModule,
     NzMenuModule,
     NzI18nModule,
     NzSelectModule,
@@ -50,21 +62,24 @@ import {Web3ConnectModule} from "@b-ee/web3-connect";
     NzInputModule,
     NzBadgeModule,
     RouterModule.forRoot(routes, {scrollPositionRestoration: 'enabled'}),
-    Web3ConnectModule
+    Web3ConnectModule,
+    NzTabsModule,
+    NzHighlightModule,
+    NzBackTopModule
   ],
   providers: [
     HighlightService,
     Title,
-    {
-      provide: NZ_CONFIG,
-      useValue: {
-        codeEditor: {
-          monacoEnvironment: { globalAPI: true }
-        },
-        global: { nzDirection: 'ltr' }
-
-      }
-    }
+    // {
+    //   provide: NZ_CONFIG,
+    //   useValue: {
+    //     codeEditor: {
+    //       monacoEnvironment: { globalAPI: true }
+    //     },
+    //     global: { nzDirection: 'ltr' }
+    //
+    //   }
+    // }
   ],
   bootstrap: [AppComponent]
 })

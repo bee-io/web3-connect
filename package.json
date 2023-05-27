@@ -30,6 +30,8 @@
   "homepage": "https://github.com/bee-io/web3-connect.git",
   "license": "MIT",
   "dependencies": {
+    "console-browserify": "^1.2.0",
+    "flickity": "^3.0.0",
     "tslib": "^2.3.0"
   },
   "devDependencies": {
@@ -50,9 +52,13 @@
     "@angular/platform-browser-dynamic": "^15.0.0",
     "@angular/platform-server": "^15.0.0",
     "@angular/router": "^15.0.0",
+    "@ant-design/dark-theme": "^2.0.2",
+    "@ant-design/icons-angular": "^15.0.0",
     "@schematics/angular": "^15.0.0",
+    "@stackblitz/sdk": "^1.5.2",
     "@types/jasmine": "~3.10.0",
     "@types/node": "^12.11.1",
+    "codesandbox": "^2.2.1",
     "jasmine-core": "~4.0.0",
     "karma": "~6.3.0",
     "karma-chrome-launcher": "~3.1.0",
@@ -60,13 +66,9 @@
     "karma-jasmine": "~4.0.0",
     "karma-jasmine-html-reporter": "~1.7.0",
     "ng-packagr": "^15.0.0",
-    "prismjs": "^1.20.0",
     "ng-zorro-antd": "^15.1.0",
-    "codesandbox": "^2.2.1",
-    "@stackblitz/sdk": "^1.5.2",
-    "@ant-design/icons-angular": "^15.0.0",
-    "@ant-design/dark-theme": "^2.0.2",
     "ngx-quicklink": "^0.3.0",
+    "prismjs": "^1.20.0",
     "rxjs": "~7.5.5",
     "typescript": "~4.9.5",
     "zone.js": "~0.11.4"

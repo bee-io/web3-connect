@@ -13,6 +13,7 @@ $ cd web3-connect
 $ yarn install
 $ npm run demo
 `
+
 public readonly quickstartHTML: string = `$ ng new PROJECT_NAME
 $ cd PROJECT_NAME
 $ ng add @b-ee/web3-connect

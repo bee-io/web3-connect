@@ -11,7 +11,7 @@ import { ChangeDetectionStrategy, ChangeDetectorRef, Component, OnInit, ViewEnca
 })
 export class NzGithubBtnComponent implements OnInit {
   starCount = 0;
-  org = 'Zelenyuk1993';
+  org = 'bee-io';
   repo = '/web3-connect';
 
   constructor(private http: HttpClient, private cdr: ChangeDetectorRef, private platform: Platform) {}

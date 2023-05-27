@@ -1,5 +1,4 @@
 import {
-  ChangeDetectionStrategy,
   ChangeDetectorRef,
   Component,
   EventEmitter,
@@ -17,7 +16,6 @@ const RESPONSIVE_SM = 1200;
 
 @Component({
   selector: 'app-header',
-  changeDetection: ChangeDetectionStrategy.OnPush,
   template: `
     <header id="header" class="clearfix">
 
@@ -51,11 +49,12 @@ const RESPONSIVE_SM = 1200;
             (focusChange)="onFocusChange($event)"
           ></div>
           <ng-container *ngIf="!isMobile" [ngTemplateOutlet]="menu"></ng-container>
+
+          <app-connect-btn></app-connect-btn>
           <app-change-theme
             [theme]="theme"
             (themeChange)="themeChange.emit($event)"
           ></app-change-theme>
-          <app-connect-btn></app-connect-btn>
         </div>
 
       </div>
@@ -90,17 +89,6 @@ const RESPONSIVE_SM = 1200;
             [(language)]="language"
             (languageChange)="onChangeLanguage($event)"
           ></ul>
-
-
-          <button
-            nz-button
-            nzGhost
-            nzSize="small"
-            class="header-button header-direction-button"
-            (click)="toggleDirection()"
-          >
-            {{ nextDirection | uppercase }}
-          </button>
           <web3-connect-github-btn [responsive]="responsive"></web3-connect-github-btn>
         </ng-template>
       </ng-container>
@@ -121,8 +109,6 @@ export class HeaderComponent implements OnChanges {
   isMobile = false;
   mode = 'horizontal';
   responsive: null | 'narrow' | 'crowded' = null;
-  nextDirection: 'ltr' | 'rtl' = 'rtl';
-
   constructor(public appService: AppService, private nzConfigService: NzConfigService, private cdr: ChangeDetectorRef) {
     this.updateResponsive()
   }
@@ -135,20 +121,6 @@ export class HeaderComponent implements OnChanges {
     this.languageChange.emit(language);
   }
 
-  toggleDirection(): void {
-    this.directionChange.emit(this.nextDirection);
-    this.nzConfigService.set('modal', { nzDirection: this.nextDirection });
-    this.nzConfigService.set('drawer', { nzDirection: this.nextDirection });
-    this.nzConfigService.set('message', { nzDirection: this.nextDirection });
-    this.nzConfigService.set('notification', { nzDirection: this.nextDirection });
-    this.nzConfigService.set('image', { nzDirection: this.nextDirection });
-    if (this.nextDirection === 'rtl') {
-      this.nextDirection = 'ltr';
-    } else {
-      this.nextDirection = 'rtl';
-    }
-    this.cdr.markForCheck();
-  }
 
   updateResponsive(): void {
     this.responsive = null;

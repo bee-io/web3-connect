@@ -1,4 +1,4 @@
-import {ChangeDetectorRef, Component, ElementRef, OnInit} from '@angular/core';
+import {ChangeDetectorRef, Component, OnInit} from '@angular/core';
 import { configuration } from '../../../configuration';
 import {state} from "../../../store";
 import { wallets$ } from '../../../streams';

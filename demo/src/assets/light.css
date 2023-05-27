@@ -4003,12 +4003,13 @@ a.ant-btn-sm {
   box-sizing: border-box;
   margin: 0;
   padding: 0;
-  color: rgba(0, 0, 0, .65);
   font-size: 12px;
   font-variant: tabular-nums;
   list-style: none;
   font-feature-settings: 'tnum';
-  background: #fff
+  background-color: #1f2937;
+  color: white;
+  border-radius: 8px;
 }
 
 .ant-card-hoverable {
@@ -4022,11 +4023,11 @@ a.ant-btn-sm {
 }
 
 .ant-card-head, .ant-card-head .ant-tabs-top-bar {
-  border-bottom: 1px solid #dedede
+  border-bottom: 1px solid rgba(0, 0, 0, .65);
 }
 
 .ant-card-bordered {
-  border: 1px solid #dedede
+  border-bottom: 1px solid rgba(0, 0, 0, .65);
 }
 
 .ant-card-head {
@@ -4061,7 +4062,9 @@ a.ant-btn-sm {
   padding: 16px 0;
   overflow: hidden;
   white-space: nowrap;
-  text-overflow: ellipsis
+  text-overflow: ellipsis;
+  color: white;
+  font-size: 18px;
 }
 
 .ant-card-body::after, .ant-card-body::before {
@@ -6109,7 +6112,9 @@ textarea.ant-picker-input > input {
   cursor: pointer;
   transition: background .3s
 }
-
+.markdown img {
+  max-width: 100%;
+}
 .ant-picker-time-panel-column > li.ant-picker-time-panel-cell .ant-picker-time-panel-cell-inner:hover {
   background: #f5f5f5
 }
@@ -16186,7 +16191,6 @@ nz-form-item.ant-form-item {
 .ant-list-item-meta-content {
   flex: 1 0;
   width: 0;
-  color: rgba(0, 0, 0, .65)
 }
 
 .ant-list-item-meta-title {
@@ -16206,7 +16210,6 @@ nz-form-item.ant-form-item {
 }
 
 .ant-list-item-meta-description {
-  color: rgba(0, 0, 0, .45);
   font-size: 12px;
   line-height: 1.5717
 }
@@ -16220,7 +16223,6 @@ nz-form-item.ant-form-item {
 }
 
 .ant-list-empty, .ant-list-item-action > li {
-  color: rgba(0, 0, 0, .45);
   font-size: 12px;
   text-align: center
 }
@@ -28861,7 +28863,7 @@ a {
 
 .main-wrapper {
   position: relative;
-  padding: 40px 0 0;
+  /*padding: 40px 0 0;*/
   background: #fff
 }
 
@@ -29122,7 +29124,7 @@ a {
   font-size: 14px;
   line-height: 1.5;
   background-color: #000;
-  z-index: 11
+  z-index: 0
 }
 
 .rc-footer a {
@@ -29559,9 +29561,6 @@ a {
   line-height: 1.5
 }
 
-.markdown img {
-  max-width: calc(100% - 32px)
-}
 
 .markdown p > img {
   margin: 34px 0;
@@ -29635,7 +29634,7 @@ a {
 }
 
 .markdown ul > li {
-  margin-left: 20px;
+  margin-left: 0px;
   padding-left: 4px;
   list-style-type: circle
 }
@@ -30347,7 +30346,8 @@ code[class*=language-] ::selection, code[class*=language-]::selection, pre[class
 pre[class*=language-] {
   margin: 16px 0;
   padding: 12px 20px;
-  overflow: auto
+  overflow: auto;
+  border-radius: 5px;
 }
 
 :not(pre) > code[class*=language-], pre[class*=language-] {
@@ -33075,3 +33075,234 @@ label.api-type-label.service {
   height: 100%;
   display: block
 }
+
+
+/*Home-page*/
+
+.relative {
+  position: relative;
+}
+.absolute{
+  position: absolute;
+}
+.fixed {
+  position: fixed;
+}
+.items-start {
+  align-items: flex-start;
+}
+.flex {
+  display: flex;
+}
+.items-center{
+  align-items: center;
+}
+.flex-column{
+  flex-direction: column;
+}
+.justify-between{
+  justify-content: space-between;
+}
+.justify-center{
+  justify-content: center;
+}
+.items-end {
+  align-items: flex-end;
+}
+.row-reverse {
+   flex-direction: row-reverse;
+}
+
+
+
+
+.home-container{
+  max-width: 1440px;
+  margin: 0 auto;
+}
+
+.header-section-box{
+  position: relative;
+  max-width: 100%;
+  display: flex;
+  flex-flow: column;
+  align-items: center;
+  background: radial-gradient(50% 50% at 50% 50%,rgba(0,216,255,.02) 0%,rgba(0,0,0,.2) 100%),#060d20;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-image: url(https://onboard.blocknative.com/_app/immutable/assets/hero-bg.cd1c65be.svg);
+}
+
+.header-section{
+  position: relative;
+  height: 800px;
+  padding: 0 15px;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+}
+.header-section-row{
+  max-width: 900px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.header-section-row h2, .header-section-row h4{
+  color: white;
+}
+
+.header-section-btn-row{
+  min-width: 250px;
+  margin: 15px 0;
+  justify-content: space-between;
+  align-items: center;
+  display: flex;
+}
+
+.header-section-img{
+  position: relative;
+  bottom: 0;
+}
+
+
+@media (max-width: 600px) {
+  .header-section{
+    min-height: auto;
+  }
+  .header-section-img{
+    margin-top: 20px;
+    position: relative;
+  }
+}
+
+
+.install-section {
+  padding: 3rem;
+  /*background: radial-gradient(137.29% 137.29% at 50% -37.29%,rgba(99,112,229,.5) 0%,rgba(53,60,123,.269089) 49.81%,rgba(0,0,0,0) 100%),#060d20;*/
+  /*border: 1px solid rgba(255,255,255,.05);*/
+  /*box-shadow: 0 -8px 16px #0003;*/
+  background: conic-gradient(from 195.62deg at 100% 0%,rgba(85,204,254,.1) 0deg,rgba(0,0,0,0) 360deg),#060d20;
+  box-shadow: 0 -8px 16px #0003;
+}
+.install-section-box {
+  max-width: 900px;
+}
+
+.services-section {
+  height: auto;
+  padding: 2rem;
+  background: linear-gradient(87.71deg,rgba(0,0,0,0) 0%,rgba(0,209,255,.02) 100%),#060d20;
+  border: 1px solid rgba(255,255,255,.05);
+  box-shadow: 0 -8px 16px #0003;
+}
+.services-section-box {
+  max-width: 1320px;
+}
+
+.service-card{
+  min-height: 210px;
+}
+
+.chain-section {
+  height: auto;
+  padding: 2rem;
+  background: radial-gradient(93.49% 93.49% at 50% 93.49%,rgba(20,29,107,.25) 0%,rgba(53,60,123,.125) 66.67%,rgba(0,0,0,0) 100%),#15171e;
+  border: 1px solid rgba(255,255,255,.05);
+  box-shadow: 0 -8px 16px #0003;
+}
+.chain-section-box {
+  max-width: 900px;
+}
+.chain-section-content {
+  color: white;
+  max-width: 700px;
+  min-width: 350px;
+}
+
+.chain-section-content h1{
+  color: white;
+}
+
+.chain-section-action{
+  margin-right: 8px;
+}
+
+.ant-list-vertical .ant-list-item-action > li:hover {
+  color: #1890ff;
+  cursor: pointer;
+}
+
+
+.carousel-cell {
+  width: 20%;
+  height: 80px;
+  margin-right: 10px;
+  border-radius: 5px;
+  counter-increment: carousel-cell;
+}
+.flickity-button {
+  display: none;
+}
+.flickity-page-dot:focus {
+  outline: none;
+  box-shadow: 0 0 0 1px #fff;
+}
+
+
+
+.themeable-section {
+  height: auto;
+  padding: 2rem;
+  background: radial-gradient(137.29% 137.29% at 50% -37.29%,rgba(99,112,229,.5) 0%,rgba(53,60,123,.269089) 49.81%,rgba(0,0,0,0) 100%),#060d20;
+  border: 1px solid rgba(255,255,255,.05);
+  box-shadow: 0 -8px 16px #0003;
+}
+.themeable-section-box {
+  max-width: 900px;
+}
+.themeable-section-content {
+  color: white;
+  max-width: 700px;
+  min-width: 350px;
+}
+
+
+.get-started-section-box{
+  position: relative;
+  max-width: 100%;
+  display: flex;
+  flex-flow: column;
+  align-items: center;
+  border: 1px solid rgba(255,255,255,.05);
+  box-shadow: 0 -8px 16px #0003;
+  /*background: radial-gradient(50% 50% at 50% 50%,rgba(0,216,255,.02) 0%,rgba(0,0,0,.2) 100%),#060d20;*/
+  /*background-size: cover;*/
+  /*background-repeat: no-repeat;*/
+  /*background-image: url(https://onboard.blocknative.com/_app/immutable/assets/hero-bg.cd1c65be.svg);*/
+}
+
+.get-started-section{
+  position: relative;
+  padding: 15px;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+}
+.get-started-section-row{
+  max-width: 900px;
+  display: flex;
+  flex-direction: column;
+  align-items: baseline;
+  justify-content: flex-start;
+}
+
+.get-started-section-row h2, .get-started-section-row h3, .get-started-section-row h4{
+  margin: 10px 0 0 0;
+}
+

@@ -95,7 +95,8 @@
               "lodash.uniqby",
               "lodash.partition",
               "prismjs",
-              "codesandbox/lib/api/define"
+              "codesandbox/lib/api/define",
+              "flickity"
             ],
             "outputPath": "dist/demo",
             "index": "demo/src/index.html",

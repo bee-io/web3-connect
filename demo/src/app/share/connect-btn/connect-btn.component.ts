@@ -1,5 +1,6 @@
 import {Component} from '@angular/core';
-import {coinbaseModule, Init, injectedModule, trustModule, walletConnectModule} from "@b-ee/web3-connect";
+import {coinbaseModule, Init, injectedModule, trustModule, walletConnectModule, WalletState} from "@b-ee/web3-connect";
+import disconnect from "../../../../../src/core/src/disconnect";
 
 @Component({
   selector: 'app-connect-btn',
@@ -25,6 +26,7 @@ export class ConnectBtnComponent {
     // }
   });
   private coinbase = coinbaseModule();
+  public wallets: WalletState[] = [];
 
   private web3Connect = Init({
     locale: 'en',
@@ -98,8 +100,8 @@ export class ConnectBtnComponent {
     ],
     connect: {
       // disableClose: true,
-      autoConnectLastWallet: true,
-      autoConnectAllPreviousWallet: true
+      autoConnectLastWallet: false,
+      autoConnectAllPreviousWallet: false
     },
 
     // | 'topRight'
@@ -146,8 +148,20 @@ export class ConnectBtnComponent {
     // 'system'	automatically switch between 'dark' & 'light' based on the user's system settings
     theme: 'dark'
   })
+
+  public isLoading
+
+  constructor() {
+  }
   async connect(): Promise<void> {
-    await this.web3Connect.connectWallet();
+    this.isLoading = true;
+    this.wallets = await this.web3Connect.connectWallet();
+    this.isLoading = false;
+  }
+
+  public disconnectAllWallets(): void {
+    this.wallets.forEach(({ label }) => disconnect({ label }))
+    this.wallets = [];
   }
 
 }

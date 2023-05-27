@@ -20,10 +20,10 @@ const defaultKeywords: string = 'Angular, Ethereum Web3, EVM, dApp, MultiChain, 
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
-
+  public isLoaded
   public showDrawer: boolean = false;
   public isDrawerOpen: boolean = false;
-  public page: 'docs' | 'examples' | 'faq' | string = 'home';
+  public page: 'docs' | 'examples' | 'faq' | string = '';
   public windowWidth: number = 1400;
   public routerList: RouterList = ROUTER_LIST;
   public searchComponent = null;
@@ -121,11 +121,13 @@ export class AppComponent {
     }
   }
 
+  public get showSidebar(): boolean {
+   return ['docs'].includes(this.page)
+  }
+
   public setPage(url: string): void {
     const match = url.match(/\/(\w+)/);
-    if (match && match[1]) {
-      this.page = match[1];
-    }
+    this.page = match && match[1] ? match[1] : null;
   }
 
   public ngOnInit(): void {
@@ -135,6 +137,7 @@ export class AppComponent {
       this.addWindowWidthListener();
     }
     this.router.events.subscribe(event => {
+      this.isLoaded = false;
       if (event instanceof NavigationEnd) {
         const currentIntroComponent = this.routerList.intro.find(component => `/${component.path}` === this.router.url);
         if (currentIntroComponent) {
@@ -164,6 +167,7 @@ export class AppComponent {
               document.querySelector(`#${toc}`)!.scrollIntoView();
             }
           }
+          this.isLoaded = true;
         }, 200);
       }
     });

@@ -15,7 +15,6 @@ import { ChangeDetectionStrategy, ChangeDetectorRef, Component, Input, OnInit, V
       target="_blank"
       rel="noopener"
       [href]="'https://github.com/' + org + '/' + repo + '/stargazers'"
-      style="display: none;"
     >
       {{ starCount }}
     </a>

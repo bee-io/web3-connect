@@ -61,7 +61,7 @@
   font-size: var(--b-ee-font-size-5, 1rem);
   background: var(--background-color);
   color: var(--text-color);
-  border-color: var(--border-color);
+  border: solid 1px var(--border-color);
   &__close{
     position: absolute;
     display: flex;
