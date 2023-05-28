@@ -6,9 +6,6 @@ a, a:active, a:focus, a:hover {
   outline: 0;
   text-decoration: none
 }
-a {
-  color: #929bed!important;
-}
 
 dl, h1, h2, h3, h4, h5, h6, ol, p, pre, ul {
   margin-top: 0
@@ -47,9 +44,9 @@ dd, h1, h2, h3, h4, h5, h6, legend {
 }
 
 html {
-  --ant-primary-color: #177ddc;
-  --ant-primary-color-hover: #3c9be8;
-  --ant-primary-color-active: #095cb5;
+  --ant-primary-color: #929bed;
+  --ant-primary-color-hover:#929bed;
+  --ant-primary-color-active: #929bed;
   --ant-primary-color-outline: rgba(23, 125, 220, 0.2);
   --ant-primary-1: #e6f7ff;
   --ant-primary-2: #bde8ff;
@@ -57,7 +54,7 @@ html {
   --ant-primary-4: #67baf5;
   --ant-primary-5: #3c9be8;
   --ant-primary-6: #177ddc;
-  --ant-primary-7: #095cb5;
+  --ant-primary-7: #929bed;
   --ant-primary-color-deprecated-l-35: #afd4f6;
   --ant-primary-color-deprecated-l-20: #6aafef;
   --ant-primary-color-deprecated-t-20: #4697e3;
@@ -83,7 +80,7 @@ html {
   --ant-warning-color-outline: rgba(216, 150, 20, 0.2);
   --ant-warning-color-deprecated-bg: #fffbe6;
   --ant-warning-color-deprecated-border: #ffe591;
-  --ant-info-color: #177ddc;
+  --ant-info-color:#929bed;
   --ant-info-color-deprecated-bg: #e6f7ff;
   --ant-info-color-deprecated-border: #94d6ff;
   font-family: sans-serif;
@@ -91,7 +88,7 @@ html {
   -webkit-text-size-adjust: 100%;
   -ms-text-size-adjust: 100%;
   -ms-overflow-style: scrollbar;
-  --antd-wave-shadow-color: #177ddc;
+  --antd-wave-shadow-color: #929bed;
   --scroll-bar: 0
 }
 
@@ -196,7 +193,7 @@ sup {
 }
 
 a {
-  color: #177ddc;
+  color: #929bed;
   background-color: transparent;
   cursor: pointer;
   -webkit-text-decoration-skip: objects
@@ -207,7 +204,7 @@ a:hover {
 }
 
 a:active {
-  color: #388ed3
+  color: #929bed;
 }
 
 a[disabled] {
@@ -344,7 +341,7 @@ mark {
 
 ::selection {
   color: #fff;
-  background: #177ddc
+  background:#929bed
 }
 
 .clearfix::after {
@@ -1751,8 +1748,8 @@ nz-link {
   line-height: 1.5715;
   list-style: none;
   position: fixed;
-  right: 100px;
-  bottom: 50px;
+  right: 40px;
+  bottom: 40px;
   z-index: 10;
   width: 40px;
   height: 40px;
@@ -1765,7 +1762,7 @@ nz-link {
 
 .ant-back-top-rtl {
   right: auto;
-  left: 100px
+  left: 40px
 }
 
 .ant-back-top-content {
@@ -1796,12 +1793,12 @@ nz-link {
 
 @media screen and (max-width: 768px) {
   .ant-back-top {
-    right: 60px
+    right: 40px
   }
 
   .ant-back-top-rtl {
     right: auto;
-    left: 60px
+    left: 40px
   }
 }
 
@@ -2557,7 +2554,7 @@ nz-breadcrumb-item:last-child .ant-breadcrumb-separator {
 
 .ant-btn-primary {
   color: #fff;
-  border-color: #242835;
+  border-color: #fff;
   background: #929bed;
   text-shadow: 0 -1px 0 rgba(0, 0, 0, .12);
   box-shadow: 0 2px 0 rgba(0, 0, 0, .045)
@@ -2579,8 +2576,8 @@ nz-breadcrumb-item:last-child .ant-breadcrumb-separator {
 
 .ant-btn-primary:focus, .ant-btn-primary:hover {
   color: #fff;
-  border-color: #095cb5;
-  background: #095cb5
+  border-color: #929bed;
+  background: #929bed
 }
 
 .ant-btn-primary:focus > a:only-child, .ant-btn-primary:hover > a:only-child {
@@ -2599,8 +2596,8 @@ nz-breadcrumb-item:last-child .ant-breadcrumb-separator {
 
 .ant-btn-primary:active {
   color: #fff;
-  border-color: #3c9be8;
-  background: #3c9be8
+  border-color: #929bed;
+  background: #929bed
 }
 
 .ant-btn-primary:active > a:only-child {
@@ -23915,7 +23912,7 @@ cdk-virtual-scroll-viewport.ant-table-body {
 }
 
 .ant-tabs-tab.ant-tabs-tab-active .ant-tabs-tab-btn {
-  color: #177ddc;
+  color: #929bed;
   text-shadow: 0 0 .25px currentcolor
 }
 
@@ -28675,7 +28672,7 @@ nz-spin {
 
 .gh-count {
   position: relative;
-  display: none;
+  /*display: none;*/
   margin-left: 4px;
   background-color: #fafafa;
   border: 1px solid #d4d4d4
@@ -28818,7 +28815,7 @@ nz-spin {
 
 #github-btn .gh-count {
   height: auto;
-  min-width: 45px;
+  min-width: 20px;
   padding: 4px 8px;
   font-weight: 400;
   background: #fff
@@ -29083,12 +29080,12 @@ body {
   color: rgba(255, 255, 255, .85);
   font-size: 14px;
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, 'Noto Sans', sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
-  background: #000;
+  background: #0d1117;
   transition: background 1s cubic-bezier(.075, .82, .165, 1)
 }
 
 .main-container, .main-wrapper {
-  background: #141414;
+  background: #0d1117;
   position: relative
 }
 
@@ -29360,7 +29357,6 @@ a {
   font-size: 14px;
   line-height: 1.5;
   background-color: #000;
-  z-index: 11
 }
 
 .rc-footer a {
@@ -30611,7 +30607,7 @@ pre[class*=language-] {
 }
 
 .token.atrule, .token.attr-value, .token.keyword {
-  color: #008dff
+  color: #929bed
 }
 
 .token.function {
@@ -30644,14 +30640,13 @@ pre[class*=language-] {
   display: inline-block;
   width: 100%;
   margin: 0 0 16px;
-  border: 1px solid #303030;
+  border: 1px solid #242835;
   border-radius: 2px;
   transition: all .2s
 }
-
 .code-box .code-box-title, .code-box .code-box-title a {
   color: rgba(255, 255, 255, .85);
-  background: #141414
+  background: #242835
 }
 
 .code-box .code-box-description p {
@@ -30659,8 +30654,9 @@ pre[class*=language-] {
 }
 
 .code-box, .code-box .code-box-demo {
-  background-color: #141414
+  background-color: #242835;
 }
+
 
 .code-box .markdown pre {
   margin: .5em 0;
@@ -30701,7 +30697,7 @@ pre[class*=language-] {
   margin-left: 16px;
   padding: 1px 8px;
   color: #777;
-  background: #000;
+  background: #242835;
   border-radius: 2px 2px 0 0;
   transition: background-color .4s
 }
@@ -30921,7 +30917,7 @@ pre[class*=language-] {
   font-size: 14px;
   line-height: 20px;
   text-align: center;
-  background: #141414;
+  background: #242835;
   border-radius: 20px;
   transition: all .24s
 }
@@ -32365,7 +32361,7 @@ ul.anticons-list li.copied::after {
 }
 
 [data-theme=dark] .toc-affix .ant-affix {
-  background: #141414
+  background: transparent;
 }
 
 [data-theme=dark] :not(pre) > code[class*=language-], [data-theme=dark] pre[class*=language-] {
@@ -32545,7 +32541,7 @@ ul.anticons-list li.copied::after {
 }
 
 [data-theme=dark] .token.addition, [data-theme=dark] .token.bullet, [data-theme=dark] .token.string, [data-theme=dark] .token.symbol {
-  color: #177ddc
+  color: #929bed
 }
 
 [data-theme=dark] .token.section, [data-theme=dark] .token.title {
@@ -32673,17 +32669,17 @@ ul.anticons-list li.copied::after {
 }
 
 [data-theme=dark] ::-webkit-scrollbar-track, body[data-theme=dark]::-webkit-scrollbar-track {
-  background: #262626
+  background: #1a1d26
 }
 
 [data-theme=dark] ::-webkit-scrollbar-thumb, body[data-theme=dark]::-webkit-scrollbar-thumb {
-  background-color: #434343;
+  background-color: #929bed;
   border-radius: 6px;
-  border: 2px solid #262626
+  border: 2px solid #2d2f3e
 }
 
 [data-theme=dark] ::-webkit-scrollbar-thumb :hover, body[data-theme=dark]::-webkit-scrollbar-thumb :hover {
-  background-color: #262626
+  background-color: #171921
 }
 
 label.api-type-label {
@@ -32705,8 +32701,8 @@ label.api-type-label.directive {
 }
 
 label.api-type-label.component {
-  color: #177ddc;
-  border: 2px solid #177ddc
+  color: #929bed;
+  border: 2px solid #929bed
 }
 
 label.api-type-label.service {
@@ -33050,7 +33046,7 @@ label.api-type-label.service {
   position: relative;
   padding: 0 8px;
   background: #fff;
-  color: #02060c;
+  color: #929bed;
   overflow: hidden
 }
 
@@ -33313,7 +33309,6 @@ label.api-type-label.service {
 }
 
 
-
 /*Home-page*/
 
 .relative {
@@ -33406,15 +33401,6 @@ label.api-type-label.service {
 }
 
 
-@media (max-width: 600px) {
-  .header-section{
-    min-height: auto;
-  }
-  .header-section-img{
-    margin-top: 20px;
-    position: relative;
-  }
-}
 
 
 .install-section {
@@ -33455,6 +33441,7 @@ label.api-type-label.service {
   max-width: 900px;
 }
 .chain-section-content {
+  margin-left: 50px;
   color: white;
   max-width: 700px;
   min-width: 350px;
@@ -33469,7 +33456,7 @@ label.api-type-label.service {
 }
 
 .ant-list-vertical .ant-list-item-action > li:hover {
-  color: #1890ff;
+  color: rgb(146 155 237);
   cursor: pointer;
 }
 
@@ -33487,6 +33474,100 @@ label.api-type-label.service {
 .flickity-page-dot:focus {
   outline: none;
   box-shadow: 0 0 0 1px #fff;
+}
+
+
+.themeable-section {
+  height: auto;
+  padding: 2rem;
+  background: radial-gradient(137.29% 137.29% at 50% -37.29%,rgba(99,112,229,.5) 0%,rgba(53,60,123,.269089) 49.81%,rgba(0,0,0,0) 100%),#060d20;
+  border: 1px solid rgba(255,255,255,.05);
+  box-shadow: 0 -8px 16px #0003;
+}
+.themeable-section-box {
+  max-width: 900px;
+}
+.themeable-section-content {
+  color: white;
+  max-width: 700px;
+  min-width: 350px;
+}
+
+
+.get-started-section-box{
+  position: relative;
+  max-width: 100%;
+  display: flex;
+  flex-flow: column;
+  align-items: center;
+  border: 1px solid rgba(255,255,255,.05);
+  box-shadow: 0 -8px 16px #0003;
+  /*background: radial-gradient(50% 50% at 50% 50%,rgba(0,216,255,.02) 0%,rgba(0,0,0,.2) 100%),#060d20;*/
+  /*background-size: cover;*/
+  /*background-repeat: no-repeat;*/
+  /*background-image: url(https://onboard.blocknative.com/_app/immutable/assets/hero-bg.cd1c65be.svg);*/
+}
+
+.get-started-section{
+  position: relative;
+  padding: 15px;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+}
+.get-started-section-row{
+  max-width: 900px;
+  display: flex;
+  flex-direction: column;
+  align-items: baseline;
+  justify-content: flex-start;
+}
+
+.get-started-section-row h2, .get-started-section-row h3, .get-started-section-row h4{
+  margin: 10px 0 0 0;
+}
+
+@media (max-width: 600px) {
+  .header-section{
+    height: 600px;
+    min-height: auto;
+  }
+  .header-section-img{
+    margin-top: 20px;
+    position: relative;
+  }
+
+  .carousel-cell {
+    width: 33%;
+    display: flex;
+    justify-content: center;
+  }
+
+  .carousel-cell img {
+    max-width: 140px;
+    width: 140px;
+    height: 80px;
+  }
+
+  .chain-section-content {
+    margin-left: 0;
+  }
+
+}
+
+@media (max-width: 500px) {
+  .carousel-cell {
+    width: 50%;
+    display: flex;
+    justify-content: center;
+  }
+  .carousel-cell img {
+    max-width: 140px;
+    width: 140px;
+    height: 80px;
+  }
 }
 
 
@@ -33542,4 +33623,5 @@ label.api-type-label.service {
 .get-started-section-row h2, .get-started-section-row h3, .get-started-section-row h4{
   margin: 10px 0 0 0;
 }
+
 

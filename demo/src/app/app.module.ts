@@ -31,6 +31,7 @@ import {NzCardModule} from "ng-zorro-antd/card";
 import {NzListModule} from "ng-zorro-antd/list";
 import {NzHighlightModule} from "./share/highlight/highlight.module";
 import {NzBackTopModule} from "ng-zorro-antd/back-top";
+import {NzIconModule} from "ng-zorro-antd/icon";
 
 
 @NgModule({
@@ -39,34 +40,35 @@ import {NzBackTopModule} from "ng-zorro-antd/back-top";
     HomeComponent,
     SideComponent
   ],
-  imports: [
-    BrowserModule.withServerTransition({appId: 'docs'}),
-    BrowserAnimationsModule,
-    NzAffixModule,
-    NzNavBottomModule,
-    NzContributorsListModule,
-    HeaderModule,
-    FooterModule,
-    NzGridModule,
-    NzAffixModule,
-    NzSpaceModule,
-    NzImageModule,
-    NzCardModule,
-    NzListModule,
-    NzMenuModule,
-    NzI18nModule,
-    NzSelectModule,
-    NzMessageModule,
-    NzPopoverModule,
-    NzButtonModule,
-    NzInputModule,
-    NzBadgeModule,
-    RouterModule.forRoot(routes, {scrollPositionRestoration: 'enabled'}),
-    Web3ConnectModule,
-    NzTabsModule,
-    NzHighlightModule,
-    NzBackTopModule
-  ],
+    imports: [
+        BrowserModule.withServerTransition({appId: 'docs'}),
+        BrowserAnimationsModule,
+        NzAffixModule,
+        NzNavBottomModule,
+        NzContributorsListModule,
+        HeaderModule,
+        FooterModule,
+        NzGridModule,
+        NzAffixModule,
+        NzSpaceModule,
+        NzImageModule,
+        NzCardModule,
+        NzListModule,
+        NzMenuModule,
+        NzI18nModule,
+        NzSelectModule,
+        NzMessageModule,
+        NzPopoverModule,
+        NzButtonModule,
+        NzInputModule,
+        NzBadgeModule,
+        RouterModule.forRoot(routes, {scrollPositionRestoration: 'enabled'}),
+        Web3ConnectModule,
+        NzTabsModule,
+        NzHighlightModule,
+        NzBackTopModule,
+        NzIconModule
+    ],
   providers: [
     HighlightService,
     Title,

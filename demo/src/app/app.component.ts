@@ -20,7 +20,7 @@ const defaultKeywords: string = 'Angular, Ethereum Web3, EVM, dApp, MultiChain, 
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
-  public isLoaded
+  public isLoaded = false;
   public showDrawer: boolean = false;
   public isDrawerOpen: boolean = false;
   public page: 'docs' | 'examples' | 'faq' | string = '';
@@ -32,15 +32,6 @@ export class AppComponent {
   public direction: 'ltr' | 'rtl' = 'ltr';
  public switchLanguage(language: string): void {
     console.log('switchLanguage', language);
-  }
- public switchDirection(direction: 'ltr' | 'rtl'): void {
-    this.direction = direction;
-    if (direction === 'rtl') {
-      this.renderer.setAttribute(document.body, 'dir', 'rtl');
-    } else {
-      this.renderer.removeAttribute(document.body, 'dir');
-    }
-    this.cdr.detectChanges();
   }
  public initTheme(): void {
     if (!this.platform.isBrowser) {
@@ -137,7 +128,9 @@ export class AppComponent {
       this.addWindowWidthListener();
     }
     this.router.events.subscribe(event => {
-      this.isLoaded = false;
+      if(this.router.url !== '/'){
+        this.isLoaded = false;
+      }
       if (event instanceof NavigationEnd) {
         const currentIntroComponent = this.routerList.intro.find(component => `/${component.path}` === this.router.url);
         if (currentIntroComponent) {
@@ -168,7 +161,7 @@ export class AppComponent {
             }
           }
           this.isLoaded = true;
-        }, 200);
+        }, 300);
       }
     });
   }

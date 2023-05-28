@@ -1,11 +1,10 @@
 import { Platform } from '@angular/cdk/platform';
-import { ChangeDetectionStrategy, ChangeDetectorRef, Component, OnInit } from '@angular/core';
+import { ChangeDetectorRef, Component, OnInit } from '@angular/core';
 import { NavigationEnd, Router } from '@angular/router';
 import { ROUTER_LIST } from '../../router';
 
 @Component({
   selector: 'nz-nav-bottom',
-  changeDetection: ChangeDetectionStrategy.OnPush,
   template: `
     <section class="prev-next-nav">
       <a class="prev-page" *ngIf="index - 1 >= 0" [routerLink]="list[index - 1]?.path">
@@ -38,4 +37,6 @@ export class NzNavBottomComponent implements OnInit {
       }
     });
   }
+
+
 }

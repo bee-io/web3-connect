@@ -1,0 +1,102 @@
+[
+  {
+    "author": "introduction",
+    "content": "Connection of Multiple Wallets and Accounts, Support for Multiple Chains, Wallet Management Center,Real-time Notifications, Standardization of Wallet Providers, Dynamic Loading",
+    "hierarchy": {
+      "lvl0": "Documentation",
+      "lvl1": "Introduction",
+      "lvl2": "Features"
+    },
+    "url": "http://localhost:4200/docs/introduction#features"
+  },
+  {
+    "author": "introduction",
+    "content": "Ethereum, Polygon, Base Goerli, Goerli, Sepolia, Arbitrum, Optimism, Avalanche, BNB Chain, Celo, Fantom, Gnosis Chain, Harmony One, Moonriver",
+    "hierarchy": {
+      "lvl0": "Documentation",
+      "lvl1": "Introduction",
+      "lvl2": "Supported Networks"
+    },
+    "url": "http://localhost:4200/docs/introduction#supported-networks"
+  },
+  {
+    "author": "introduction",
+    "content": "^15.0.0",
+    "hierarchy": {
+      "lvl0": "Documentation",
+      "lvl1": "Introduction",
+      "lvl2": "Version"
+    },
+    "url": "http://localhost:4200/docs/introduction#version"
+  },
+  {
+  "author": "introduction",
+  "content": "^15.0.0",
+  "hierarchy": {
+    "lvl0": "Documentation",
+    "lvl1": "Introduction",
+    "lvl2": "Angular Support"
+  },
+  "url": "http://localhost:4200/docs/introduction#angular-support"
+},
+  {
+    "author": "introduction",
+    "content": null,
+    "hierarchy": {
+      "lvl0": "Documentation",
+      "lvl1": "Introduction",
+      "lvl2": "Quickstart"
+    },
+    "url": "http://localhost:4200/docs/introduction#quickstart"
+  },
+  {
+    "author": "introduction",
+    "content": "Coinbase, WalletConnect, Gnosis, Magic, Fortmatic, MEW Portis, Web3Auth, Frame",
+    "hierarchy": {
+      "lvl0": "Documentation",
+      "lvl1": "Introduction",
+      "lvl2": "Wallet Modules"
+    },
+    "url": "http://localhost:4200/docs/introduction#wallet-modules"
+  },
+  {
+    "author": "introduction",
+    "content": "Small browser demo",
+    "hierarchy": {
+      "lvl0": "Documentation",
+      "lvl1": "Introduction",
+      "lvl2": "Test out the demo app"
+    },
+    "url": "http://localhost:4200/docs/introduction#test-demo"
+  },
+  {
+    "author": "introduction",
+    "content": "Checkout our live demo using Angular",
+    "hierarchy": {
+      "lvl0": "Documentation",
+      "lvl1": "Introduction",
+      "lvl2": "Angular Demo"
+    },
+    "url": "http://localhost:4200/docs/introduction#angular-demo"
+  },
+  {
+    "author": "introduction",
+    "content": "Feel free to report bugs and issues",
+    "hierarchy": {
+      "lvl0": "Documentation",
+      "lvl1": "Introduction",
+      "lvl2": "Contributing"
+    },
+    "url": "http://localhost:4200/docs/introduction#contributing"
+  },
+  {
+    "author": "introduction",
+    "content": "As always, we encourage experienced users to help those who are not familiar with web3-connectContact us!",
+    "hierarchy": {
+      "lvl0": "Documentation",
+      "lvl1": "Introduction",
+      "lvl2": "Need Help?"
+    },
+    "url": "http://localhost:4200/docs/introduction#need-help"
+  }
+]

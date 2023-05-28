@@ -83,7 +83,7 @@ export class AppComponent {
     new Flickity( networkChainCarousel, {
       contain: true,
       wrapAround: true,
-      autoPlay: true,
+      autoPlay: false,
       percentPosition: false,
     });
 

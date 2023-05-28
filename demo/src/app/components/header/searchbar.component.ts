@@ -76,22 +76,49 @@ export class SearchbarComponent implements OnChanges {
     }
   }
 
+  // initDocsearch(): void {
+  //   loadScript('https://cdn.jsdelivr.net/npm/docsearch.js@2/dist/cdn/docsearch.min.js').then(() => {
+  //     this.docsearch = docsearch({
+  //       appId: 'BH4D9OD16A',
+  //       apiKey: '9f7d9d6527ff52ec484e90bb1f256971',
+  //       indexName: 'ng_zorro',
+  //       inputSelector: '#search-box input',
+  //       algoliaOptions: { hitsPerPage: 5, facetFilters: [`tags:${this.language}`] },
+  //       // tslint:disable-next-line:no-any
+  //       transformData(hits: any): void {
+  //         // tslint:disable-next-line:no-any
+  //         hits.forEach((hit: any) => {
+  //           // tslint:disable-line:no-any
+  //           hit.url = hit.url.replace('ng.ant.design', location.host);
+  //           hit.url = hit.url.replace('https:', location.protocol);
+  //         });
+  //         return hits;
+  //       },
+  //       debug: false
+  //     });
+  //     this.searchInput.nativeElement.focus();
+  //   });
+  // }
+
+
   initDocsearch(): void {
     loadScript('https://cdn.jsdelivr.net/npm/docsearch.js@2/dist/cdn/docsearch.min.js').then(() => {
       this.docsearch = docsearch({
-        appId: 'BH4D9OD16A',
-        apiKey: '9f7d9d6527ff52ec484e90bb1f256971',
-        indexName: 'ng_zorro',
+        appId: 'NNIKJ9LCMY',
+        apiKey: '026bd7b955ee16af31ad02fb463b0237',
+        indexName: 'bee-io',
         inputSelector: '#search-box input',
-        algoliaOptions: { hitsPerPage: 5, facetFilters: [`tags:${this.language}`] },
+        algoliaOptions: { hitsPerPage: 5 },
         // tslint:disable-next-line:no-any
         transformData(hits: any): void {
           // tslint:disable-next-line:no-any
-          hits.forEach((hit: any) => {
-            // tslint:disable-line:no-any
-            hit.url = hit.url.replace('ng.ant.design', location.host);
-            hit.url = hit.url.replace('https:', location.protocol);
-          });
+          // hits.forEach((hit: any) => {
+          //   // tslint:disable-line:no-any
+          //   hit.url = hit.url.replace('ng.ant.design', location.host);
+          //   hit.url = hit.url.replace('https:', location.protocol);
+          // });
+
+          console.log('hits', hits)
           return hits;
         },
         debug: false
@@ -101,9 +128,9 @@ export class SearchbarComponent implements OnChanges {
   }
 
   ngOnChanges(changes: SimpleChanges): void {
-    const { language } = changes;
-    if (language && this.docsearch) {
-      this.docsearch!.algoliaOptions = { hitsPerPage: 5, facetFilters: [`tags:${this.language}`] };
-    }
+    // const { language } = changes;
+    // if (language && this.docsearch) {
+    //   this.docsearch!.algoliaOptions = { hitsPerPage: 5, facetFilters: [`tags:${this.language}`] };
+    // }
   }
 }

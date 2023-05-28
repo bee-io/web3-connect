@@ -20,16 +20,9 @@ export const ROUTER_LIST: RouterList = {
     {
     path: "/docs/popover",
     label: "Popover",
-    order:1,
+    order: 1,
     hidden: false,
     description: "Easy way to connect users to Decentralized Applications.",
   },
-  //   {
-  //   path: "docs/contribution-guide",
-  //   label: "Contribution Guide",
-  //   order: 1,
-  //   hidden: false,
-  //   description: "How can I contribute to Web3-Connect",
-  // }
 ]
 };

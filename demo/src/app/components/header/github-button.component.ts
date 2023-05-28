@@ -4,7 +4,7 @@ import { ChangeDetectionStrategy, ChangeDetectorRef, Component, Input, OnInit, V
 
 @Component({
   selector: 'web3-connect-github-btn',
-  changeDetection: ChangeDetectionStrategy.OnPush,
+  // changeDetection: ChangeDetectionStrategy.OnPush,
   template: `
     <a class="gh-btn" tabindex="-1" [href]="'https://github.com/' + org + '/' + repo" target="_blank" rel="noopener" aria-hidden="true">
       <span class="gh-ico" aria-hidden="true"></span>
@@ -40,7 +40,7 @@ export class GithubButtonComponent implements OnInit {
     if (!this.platform.isBrowser) {
       return;
     }
-    // this.getStar();
+    this.getStar();
   }
 
   public getStar(): void {

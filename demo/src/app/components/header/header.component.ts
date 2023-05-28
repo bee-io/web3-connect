@@ -1,5 +1,4 @@
 import {
-  ChangeDetectorRef,
   Component,
   EventEmitter,
   Input,
@@ -7,7 +6,6 @@ import {
   Output,
   SimpleChanges
 } from '@angular/core';
-import { NzConfigService } from 'ng-zorro-antd/core/config';
 import {AppService} from "../../app.service";
 import {SiteTheme} from "../../app.component";
 
@@ -103,13 +101,12 @@ export class HeaderComponent implements OnChanges {
   @Input() page: 'docs' | 'components' | 'experimental' | string = 'docs';
   @Output() themeChange = new EventEmitter<string>();
   @Output() languageChange = new EventEmitter<'ukr' | 'en'>();
-  @Output() directionChange = new EventEmitter<'ltr' | 'rtl'>();
 
   searching = false;
   isMobile = false;
   mode = 'horizontal';
   responsive: null | 'narrow' | 'crowded' = null;
-  constructor(public appService: AppService, private nzConfigService: NzConfigService, private cdr: ChangeDetectorRef) {
+  constructor(public appService: AppService) {
     this.updateResponsive()
   }
 
