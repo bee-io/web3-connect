@@ -17,12 +17,12 @@ export const ROUTER_LIST: RouterList = {
     hidden: false,
     description: "Easy way to connect users to Decentralized Applications.",
   },
-    {
-    path: "/docs/popover",
-    label: "Popover",
-    order: 1,
-    hidden: false,
-    description: "Easy way to connect users to Decentralized Applications.",
-  },
+  //   {
+  //   path: "/docs/popover",
+  //   label: "Popover",
+  //   order: 1,
+  //   hidden: false,
+  //   description: "Easy way to connect users to Decentralized Applications.",
+  // },
 ]
 };

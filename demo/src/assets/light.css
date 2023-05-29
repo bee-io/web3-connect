@@ -28594,9 +28594,9 @@ nz-spin {
   color: #929bed
 }
 
-#github-btn.responsive-mode .gh-count {
-  display: none !important
-}
+/*#github-btn.responsive-mode .gh-count {*/
+/*  display: none !important*/
+/*}*/
 
 #logo {
   height: 64px;
@@ -31770,8 +31770,8 @@ ul.anticons-list li.copied::after {
 
 .nav-phone-icon {
   position: absolute;
-  top: 25px;
-  right: 30px;
+  top: 20px;
+  right: 10px;
   z-index: 1;
   display: none;
   width: 16px;

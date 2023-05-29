@@ -48,11 +48,14 @@ const RESPONSIVE_SM = 1200;
           ></div>
           <ng-container *ngIf="!isMobile" [ngTemplateOutlet]="menu"></ng-container>
 
+          <web3-connect-github-btn [responsive]="responsive"></web3-connect-github-btn>
+
           <app-connect-btn></app-connect-btn>
           <app-change-theme
             [theme]="theme"
             (themeChange)="themeChange.emit($event)"
           ></app-change-theme>
+
         </div>
 
       </div>
@@ -87,7 +90,6 @@ const RESPONSIVE_SM = 1200;
             [(language)]="language"
             (languageChange)="onChangeLanguage($event)"
           ></ul>
-          <web3-connect-github-btn [responsive]="responsive"></web3-connect-github-btn>
         </ng-template>
       </ng-container>
     </ng-template>

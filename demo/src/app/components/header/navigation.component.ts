@@ -10,16 +10,16 @@ import { ChangeDetectionStrategy, Component, EventEmitter, Input, OnInit, Output
         <span>Docs</span>
       </a>
     </li>
-    <li nz-menu-item [nzSelected]="page === 'examples'">
-      <a [routerLink]="['examples']">
-        <span>Examples</span>
-      </a>
-    </li>
-    <li nz-menu-item [nzSelected]="page === 'faq'">
-      <a [routerLink]="['faq']">
-        <span>FAQ</span>
-      </a>
-    </li>
+<!--    <li nz-menu-item [nzSelected]="page === 'examples'">-->
+<!--      <a [routerLink]="['examples']">-->
+<!--        <span>Examples</span>-->
+<!--      </a>-->
+<!--    </li>-->
+<!--    <li nz-menu-item [nzSelected]="page === 'faq'">-->
+<!--      <a [routerLink]="['faq']">-->
+<!--        <span>FAQ</span>-->
+<!--      </a>-->
+<!--    </li>-->
 
 <!--    <ng-container *ngIf="!isMobile && responsive === 'crowded'">-->
 <!--      <li nz-submenu [nzTitle]="additionalTitle" nzMenuClassName="top-menu-additional">-->

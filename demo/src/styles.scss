@@ -5,7 +5,7 @@
 //@import "prismjs/themes/prism-tomorrow.css";
 
 :root {
-  --account-center-position-top: 3rem;
+  --account-center-position-top: 55px;
 }
 [data-theme="dark"] {
   .preloader:before, .preloader:after { position: absolute; left: 0; height: 51%; width: 100%; transition: all 0.4s ease; background: #1A1D26; content: ''; }
