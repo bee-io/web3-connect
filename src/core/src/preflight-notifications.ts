@@ -1,13 +1,13 @@
 import BigNumber from 'bignumber.js'
 import type { Network } from 'bnc-sdk'
-
 import type { Notification, PreflightNotificationsOptions } from './types'
 import { addNotification, removeNotification } from './store/actions'
-import { state } from './store/index'
 import { eventToType } from './notify'
 import { networkToChainId } from './utils'
 import { validatePreflightNotifications } from './validation'
 import {nanoid} from "nanoid";
+import {getTranslations} from "./locales";
+import {state} from "./store";
 
 let notificationsArr: Notification[]
 state.select('notifications').subscribe(notifications => {
@@ -145,15 +145,13 @@ const createId = (id: string): string => {
 }
 
 const createMessageText = (eventCode: string): string => {
-  // const notificationDefaultMessages = defaultCopy.notify
-  //
-  // const notificationMessageType = notificationDefaultMessages.transaction
+  const notificationDefaultMessages = getTranslations().notify
 
-  // return notificationDefaultMessages.transaction[
-  //   eventCode as keyof typeof notificationMessageType
-  // ]
+  const notificationMessageType = notificationDefaultMessages.transaction
 
-  return 'ddd'
+  return notificationDefaultMessages.transaction[
+    eventCode as keyof typeof notificationMessageType
+  ]
 }
 
 export function extractMessageFromError(error: {

@@ -2,6 +2,7 @@
     <div id="ng-content" [style.transform]="isDrawerOpen ? 'translateX(130px)' : null">
       <div class="page-wrapper" [class.page-wrapper-rtl]="direction === 'rtl'" [dir]="direction">
         <app-header
+          *ngIf="page !=='demo'"
           [windowWidth]="windowWidth"
           [page]="page"
           [(language)]="language"
@@ -55,7 +56,7 @@
               [nzXl]="{ span: 19, offset: 5 }"
               [nzXXl]="{ span: 20, offset: 4 }"
             >
-              <nz-nav-bottom></nz-nav-bottom>
+              <nz-nav-bottom *ngIf="page !=='demo'"></nz-nav-bottom>
               <app-footer></app-footer>
             </div>
           </div>

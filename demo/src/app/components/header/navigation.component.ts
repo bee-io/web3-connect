@@ -10,6 +10,11 @@ import { ChangeDetectionStrategy, Component, EventEmitter, Input, OnInit, Output
         <span>Docs</span>
       </a>
     </li>
+    <li nz-menu-item [nzSelected]="page === 'demo'">
+      <a [routerLink]="['demo']">
+        <span>Demo</span>
+      </a>
+    </li>
 <!--    <li nz-menu-item [nzSelected]="page === 'examples'">-->
 <!--      <a [routerLink]="['examples']">-->
 <!--        <span>Examples</span>-->

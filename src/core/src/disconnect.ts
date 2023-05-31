@@ -1,11 +1,11 @@
 import { getBNMulitChainSdk } from './services'
-import { state } from './store/index'
 import { removeWallet } from './store/actions'
 import { disconnectWallet$ } from './streams'
 import type { DisconnectOptions, WalletState } from './types'
 import { validateDisconnectOptions } from './validation'
 import { delLocalStore, getLocalStore, setLocalStore } from './utils'
 import { STORAGE_KEYS } from './constants'
+import {state} from "./store";
 
 async function disconnect(options: DisconnectOptions): Promise<WalletState[]> {
   const error = validateDisconnectOptions(options)

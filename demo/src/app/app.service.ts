@@ -3,6 +3,8 @@ import { Injectable } from '@angular/core';
 import { Observable, of, ReplaySubject } from 'rxjs';
 import { tap } from "rxjs/operators";
 
+export type SiteTheme =  'dark' | 'light';
+
 export interface DemoCode {
   rawCode: string;
   highlightCode: string;
@@ -16,7 +18,7 @@ export class AppService {
   codeMap = new Map<string, DemoCode>();
 
   language$ = new ReplaySubject<string>(1);
-  theme$ = new ReplaySubject<string>(1);
+  theme$ = new ReplaySubject<SiteTheme>(1);
 
   constructor(private http: HttpClient) {}
 

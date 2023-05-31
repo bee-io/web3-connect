@@ -1,30 +1,26 @@
-import {Component} from '@angular/core';
-import {coinbaseModule, Init, injectedModule, trustModule, walletConnectModule, WalletState} from "@b-ee/web3-connect";
-import disconnect from "../../../../../src/core/src/disconnect";
+import {Component, OnInit} from '@angular/core';
+import {
+  coinbaseModule,
+  disconnect,
+  Init,
+  injectedModule, Theme,
+  trustModule,
+  walletConnectModule,
+  WalletState
+} from "@b-ee/web3-connect";
+import {AppService, SiteTheme} from "../../app.service";
+import {Destroyable} from "../../utils/destroyable.base";
+import {takeUntil} from "rxjs/operators";
 
 @Component({
   selector: 'app-connect-btn',
   templateUrl: './connect-btn.component.html',
   styleUrls: ['./connect-btn.component.scss']
 })
-export class ConnectBtnComponent {
+export class ConnectBtnComponent extends Destroyable implements OnInit{
   private injected = injectedModule();
   private trust = trustModule();
-  private walletConnect = walletConnectModule({
-    // connectFirstChainId: true,
-    version: 1,
-    // projectId: '82e1205a3a78d51b7c289cd068121f4b',
-    // qrcodeModalOptions: {
-    //   mobileLinks: [
-    //     'rainbow',
-    //     'metamask',
-    //     'argent',
-    //     'trust',
-    //     'imtoken',
-    //     'pillar'
-    //   ]
-    // }
-  });
+  private walletConnect = walletConnectModule({version: 1});
   private coinbase = coinbaseModule();
   public wallets: WalletState[] = [];
 
@@ -146,13 +142,24 @@ export class ConnectBtnComponent {
     // 'dark'	dark mode
     // 'light'	light mode
     // 'system'	automatically switch between 'dark' & 'light' based on the user's system settings
-    theme: 'dark'
   })
 
   public isLoading
 
-  constructor() {
+  constructor(public appService: AppService) {
+    super();
   }
+
+  ngOnInit(): void {
+    setTimeout(() => {
+      const theme = localStorage.getItem('site-theme') as SiteTheme
+      this.updateTheme(theme);
+    },1000);
+    this.appService.theme$.pipe(takeUntil(this.unsubscribe$)).subscribe((theme: SiteTheme) => {
+      this.updateTheme(theme);
+    })
+  }
+
   async connect(): Promise<void> {
     this.isLoading = true;
     this.wallets = await this.web3Connect.connectWallet();
@@ -162,6 +169,10 @@ export class ConnectBtnComponent {
   public disconnectAllWallets(): void {
     this.wallets.forEach(({ label }) => disconnect({ label }))
     this.wallets = [];
+  }
+
+  public updateTheme = (selectedTheme: SiteTheme) => {
+    this.web3Connect.state.actions.updateTheme(selectedTheme);
   }
 
 }

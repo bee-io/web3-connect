@@ -1,1 +1,39 @@
-<h1>Demo Component</h1>
+<button *ngIf="!wallets.length" [nzLoading]="isLoading" nz-button nzType="primary" [nzSize]="'default'" nzShape="round" (click)="connect()">
+  Connect
+</button>
+
+<button *ngIf="wallets.length" nz-button nzType="primary" [nzSize]="'default'" nzShape="round" (click)="disconnectAllWallets()">
+  Disconnect
+</button>
+
+<nz-divider nzText="Theme"></nz-divider>
+<div>
+  <nz-radio-group [(ngModel)]="appThemeValue" (ngModelChange)="updateTheme(appThemeValue)" nzButtonStyle="solid">
+    <label nz-radio-button nzValue="dark">Dark</label>
+    <label nz-radio-button nzValue="light">Light</label>
+    <label nz-radio-button nzValue="system">System</label>
+  </nz-radio-group>
+</div>
+<nz-divider nzText="Account Center Positioning"></nz-divider>
+<div>
+  <nz-radio-group [(ngModel)]="appPositionValue" (ngModelChange)="updatePosition(appPositionValue)" nzButtonStyle="solid">
+    <label nz-radio-button nzValue="topRight">Top Right</label>
+    <label nz-radio-button nzValue="topLeft">Top Left</label>
+    <label nz-radio-button nzValue="bottomRight">Bottom Right</label>
+    <label nz-radio-button nzValue="bottomLeft">Bottom Left</label>
+  </nz-radio-group>
+</div>
+
+
+
+
+<!--<button (click)="connect()">Connect Wallet</button><br>-->
+<!--<button (click)="sendTransactionWithPreFlight()">sendTransactionWithPreFlight</button><br>-->
+<!--<button (click)="pendingNotification('hint')">Send hint Notification</button> <br>-->
+<!--<button (click)="pendingNotification('pending')">Send Pending Notification</button><br>-->
+<!--<button (click)="pendingNotification('success')">Send success Notification</button><br>-->
+<!--<button (click)="pendingNotification('error')">Send error Notification</button><br>-->
+<!--<button (click)="dAppNotification()">Send dApp Notification</button><br>-->
+<!--<button (click)="testNotification()">Send test Notification</button><br>-->
+<!--<button (click)="setChain({ chainId: '0x1' })">Set Chain to Main</button>-->
+

@@ -1,21 +1,21 @@
 import { NgModule } from '@angular/core';
 import { RouterModule } from '@angular/router';
 import {ShareModule} from "../../../share/share.module";
-import {IntroductionComponent} from "./introduction.component";
+import {ThemingComponent} from "./theming.component";
 import {NzImageModule} from "ng-zorro-antd/image";
 
 @NgModule({
     imports: [
         ShareModule,
         RouterModule.forChild([
-            {path: '', component: IntroductionComponent},
+            {path: '', component: ThemingComponent},
         ]),
         NzImageModule
     ],
   declarations: [
-    IntroductionComponent,
+    ThemingComponent,
   ]
 })
-export class IntroductionModule {
+export class ThemingModule {
 
 }

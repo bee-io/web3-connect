@@ -1,0 +1,204 @@
+<article class="markdown">
+  <h1>
+    Theming
+    <a class="edit-button" aria-label="Edit this page on Github"
+       href="https://github.com/bee-io/web3-connect/edit/main/docs/theming.md" target="_blank"
+       rel="noopener noreferrer">
+      <span nz-icon nzType="edit"></span></a>
+  </h1>
+<!--  <nz-affix class="toc-affix" [nzOffsetTop]="16">-->
+<!--    <nz-anchor [nzAffix]="false" nzShowInkInFixed (nzClick)="goLink($event)">-->
+<!--      <nz-link nzHref="#features" nzTitle="Features"></nz-link>-->
+<!--      <nz-link nzHref="#supported-networks" nzTitle="Supported Networks"></nz-link>-->
+<!--      <nz-link nzHref="#version" nzTitle="Version"></nz-link>-->
+<!--      <nz-link nzHref="#angular-support" nzTitle="Angular Support"></nz-link>-->
+<!--      <nz-link nzHref="#quickstart" nzTitle="Quickstart"></nz-link>-->
+<!--      <nz-link nzHref="#wallet-modules" nzTitle="Wallet Modules"></nz-link>-->
+<!--      <nz-link nzHref="#test-demo" nzTitle="Test out the demo app"></nz-link>-->
+<!--      <nz-link nzHref="#angular-demo" nzTitle="Angular Demo"></nz-link>-->
+<!--      <nz-link nzHref="#contributing" nzTitle="Contributing"></nz-link>-->
+<!--      <nz-link nzHref="#need-help" nzTitle="Need Help?"></nz-link>-->
+<!--    </nz-anchor>-->
+<!--  </nz-affix>-->
+
+<!--  <section class="markdown">-->
+<!--    <p>Easy way to connect users to Decentralized Applications.</p>-->
+
+<!--    <ng-container *ngIf="this.appService.theme$ | async as theme">-->
+<!--      <img *ngIf="theme === 'light'" nz-image class="header-section-img" nzSrc="assets/images/app-group-dark.svg" alt="main-img" />-->
+<!--      <img *ngIf="theme === 'dark'" nz-image class="header-section-img" nzSrc="assets/images/app-group-light.svg" alt="main-img" />-->
+<!--    </ng-container>-->
+<!--&lt;!&ndash;    <div class="pic-plus">&ndash;&gt;-->
+<!--&lt;!&ndash;      <img alt="Web3-Connect" width="150" height="150"&ndash;&gt;-->
+<!--&lt;!&ndash;           [src]="(appService.theme$ | async) === 'dark' ? './assets/img/logo.svg': './assets/img/logo-black.svg'">&ndash;&gt;-->
+<!--&lt;!&ndash;      <span>+</span>&ndash;&gt;-->
+<!--&lt;!&ndash;      <img alt="Angular" width="140" height="150"&ndash;&gt;-->
+<!--&lt;!&ndash;           src="https://img.alicdn.com/tfs/TB1Z0PywTtYBeNjy1XdXXXXyVXa-186-200.svg">&ndash;&gt;-->
+<!--&lt;!&ndash;    </div>&ndash;&gt;-->
+<!--    <p>Web3-Connect provides a fast and simple solution for integrating multiple wallets and supporting various-->
+<!--      blockchain networks in your project. By incorporating pre-built components for over 35 different hardware and-->
+<!--      software wallets, Web3-Connect streamlines your development process and eliminates unnecessary difficulties.</p>-->
+
+<!--    <h2 id="features"><span>Features</span><a onclick="window.location.hash = 'features'" class="anchor">#</a></h2>-->
+<!--    <ul>-->
+<!--      <li><strong>Connection of Multiple Wallets and Accounts </strong>Enable your app users to link several wallets and-->
+<!--        multiple accounts inside each wallet simultaneously.-->
+<!--      </li>-->
+<!--      <li><strong>Support for Multiple Chains </strong>Enable users to easily switch between different networks and-->
+<!--        chains.-->
+<!--      </li>-->
+<!--      <li><strong>Wallet Management Center </strong>A persistent interface for managing wallet connections and networks,-->
+<!--        with a responsive version designed for mobile devices.-->
+<!--      </li>-->
+<!--      <li><strong>Real-time Notifications </strong>Receive immediate transaction notifications for all transaction-->
+<!--        states on the connected wallet addresses.-->
+<!--      </li>-->
+<!--      <li><strong>Standardization of Wallet Providers </strong> All wallet modules provide a provider that conforms to-->
+<!--        the specifications of-->
+<!--        <a href="https://eips.ethereum.org/EIPS/eip-1193" target="_blank" rel="noopener">EIP-1193 </a>,-->
+<!--        <a href="https://eips.ethereum.org/EIPS/eip-1102" target="_blank" rel="noopener">EIP-1102 </a>,-->
+<!--        <a href="https://eips.ethereum.org/EIPS/eip-3085" target="_blank" rel="noopener">EIP-3085 </a>-->
+<!--        and-->
+<!--        <a href="https://ethereum-magicians.org/t/eip-3326-wallet-switchethereumchain/5471" target="_blank"-->
+<!--           rel="noopener">EIP-3326</a>-->
+<!--        specifications.-->
+<!--      </li>-->
+<!--      <li><strong>Dynamic Loading </strong>To support multiple wallets in your app, you need many dependencies. Onboard-->
+<!--        loads a wallet and its dependencies dynamically only when the user selects it, resulting in minimal bandwidth-->
+<!--        usage.-->
+<!--      </li>-->
+<!--    </ul>-->
+
+<!--    <h2 id="supported-networks"><span>Supported Networks</span><a onclick="window.location.hash = 'supported-networks'"-->
+<!--                                                                  class="anchor">#</a></h2>-->
+<!--    <p>Web3-Connect is compatible with all networks built on the Ethereum Virtual Machine (EVM). Adding support for a-->
+<!--      new network is straightforward by including its specific information in the designated "Chains" section during the-->
+<!--      initialization process. Additional details on-->
+<!--      <a href="" target="_blank" rel="noopener">initialization options </a>can be found for further guidance.</p>-->
+<!--    <ul>-->
+<!--      <li>Ethereum</li>-->
+<!--      <li>Polygon</li>-->
+<!--      <li>Base Goerli</li>-->
+<!--      <li>Goerli</li>-->
+<!--      <li>Sepolia</li>-->
+<!--      <li>Arbitrum</li>-->
+<!--      <li>Optimism</li>-->
+<!--      <li>Avalanche</li>-->
+<!--      <li>BNB Chain</li>-->
+<!--      <li>Celo</li>-->
+<!--      <li>Fantom</li>-->
+<!--      <li>Gnosis Chain</li>-->
+<!--      <li>Harmony One</li>-->
+<!--      <li>Moonriver</li>-->
+<!--      <li>All other EVM network</li>-->
+<!--    </ul>-->
+
+<!--    <h2 id="version"><span>Version</span><a onclick="window.location.hash = 'version'" class="anchor">#</a></h2>-->
+<!--    <p>-->
+<!--      <a href="https://www.npmjs.com/package/@b-ee/web3-connect" target="_blank" rel="noopener">-->
+<!--        <img src="https://img.shields.io/npm/v/@b-ee/web3-connect" alt="npm package">-->
+<!--      </a>-->
+<!--    </p>-->
+
+<!--    <h2 id="angular-support"><span>Angular Support</span><a onclick="window.location.hash = 'angular-support'" class="anchor">#</a></h2>-->
+<!--    <p><code>@b-ee/web3-connect</code> keeps the same major version with <code>@angular/core</code>, now supports-->
+<!--      Angular <code>^15.0.0</code>.</p>-->
+
+
+<!--    <h2 id="quickstart"><span>Quickstart</span><a onclick="window.location.hash = 'quickstart'" class="anchor">#</a>-->
+<!--    </h2>-->
+<!--    <p>To enable browser extension and mobile wallet functionality, you can install the essential Web3-Connect library-->
+<!--      along with the injected wallets module. Additionally, also have included ethers.js for enhanced support in these-->
+<!--      scenarios.</p>-->
+<!--    <p><strong>We recommend using <code>@angular/cli</code> to install</strong>，it not only makes development easier，but-->
+<!--      also allow you to take advantage of the rich ecosystem of angular packages and tooling.</p>-->
+<!--    <app-highlight [appCode]="quickstartHTML" [appLanguage]="'language-bash'"></app-highlight>-->
+
+<!--    <blockquote>-->
+<!--      <p>More information about <code>@angular/cli</code> <a href="https://github.com/angular/angular-cli"-->
+<!--                                                             target="_blank" rel="noopener">here</a>.</p>-->
+<!--    </blockquote>-->
+<!--    <p>You can also install <code>@b-ee/web3-connect</code> with npm or yarn</p>-->
+<!--    <nz-tabset nzType="card">-->
+<!--      <nz-tab *ngFor="let tab of ['Npm', 'Yarn']" [nzTitle]="tab">-->
+<!--        <pre *ngIf="tab === 'Npm'" class="language-bash"><code>$ npm install @b-ee/web3-connect</code></pre>-->
+<!--        <pre *ngIf="tab === 'Yarn'" class="language-bash"><code>$ yarn add @b-ee/web3-connect</code></pre>-->
+<!--      </nz-tab>-->
+<!--    </nz-tabset>-->
+<!--    <p>Import the component modules you want to use into your <code>app.module.ts</code> file and <a-->
+<!--      href="https://angular.io/guide/feature-modules" target="_blank" rel="noopener">feature modules</a>.</p>-->
+<!--    <app-highlight [appCode]="importModuleHTML" [appLanguage]="'language-typescript'"></app-highlight>-->
+
+<!--    <p>Then initialize in your app:</p>-->
+<!--    <app-highlight [appCode]="initializeAppHTML" [appLanguage]="'language-typescript'"></app-highlight>-->
+
+
+
+<!--    <h2 id="wallet-modules"><span>Wallet Modules</span><a onclick="window.location.hash = 'wallet-modules'"-->
+<!--                                                          class="anchor">#</a></h2>-->
+<!--    <p>Enhance the capabilities and support of your web3-connect integration by incorporating additional wallet modules-->
+<!--      like Wallet Connect or Ledger. These modules expand the range of options and functionalities available to you. You-->
+<!--      can find a comprehensive list of all available modules on the web3-connect documentation website, accessible-->
+<!--      through the subpages on the left-hand side.</p>-->
+<!--    <p>We suggest incorporating the Injected Wallets module to establish connections with popular wallets such as-->
+<!--      Metamask, Trust, Coinbase Wallet, and others immediately. This module enables seamless integration with these-->
+<!--      wallets, allowing users to easily access their accounts and interact with your application.</p>-->
+
+<!--    <h3><a href="" target="_blank" rel="noopener">Injected Wallets</a></h3>-->
+<!--    <h3>SDK Wallets</h3>-->
+<!--    <ul>-->
+<!--      <li><a href="" target="_blank" rel="noopener">Coinbase</a></li>-->
+<!--      <li><a href="" target="_blank" rel="noopener">WalletConnect</a></li>-->
+<!--      <li><a href="" target="_blank" rel="noopener">Gnosis</a></li>-->
+<!--      <li><a href="" target="_blank" rel="noopener">Magic</a></li>-->
+<!--      <li><a href="" target="_blank" rel="noopener">Fortmatic</a></li>-->
+<!--      <li><a href="" target="_blank" rel="noopener">MEW</a></li>-->
+<!--      <li><a href="" target="_blank" rel="noopener">Portis</a></li>-->
+<!--      <li><a href="" target="_blank" rel="noopener">Web3Auth</a></li>-->
+<!--      <li><a href="" target="_blank" rel="noopener">Frame</a></li>-->
+<!--    </ul>-->
+<!--    <h3>Hardware Wallets</h3>-->
+<!--    <ul>-->
+<!--      <li><a href="" target="_blank" rel="noopener">Ledger</a></li>-->
+<!--      <li><a href="" target="_blank" rel="noopener">Trezor</a></li>-->
+<!--      <li><a href="" target="_blank" rel="noopener">Keystone</a></li>-->
+<!--      <li><a href="" target="_blank" rel="noopener">KeepKey</a></li>-->
+<!--      <li><a href="" target="_blank" rel="noopener">D'cent</a></li>-->
+<!--    </ul>-->
+
+<!--    <h2 id="test-demo"><span>Test out the demo app</span><a onclick="window.location.hash = 'test-demo'" class="anchor">#</a>-->
+<!--    </h2>-->
+<!--    <p>Test out the current functionality of web3-connect in a small browser demo:</p>-->
+<!--&lt;!&ndash;    <div [innerHTML]="testOutHTML"></div>&ndash;&gt;-->
+<!--    <app-highlight [appCode]="testOutHTML" [appLanguage]="'language-bash'"></app-highlight>-->
+<!--    <blockquote>-->
+<!--      <p>Browser would open automatically. Or <a href="http://localhost:4200/" target="_blank" rel="noopener"> click-->
+<!--        hire</a>.</p>-->
+<!--    </blockquote>-->
+
+<!--    <h2 id="angular-demo"><span>Angular Demo</span><a onclick="window.location.hash = 'angular-demo'" class="anchor">#</a></h2>-->
+<!--    <p> Checkout our live demo using Angular <a href="" target="_blank" rel="noopener"> click hire</a></p>-->
+<!--    <p> The demo is open source so you can see a sample implementation of web3-connect:-->
+<!--      <a href="https://github.com/bee-io/web3-connect" target="_blank" rel="noopener">https://github.com/bee-io/web3-connect</a>-->
+<!--    </p>-->
+
+<!--    <h2 id="contributing"><span>Contributing</span><a onclick="window.location.hash = 'contributing'"-->
+<!--                                                      class="anchor">#</a></h2>-->
+<!--    <p>If you&#39;d like to help us improve web3-connect, just create a <a-->
+<!--      href="https://github.com/bee-io/web3-connect/pulls" target="_blank" rel="noopener">Pull Request</a>. Feel free to-->
+<!--      report bugs and issues <a href="https://github.com/bee-io/web3-connect/issues" target="_blank" rel="noopener">here</a>.</p>-->
+<!--    <blockquote>-->
+<!--      <p>If you&#39;re new to posting issues, we ask that you read <a-->
+<!--        href="https://www.catb.org/~esr/faqs/smart-questions.html" target="_blank" rel="noopener"><em>How To Ask-->
+<!--        Questions The Smart Way</em></a>(This guide does not provide actual support services for this project!) and <a-->
+<!--        href="https://github.com/seajs/seajs/issues/545" target="_blank" rel="noopener">How to Ask a Question in Open-->
+<!--        Source Community</a> and <a href="https://www.chiark.greenend.org.uk/~sgtatham/bugs.html" target="_blank"-->
+<!--                                    rel="noopener">How to Report Bugs Effectively</a> prior to posting. Well written bug-->
+<!--        reports help us help you!</p>-->
+<!--    </blockquote>-->
+
+<!--    <h2 id="need-help"><span>Need Help?</span><a onclick="window.location.hash = 'need-help'" class="anchor">#</a></h2>-->
+<!--    <p>As always, we encourage experienced users to help those who are not familiar with <code>web3-connect</code>-->
+<!--      <a href="https://b-ee.io/" target="_blank" rel="noopener">Contact us</a>!</p>-->
+<!--  </section>-->
+</article>

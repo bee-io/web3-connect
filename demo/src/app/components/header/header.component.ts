@@ -6,8 +6,7 @@ import {
   Output,
   SimpleChanges
 } from '@angular/core';
-import {AppService} from "../../app.service";
-import {SiteTheme} from "../../app.component";
+import {AppService, SiteTheme} from "../../app.service";
 
 const RESPONSIVE_XS = 1120;
 const RESPONSIVE_SM = 1200;
@@ -101,7 +100,7 @@ export class HeaderComponent implements OnChanges {
   @Input() language: 'ukr' | 'en' = 'en';
   @Input() windowWidth = 1400;
   @Input() page: 'docs' | 'components' | 'experimental' | string = 'docs';
-  @Output() themeChange = new EventEmitter<string>();
+  @Output() themeChange = new EventEmitter<SiteTheme>();
   @Output() languageChange = new EventEmitter<'ukr' | 'en'>();
 
   searching = false;

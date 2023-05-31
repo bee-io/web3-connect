@@ -23,13 +23,18 @@
 
   <section class="markdown">
     <p>Easy way to connect users to Decentralized Applications.</p>
-    <div class="pic-plus">
-      <img alt="Web3-Connect" width="150" height="150"
-           [src]="(appService.theme$ | async) === 'dark' ? './assets/img/logo.svg': './assets/img/logo-black.svg'">
-      <span>+</span>
-      <img alt="Angular" width="140" height="150"
-           src="https://img.alicdn.com/tfs/TB1Z0PywTtYBeNjy1XdXXXXyVXa-186-200.svg">
-    </div>
+
+    <ng-container *ngIf="this.appService.theme$ | async as theme">
+      <img *ngIf="theme === 'light'" nz-image class="header-section-img" nzSrc="assets/images/app-group-dark.svg" alt="main-img" />
+      <img *ngIf="theme === 'dark'" nz-image class="header-section-img" nzSrc="assets/images/app-group-light.svg" alt="main-img" />
+    </ng-container>
+<!--    <div class="pic-plus">-->
+<!--      <img alt="Web3-Connect" width="150" height="150"-->
+<!--           [src]="(appService.theme$ | async) === 'dark' ? './assets/img/logo.svg': './assets/img/logo-black.svg'">-->
+<!--      <span>+</span>-->
+<!--      <img alt="Angular" width="140" height="150"-->
+<!--           src="https://img.alicdn.com/tfs/TB1Z0PywTtYBeNjy1XdXXXXyVXa-186-200.svg">-->
+<!--    </div>-->
     <p>Web3-Connect provides a fast and simple solution for integrating multiple wallets and supporting various
       blockchain networks in your project. By incorporating pre-built components for over 35 different hardware and
       software wallets, Web3-Connect streamlines your development process and eliminates unnecessary difficulties.</p>
@@ -111,7 +116,7 @@
 
     <blockquote>
       <p>More information about <code>@angular/cli</code> <a href="https://github.com/angular/angular-cli"
-                                                             target="_blank" rel="noopener">here</a>.</p>
+                                                             target="_blank" rel="noopener"> here</a>.</p>
     </blockquote>
     <p>You can also install <code>@b-ee/web3-connect</code> with npm or yarn</p>
     <nz-tabset nzType="card">

@@ -77,7 +77,7 @@ export interface InitOptions {
 
 export type Theme = ThemingMap | BuiltInThemes | 'system'
 
-export type BuiltInThemes = 'default' | 'dark' | 'light'
+export type BuiltInThemes = 'dark' | 'light'
 
 export type ThemingMap = {
   '--b-ee-background-color'?: string

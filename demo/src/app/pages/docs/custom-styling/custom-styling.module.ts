@@ -1,21 +1,21 @@
 import { NgModule } from '@angular/core';
 import { RouterModule } from '@angular/router';
 import {ShareModule} from "../../../share/share.module";
-import {IntroductionComponent} from "./introduction.component";
+import {CustomStylingComponent} from "./custom-styling.component";
 import {NzImageModule} from "ng-zorro-antd/image";
 
 @NgModule({
     imports: [
         ShareModule,
         RouterModule.forChild([
-            {path: '', component: IntroductionComponent},
+            {path: '', component: CustomStylingComponent},
         ]),
         NzImageModule
     ],
   declarations: [
-    IntroductionComponent,
+    CustomStylingComponent,
   ]
 })
-export class IntroductionModule {
+export class CustomStylingModule {
 
 }

@@ -4,7 +4,7 @@ import {
   Input,
   Output
 } from '@angular/core';
-import {SiteTheme} from "../../app.component";
+import {SiteTheme} from "../../app.service";
 
 @Component({
   selector: 'app-change-theme',
@@ -52,7 +52,7 @@ import {SiteTheme} from "../../app.component";
 export class ChangeThemeComponent {
 
   @Input() theme: SiteTheme;
-  @Output() readonly themeChange = new EventEmitter<string>();
+  @Output() readonly themeChange = new EventEmitter<SiteTheme>();
   constructor() {}
 
   public onThemeChange(theme: SiteTheme): void {

@@ -1,4 +1,8 @@
+import disconnect from './core/src/disconnect';
+
+
 export * from './core/src/views/web3-connect.module';
 export * from './wallets';
-export * from './core/src';
 export * from './gas';
+export * from './core/src';
+export {disconnect}

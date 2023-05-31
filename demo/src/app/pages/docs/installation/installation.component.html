@@ -1,0 +1,50 @@
+<article class="markdown">
+  <h1>
+    Installation
+    <a class="edit-button" aria-label="Edit this page on Github"
+       href="https://github.com/bee-io/web3-connect/edit/main/docs/installation.md" target="_blank"
+       rel="noopener noreferrer">
+      <span nz-icon nzType="edit"></span></a>
+  </h1>
+  <nz-affix class="toc-affix" [nzOffsetTop]="16">
+    <nz-anchor [nzAffix]="false" nzShowInkInFixed (nzClick)="goLink($event)">
+      <nz-link nzHref="#install" nzTitle="Install"></nz-link>
+      <nz-link nzHref="#import" nzTitle="Import"></nz-link>
+      <nz-link nzHref="#configure" nzTitle="Configure"></nz-link>
+    </nz-anchor>
+  </nz-affix>
+
+  <section class="markdown">
+    <p>Get up and running with Web3-Connect</p>
+    <h2 id="install"><span>Install</span><a onclick="window.location.hash = 'install'" class="anchor">#</a></h2>
+    <p><strong>We recommend using <code>@angular/cli</code> to install</strong>，it not only makes development easier，but
+    also allow you to take advantage of the rich ecosystem of angular packages and tooling.</p>
+    <app-highlight [appCode]="installHTML" [appLanguage]="'language-bash'"></app-highlight>
+    <blockquote>
+      <p>More information about <code>@angular/cli</code> <a href="https://github.com/angular/angular-cli" target="_blank" rel="noopener"> here</a>.</p>
+    </blockquote>
+    <p>You can also install <code>@b-ee/web3-connect</code> with npm or yarn</p>
+    <nz-tabset nzType="card">
+      <nz-tab *ngFor="let tab of ['Npm', 'Yarn']" [nzTitle]="tab">
+        <pre *ngIf="tab === 'Npm'" class="language-bash"><code>$ npm install @b-ee/web3-connect</code></pre>
+        <pre *ngIf="tab === 'Yarn'" class="language-bash"><code>$ yarn add @b-ee/web3-connect</code></pre>
+      </nz-tab>
+    </nz-tabset>
+    <h2 id="import"><span>Import</span><a onclick="window.location.hash = 'import'" class="anchor">#</a></h2>
+    <p>Import the component modules you want to use into your <code>app.module.ts</code> file and <a
+      href="https://angular.io/guide/feature-modules" target="_blank" rel="noopener">feature modules</a>.</p>
+    <app-highlight [appCode]="importModuleHTML" [appLanguage]="'language-typescript'"></app-highlight>
+    <h2 id="configure"><span>Configure</span><a onclick="window.location.hash = 'configure'" class="anchor">#</a>
+    </h2>
+    <h3>Wallets</h3>
+    <app-highlight [appCode]="configureWalletsHTML" [appLanguage]="'language-typescript'"></app-highlight>
+    <h3>Chains</h3>
+    <p>Select the chains that you'd like your dApp to support:</p>
+    <app-highlight [appCode]="configureChainsHTML" [appLanguage]="'language-typescript'"></app-highlight>
+   <h3>App Metadata (Optional)</h3>
+    <p>You can add metadata about your dApp. A full definition of appMetaData options can be found <a href="">here</a></p>
+    <app-highlight [appCode]="configureAppMetadataHTML" [appLanguage]="'language-typescript'"></app-highlight>
+   <h3>Initialize Web3-Connect Init</h3>
+    <app-highlight [appCode]="InitializeHTML" [appLanguage]="'language-typescript'"></app-highlight>
+  </section>
+</article>

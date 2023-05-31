@@ -1,7 +1,6 @@
 import { firstValueFrom } from 'rxjs'
 import { filter, withLatestFrom, pluck } from 'rxjs/operators'
 import { configuration } from './configuration'
-import { state } from './store/index'
 import { setWalletModules } from './store/actions'
 import { connectWallet$, wallets$ } from './streams'
 import type {
@@ -11,7 +10,7 @@ import type {
 } from './types'
 import { wait } from './utils'
 import { validateConnectOptions } from './validation'
-import console from "console";
+import {state} from "./store";
 
 async function connect(
   options?: ConnectOptions | ConnectOptionsString

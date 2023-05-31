@@ -6,11 +6,10 @@ import {Platform} from "@angular/cdk/platform";
 import {NzMessageRef, NzMessageService} from "ng-zorro-antd/message";
 import {NzI18nService} from "ng-zorro-antd/i18n";
 import {NavigationEnd, Router} from "@angular/router";
-import {AppService} from "./app.service";
+import {AppService, SiteTheme} from "./app.service";
 import {debounceTime, fromEvent} from "rxjs";
 import {environment} from "../environments/environment";
 
-export type SiteTheme =  'dark' | 'light';
 const defaultKeywords: string = 'Angular, Ethereum Web3, EVM, dApp, MultiChain, Wallet, Transaction, Provider, Hardware Wallet, Notifications, MetaMask, Coinbase, WalletConnect, Trezor, Connect Wallet, Injected Wallet, Crypto, Crypto Wallet';
 
 
@@ -40,7 +39,7 @@ export class AppComponent {
     this.theme = (localStorage.getItem('site-theme') as SiteTheme) || 'dark';
     this.onThemeChange(this.theme, false);
   }
- public onThemeChange(theme: string, notification: boolean = true): void {
+ public onThemeChange(theme: SiteTheme, notification: boolean = true): void {
     if (!this.platform.isBrowser) {
       return;
     }
@@ -69,7 +68,6 @@ export class AppComponent {
         this.nzMessageService.success('Switching theme successfully');
       }
     };
-    if (theme !== 'default') {
       const style = document.createElement('link');
       style.type = 'text/css';
       style.rel = 'stylesheet';
@@ -85,9 +83,7 @@ export class AppComponent {
         this.nzMessageService.error('Switching theme failed');
         document.getElementById(style.id)?.remove();
       };
-    } else {
-      successLoaded();
-    }
+
   }
 
 
