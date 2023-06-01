@@ -65,6 +65,7 @@ import {
   UPDATE_CHAINS
 } from './constants'
 import {nanoid} from "nanoid";
+import {Locale} from "../types";
 
 export function addChains(chains: Chain[]): void {
   // chains are validated on init
@@ -371,7 +372,7 @@ export function setWalletModules(wallets: WalletInit[]): void {
   dispatch(action as SetWalletModulesAction)
 }
 
-export function setLocale(locale: string): void {
+export function setLocale(locale: Locale): void {
   const error = validateLocale(locale)
 
   if (error) {

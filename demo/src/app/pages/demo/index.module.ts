@@ -6,6 +6,9 @@ import {NzButtonModule} from "ng-zorro-antd/button";
 import {NzWaveModule} from "ng-zorro-antd/core/wave";
 import {NzRadioModule} from "ng-zorro-antd/radio";
 import {NzDividerModule} from "ng-zorro-antd/divider";
+import {NzPageHeaderModule} from "ng-zorro-antd/page-header";
+import {NzFormModule} from "ng-zorro-antd/form";
+import {NzSelectModule} from "ng-zorro-antd/select";
 
 @NgModule({
   imports: [
@@ -16,6 +19,9 @@ import {NzDividerModule} from "ng-zorro-antd/divider";
     NzButtonModule,
     NzRadioModule,
     NzDividerModule,
+    NzPageHeaderModule,
+    NzFormModule,
+    NzSelectModule,
     NzWaveModule
   ],
   declarations:[

@@ -48,6 +48,12 @@
 
 .spinner-brand { position: absolute; left: 50%; top: 50%; transform: translate(-50%, -50%); width: 100px; }
 
+[data-theme="dark"] {
+  .preloader:before, .preloader:after { position: absolute; left: 0; height: 51%; width: 100%; transition: all 0.4s ease; background: #1A1D26; content: ''; }
+}
+
+
+
 @keyframes spin { 0% { -webkit-transform: rotate(0deg);
   -ms-transform: rotate(0deg);
   transform: rotate(0deg); }

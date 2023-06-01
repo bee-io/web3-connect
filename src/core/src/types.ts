@@ -29,7 +29,7 @@ export interface InitOptions {
   /**
    * Define custom copy for the 'en' locale
    */
-  locale?: string
+  locale?: Locale
   /**
    * Customize the connect modal
    */
@@ -78,6 +78,8 @@ export interface InitOptions {
 export type Theme = ThemingMap | BuiltInThemes | 'system'
 
 export type BuiltInThemes = 'dark' | 'light'
+
+export type Locale = 'en' |'ua'
 
 export type ThemingMap = {
   '--b-ee-background-color'?: string
@@ -176,10 +178,6 @@ export type Configuration = {
   apiKey?: string
   gas?: typeof gas
 }
-
-export type Locale = string
-// export type i18nOptions = Record<Locale, i18n>
-// export type i18n = typeof en
 
 export type ConnectModalOptions = {
   /**

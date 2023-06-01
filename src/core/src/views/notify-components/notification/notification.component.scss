@@ -1,11 +1,9 @@
 @import '../../../../../assets/styles/variables.scss';
 
 .bn-notify-notification {
-  --backround-color: var(--notify-b-ee-background, var(--be-e-backround-color, var(--gray-700)));
-  --foreground-color: var(--be-e-foreground-color, var(--gray-600));
-  --text-color: var(--be-e-text-color, #FFF);
-  --border-color: var(--be-e-border-color);
-
+  --backround-color: var(--account-center-minimized-background, var(--b-ee-background-color, white));
+  --text-color:  var(--b-ee-text-color, var(--gray-700));
+  --border-color: var(--b-ee-border-color, var(--b-ee-border-color, var(--b-ee-gray-200, var(--gray-200))));
   font-family: inherit;
   transition: background 300ms ease-in-out, color 300ms ease-in-out;
   pointer-events: all;
@@ -16,12 +14,12 @@
   flex-direction: column;
   position: relative;
   overflow: hidden;
-  border: 1px solid transparent;
+  border: 1px solid var(--border-color);
   border-radius: var(
       --notify-b-ee-border-radius,
       var(--border-radius-3, var(--border-radius-3))
   );
-  background: var(--foreground-color);
+  background: var(--backround-color);
   color: var(--text-color);
 }
 

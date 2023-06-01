@@ -58,8 +58,8 @@ import { ChangeDetectionStrategy, Component, EventEmitter, Input, OnInit, Output
   encapsulation: ViewEncapsulation.None
 })
 export class NavigationComponent implements OnInit {
-  @Input() language: 'ukr' | 'en' = 'en';
-  @Output() languageChange = new EventEmitter<'ukr' | 'en'>();
+  @Input() language: 'ua' | 'en' = 'en';
+  @Output() languageChange = new EventEmitter<'ua' | 'en'>();
   @Input() responsive: null | 'narrow' | 'crowded' = null;
   @Input() page: 'docs' | 'components' | 'experimental' | string = 'home';
   @Input() isMobile = false;
@@ -70,7 +70,7 @@ export class NavigationComponent implements OnInit {
 
   }
 
-  changeLanguage(language: 'ukr' | 'en', e: MouseEvent): void {
+  changeLanguage(language: 'ua' | 'en', e: MouseEvent): void {
     e.preventDefault();
     this.languageChange.emit(language);
   }

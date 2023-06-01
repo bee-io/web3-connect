@@ -64,7 +64,9 @@ export type {
   Notify,
   UpdateNotification,
   PreflightNotificationsOptions,
-  Theme
+  Theme,
+  AccountCenterPosition,
+  Locale,
 } from './types'
 
 export type { EIP1193Provider } from '../../common'

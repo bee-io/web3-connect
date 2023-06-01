@@ -325,8 +325,6 @@ a {
 
 
 .powered-by-container {
-  //position: sticky;
-  //bottom: 0;
   height: 40px;
   width: 100%;
   background: var(--background-color);
@@ -336,15 +334,10 @@ a {
 
 @media (max-width: 740px) {
   .web3-connect-menu{
-    height: 100%;
-    bottom: -1400px;
-    top: auto;
     width: 100%;
     left:0;
     margin: 0;
-    //border-radius: 10px 10px 0 0;
     border-radius: 0;
-    transition: bottom 0.3s;
   }
 
   .web3-connect-menu-box{
@@ -367,17 +360,23 @@ a {
   .web3-connect-menu__close{
     display: none;
   }
-  .topRight-active, .bottomRight-active{
+
+  .bottomRight-active, .bottomLeft-active{
     bottom: 0!important;
-    //svg{
-    //  transform: rotate(90deg) !important;
-    //}
   }
-  .topLeft-active, .bottomLeft-active{
-    bottom: 0!important;
-    //svg{
-    //  transform: rotate(90deg) !important;
-    //}
+
+  .topRight-active, .topLeft-active{
+    top: 0!important;
+  }
+
+
+  .topLeft, .topRight{
+    transition: top 0.3s;
+    top: -1400px;
+  }
+  .bottomLeft, .bottomRight{
+    bottom: -1400px;
+    transition: bottom 0.3s;
   }
 
 }

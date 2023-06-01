@@ -97,11 +97,11 @@ const RESPONSIVE_SM = 1200;
 })
 export class HeaderComponent implements OnChanges {
   @Input() theme: SiteTheme;
-  @Input() language: 'ukr' | 'en' = 'en';
+  @Input() language: 'ua' | 'en' = 'en';
   @Input() windowWidth = 1400;
   @Input() page: 'docs' | 'components' | 'experimental' | string = 'docs';
   @Output() themeChange = new EventEmitter<SiteTheme>();
-  @Output() languageChange = new EventEmitter<'ukr' | 'en'>();
+  @Output() languageChange = new EventEmitter<'ua' | 'en'>();
 
   searching = false;
   isMobile = false;
@@ -115,7 +115,7 @@ export class HeaderComponent implements OnChanges {
     this.searching = focus;
   }
 
-  onChangeLanguage(language: 'en' | 'ukr'): void {
+  onChangeLanguage(language: 'en' | 'ua'): void {
     this.languageChange.emit(language);
   }
 

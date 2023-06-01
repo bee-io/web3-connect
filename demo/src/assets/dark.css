@@ -33626,3 +33626,66 @@ label.api-type-label.service {
 }
 
 
+
+/*Demo page*/
+.demo-page{
+  height: calc(100vh - 140px);
+  width: 100%;
+  overflow-y: auto;
+}
+
+
+.card-demo{
+  background: #242835;
+  padding: 25px;
+  margin: 25px;
+  border-radius: 10px;
+}
+
+
+
+.card-connect{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.card-transaction{
+  /*display: flex;*/
+  /*justify-content: center;*/
+  /*align-items: center*/
+}
+
+.card-settings{
+
+}
+
+.card-notification{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+.card-notification button {
+  width: 100%;
+  margin: 5px 0;
+}
+
+.card-transaction-title{
+  text-align: left;
+  margin-bottom: 10px;
+  color: #262626;
+  font-size: 15px;
+  font-family: monospace;
+}
+
+.card-transaction-input {
+  border: solid 1px #484a52;
+  height: 32px;
+  padding-left: 10px;
+  padding-right: 10px;
+  width: 100%;
+  background: #242835;
+}
+

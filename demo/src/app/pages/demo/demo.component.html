@@ -1,39 +1,119 @@
-<button *ngIf="!wallets.length" [nzLoading]="isLoading" nz-button nzType="primary" [nzSize]="'default'" nzShape="round" (click)="connect()">
-  Connect
-</button>
+<nz-page-header
+  class="site-page-header"
+  (nzBack)="backToDocs()"
+  nzBackIcon
+  nzTitle="Back To Docs"
+>
+</nz-page-header>
 
-<button *ngIf="wallets.length" nz-button nzType="primary" [nzSize]="'default'" nzShape="round" (click)="disconnectAllWallets()">
-  Disconnect
-</button>
+<div class="demo-page">
+  <div nz-row>
+    <div nz-col class="gutter-row" [nzXs]="24" [nzSm]="12" [nzMd]="12" [nzLg]="12" [nzXl]="12" [nzXXl]="12">
+      <div>
+        <nz-divider nzOrientation="left" nzText="Connect Users with Web3-Connect"></nz-divider>
+        <div class="card-demo card-connect">
+          <button *ngIf="!wallets.length" [nzLoading]="isLoading" nz-button nzType="primary" [nzSize]="'default'" nzShape="round" (click)="connect()">
+            Select a Wallet
+          </button>
+          <button *ngIf="wallets.length" nz-button nzType="primary" [nzSize]="'default'" nzShape="round" (click)="disconnectAllWallets()">
+            Disconnect
+          </button>
+        </div>
+      </div>
+      <div>
+        <nz-divider nzOrientation="left" nzText="Transaction Notifications with Notify"></nz-divider>
+          <div class="card-demo card-transaction">
+            <form nz-form [formGroup]="transactionForm" (ngSubmit)="sendTransaction()">
+              <h3 class="card-transaction-title">Send 0.0001 Test Eth To:</h3>
+              <div class="flex">
+                <nz-form-item style="width: 40%">
+                  <nz-form-control nzErrorTip="Please select your network!">
+                    <nz-select
+                      id="network"
+                      (ngModelChange)="networkChange($event)"
+                      nzPlaceHolder="Select Network"
+                      formControlName="network">
+                      <nz-option nzValue="0x38" nzLabel="Binance"></nz-option>
+                      <nz-option nzValue="0x1" nzLabel="Ethereum"></nz-option>
+                      <nz-option nzValue="0x5" nzLabel="Goerli"></nz-option>
+                    </nz-select>
+                  </nz-form-control>
+                </nz-form-item>
 
-<nz-divider nzText="Theme"></nz-divider>
-<div>
-  <nz-radio-group [(ngModel)]="appThemeValue" (ngModelChange)="updateTheme(appThemeValue)" nzButtonStyle="solid">
-    <label nz-radio-button nzValue="dark">Dark</label>
-    <label nz-radio-button nzValue="light">Light</label>
-    <label nz-radio-button nzValue="system">System</label>
-  </nz-radio-group>
+                <nz-form-item style="width: 60%">
+                  <nz-form-control  nzErrorTip="Please enter address!">
+                    <input class="card-transaction-input" id="address" type="text" nz-input formControlName="address" placeholder="address" />
+                  </nz-form-control>
+                </nz-form-item>
+              </div>
+              <nz-form-item>
+                <nz-form-control>
+                  <button style="margin-top: 10px; width: 100%;" nz-button nzType="primary" nzShape="round">Send</button>
+                </nz-form-control>
+              </nz-form-item>
+            </form>
+          </div>
+      </div>
+    </div>
+
+    <div nz-col class="gutter-row" [nzXs]="24" [nzSm]="12" [nzMd]="12" [nzLg]="12" [nzXl]="12" [nzXXl]="12">
+      <div>
+        <nz-divider nzOrientation="left"  nzText="Language"></nz-divider>
+        <div class="card-demo card-settings">
+          <nz-radio-group [(ngModel)]="appLocaleValue" (ngModelChange)="updateLanguage(appLocaleValue)" nzButtonStyle="solid">
+            <label nz-radio-button nzValue="en">English</label>
+            <label nz-radio-button nzValue="ua">Ukrainian</label>
+          </nz-radio-group>
+        </div>
+      </div>
+      <div>
+        <nz-divider nzOrientation="left"  nzText="Theme"></nz-divider>
+        <div class="card-demo card-settings">
+          <nz-radio-group [(ngModel)]="appThemeValue" (ngModelChange)="updateTheme(appThemeValue)" nzButtonStyle="solid">
+            <label nz-radio-button nzValue="light">Light</label>
+            <label nz-radio-button nzValue="dark">Dark</label>
+            <label nz-radio-button nzValue="system">System</label>
+          </nz-radio-group>
+        </div>
+      </div>
+      <div>
+        <nz-divider nzOrientation="left" nzText="Account Center Positioning"></nz-divider>
+        <div class="card-demo card-settings">
+          <nz-radio-group [(ngModel)]="appPositionValue" (ngModelChange)="updatePosition(appPositionValue)" nzButtonStyle="solid">
+            <label nz-radio-button nzValue="topRight">Top Right</label>
+            <label nz-radio-button nzValue="topLeft">Top Left</label>
+            <label nz-radio-button nzValue="bottomRight">Bottom Right</label>
+            <label nz-radio-button nzValue="bottomLeft">Bottom Left</label>
+          </nz-radio-group>
+        </div>
+      </div>
+      <div *ngIf="selectedWallet">
+        <nz-divider nzOrientation="left" nzText="Account Center Notification"></nz-divider>
+        <div class="card-demo card-notification">
+          <button nz-button nzType="primary" [nzSize]="'default'" nzShape="round" (click)="sendNotification('hint')">
+            Send Hint Notification
+          </button>
+          <button  nz-button nzType="primary" [nzSize]="'default'" nzShape="round" (click)="sendNotification('pending')">
+            Send Pending Notification
+          </button>
+          <button  nz-button nzType="primary" [nzSize]="'default'" nzShape="round" (click)="sendNotification('success')">
+            Send Success Notification
+          </button>
+          <button  nz-button nzType="primary" [nzSize]="'default'" nzShape="round" (click)="sendNotification('error')">
+            Send Error Notification
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+
 </div>
-<nz-divider nzText="Account Center Positioning"></nz-divider>
-<div>
-  <nz-radio-group [(ngModel)]="appPositionValue" (ngModelChange)="updatePosition(appPositionValue)" nzButtonStyle="solid">
-    <label nz-radio-button nzValue="topRight">Top Right</label>
-    <label nz-radio-button nzValue="topLeft">Top Left</label>
-    <label nz-radio-button nzValue="bottomRight">Bottom Right</label>
-    <label nz-radio-button nzValue="bottomLeft">Bottom Left</label>
-  </nz-radio-group>
-</div>
 
 
 
 
-<!--<button (click)="connect()">Connect Wallet</button><br>-->
-<!--<button (click)="sendTransactionWithPreFlight()">sendTransactionWithPreFlight</button><br>-->
-<!--<button (click)="pendingNotification('hint')">Send hint Notification</button> <br>-->
-<!--<button (click)="pendingNotification('pending')">Send Pending Notification</button><br>-->
-<!--<button (click)="pendingNotification('success')">Send success Notification</button><br>-->
-<!--<button (click)="pendingNotification('error')">Send error Notification</button><br>-->
-<!--<button (click)="dAppNotification()">Send dApp Notification</button><br>-->
-<!--<button (click)="testNotification()">Send test Notification</button><br>-->
-<!--<button (click)="setChain({ chainId: '0x1' })">Set Chain to Main</button>-->
+
+
+
+
 

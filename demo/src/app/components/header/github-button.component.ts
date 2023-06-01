@@ -1,6 +1,6 @@
 import { Platform } from '@angular/cdk/platform';
 import { HttpClient } from '@angular/common/http';
-import { ChangeDetectionStrategy, ChangeDetectorRef, Component, Input, OnInit, ViewEncapsulation } from '@angular/core';
+import { ChangeDetectorRef, Component, Input, OnInit, ViewEncapsulation } from '@angular/core';
 
 @Component({
   selector: 'web3-connect-github-btn',
@@ -10,14 +10,14 @@ import { ChangeDetectionStrategy, ChangeDetectorRef, Component, Input, OnInit, V
       <span class="gh-ico" aria-hidden="true"></span>
       <span class="gh-text">Star</span>
     </a>
-    <a
-      class="gh-count"
-      target="_blank"
-      rel="noopener"
-      [href]="'https://github.com/' + org + '/' + repo + '/stargazers'"
-    >
-      {{ starCount }}
-    </a>
+<!--    <a-->
+<!--      class="gh-count"-->
+<!--      target="_blank"-->
+<!--      rel="noopener"-->
+<!--      [href]="'https://github.com/' + org + '/' + repo + '/stargazers'"-->
+<!--    >-->
+<!--      {{ starCount }}-->
+<!--    </a>-->
   `,
   host: {
     id: 'github-btn',
@@ -40,7 +40,7 @@ export class GithubButtonComponent implements OnInit {
     if (!this.platform.isBrowser) {
       return;
     }
-    this.getStar();
+    // this.getStar();
   }
 
   public getStar(): void {

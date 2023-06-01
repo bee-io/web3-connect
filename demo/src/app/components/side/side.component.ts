@@ -18,5 +18,5 @@ export class SideComponent {
   @Input() direction: 'ltr' | 'rtl' = 'ltr';
   @Input() page: 'docs' | 'components' | 'experimental' | string = 'docs';
   @Input() routerList: RouterList = {} as RouterList;
-  @Input() language: 'ukr' | 'en' = 'en';
+  @Input() language: 'ua' | 'en' = 'en';
 }

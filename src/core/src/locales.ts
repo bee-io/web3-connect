@@ -107,7 +107,7 @@ export type Translation = {
     }
   }
 }
-export const beeWeb3ConnectLocales:{en:Translation, ukr:Translation} = {
+export const beeWeb3ConnectLocales:{en:Translation, ua:Translation} = {
   en:{
     connect: {
       selectingWallet: {
@@ -215,7 +215,7 @@ export const beeWeb3ConnectLocales:{en:Translation, ukr:Translation} = {
       }
     }
   },
-  ukr: {
+  ua: {
     connect: {
       selectingWallet: {
         header: "Доступні гаманці",

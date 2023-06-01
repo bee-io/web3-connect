@@ -40,7 +40,7 @@ declare const docsearch: any;
 })
 export class SearchbarComponent implements OnChanges {
   @ViewChild('searchInput') searchInput!: ElementRef<HTMLInputElement>;
-  @Input() language: 'ukr' | 'en' = 'en';
+  @Input() language: 'ua' | 'en' = 'en';
   @Input() responsive: null | 'narrow' | 'crowded' = null;
   @Output() focusChange = new EventEmitter<boolean>();
 

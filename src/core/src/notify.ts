@@ -126,13 +126,15 @@ export function transactionEventToNotification(
 }
 
 export function eventToType(eventCode: string | undefined): NotificationType {
+
+  console.log('eventCode', eventCode)
   switch (eventCode) {
     case 'txSent':
     case 'txPool':
+    case 'txRequest':
       return 'pending'
     case 'txSpeedUp':
     case 'txCancel':
-    case 'txRequest':
     case 'txRepeat':
     case 'txAwaitingApproval':
     case 'txConfirmReminder':

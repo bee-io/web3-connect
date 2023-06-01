@@ -27,7 +27,7 @@ export class AppComponent {
   public routerList: RouterList = ROUTER_LIST;
   public searchComponent = null;
   public theme: SiteTheme = 'dark';
-  public language: 'ukr' | 'en' = 'en';
+  public language: 'ua' | 'en' = 'en';
   public direction: 'ltr' | 'rtl' = 'ltr';
  public switchLanguage(language: string): void {
     console.log('switchLanguage', language);
@@ -91,13 +91,11 @@ export class AppComponent {
     private appService: AppService,
     private router: Router,
     private title: Title,
-    private nzI18nService: NzI18nService,
     private nzMessageService: NzMessageService,
     private ngZone: NgZone,
     private platform: Platform,
     private meta: Meta,
     private renderer: Renderer2,
-    private cdr: ChangeDetectorRef,
     @Inject(DOCUMENT) private document: any
   ) {}
 
@@ -177,8 +175,8 @@ export class AppComponent {
   updateDocMetaAndLocale(description?: string, keywords?: string, path?: string): void {
     const isEn = this.language === 'en';
     const enDescription = 'Web3-Connect provides a fast and simple solution for integrating multiple wallets and supporting various blockchain networks in your project. By incorporating pre-built components for over 35 different hardware and software wallets, Web3-Connect streamlines your development process and eliminates unnecessary difficulties.';
-    const ukrDescription = 'Web3-Connect надає швидке та просте рішення для інтеграції кількох гаманців і підтримки різних блокчейн-мереж у вашому проекті. Включаючи готові компоненти для понад 35 різних апаратних і програмних гаманців, Web3-Connect спрощує ваш процес розробки та усуває непотрібні труднощі.';
-    let descriptionContent = isEn ? enDescription : ukrDescription;
+    const uaDescription = 'Web3-Connect надає швидке та просте рішення для інтеграції кількох гаманців і підтримки різних блокчейн-мереж у вашому проекті. Включаючи готові компоненти для понад 35 різних апаратних і програмних гаманців, Web3-Connect спрощує ваш процес розробки та усуває непотрібні труднощі.';
+    let descriptionContent = isEn ? enDescription : uaDescription;
     if (description) {
       descriptionContent = description;
     }
@@ -204,7 +202,7 @@ export class AppComponent {
       content: isEn ? 'en_US' : 'uk_UA'
     });
     const doc = this.document as Document;
-    this.renderer.setAttribute(doc.documentElement, 'lang', isEn ? 'en' : 'ukr');
+    this.renderer.setAttribute(doc.documentElement, 'lang', isEn ? 'en' : 'ua');
   }
 
 

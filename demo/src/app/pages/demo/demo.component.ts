@@ -1,34 +1,25 @@
 /**
  * TIPS：DEMO
  */
-import { Component } from '@angular/core';
-import {
-  coinbaseModule,
-  CustomNotification,
-  disconnect,
-  Init,
-  injectedModule, Theme,
-  trustModule,
-  walletConnectModule,
-  WalletState
-} from "@b-ee/web3-connect";
+import {ChangeDetectorRef, Component} from '@angular/core';
+import {coinbaseModule, CustomNotification, disconnect, Init, injectedModule, Theme, Locale,
+  AccountCenterPosition, trustModule, walletConnectModule, WalletState} from "@b-ee/web3-connect";
 import {defaultTestAppIcon} from "./b-ee-icon";
-import {Observable, share} from "rxjs";
 import {SiteTheme} from "../../app.service";
 import {ethers} from "ethers";
-import {AccountCenterPosition} from "../../../../../src/core/src/types";
-import {updateAccountCenter} from "../../../../../src/core/src/store/actions";
-
+import {Router} from "@angular/router";
+import {UntypedFormBuilder, UntypedFormGroup, Validators} from "@angular/forms";
+import {Observable, share} from "rxjs";
+import {Destroyable} from "../../utils/destroyable.base";
+import {takeUntil} from "rxjs/operators";
 
 export const appIcon = defaultTestAppIcon;
 @Component({
   selector: 'add-demo',
   templateUrl: './demo.component.html',
-  preserveWhitespaces: false
+  styleUrls: ['demo.component.scss']
 })
-export class DEMOComponent {
-
-
+export class DEMOComponent extends Destroyable {
 
   private injected = injectedModule();
   private trust = trustModule();
@@ -48,7 +39,7 @@ export class DEMOComponent {
     // }
   });
   private coinbase = coinbaseModule();
-  public wallets: WalletState[] = [];
+
 
   private web3Connect = Init({
     locale: 'en',
@@ -181,51 +172,127 @@ export class DEMOComponent {
     // 'system'	automatically switch between 'dark' & 'light' based on the user's system settings
     theme: 'dark'
   })
-
   public isLoading: boolean = false;
-
   public wallets$: Observable<any> = this.web3Connect.state.select('wallets').pipe(share());
-
-
-  public wallet: WalletState;
-
-
-  public appThemeValue: Theme = 'dark';
+  public wallets: WalletState[] = [];
+  public selectedWallet: WalletState;
+  public appThemeValue: Theme = (localStorage.getItem('site-theme') as SiteTheme) || 'dark';
+  public appLocaleValue: Locale = 'en' || 'ua';
   public appPositionValue: AccountCenterPosition = 'topRight';
-  constructor() {
+
+  public transactionForm!: UntypedFormGroup;
+
+  constructor(private router: Router, private fb: UntypedFormBuilder, private cdr: ChangeDetectorRef) {
+    super()
   }
 
-  async ngOnInit() {
+  async ngOnInit(): Promise<void> {
+    this.transactionForm = this.fb.group({
+      network: [null, [Validators.required]],
+      address: [null, [Validators.required]]
+    });
     // updateAccountCenter({ position: "topLeft" })
-    this.wallets$.subscribe(wallets => {
-      this.wallet = wallets[0];
-    })
+    this.wallets$.pipe(takeUntil(this.unsubscribe$)).subscribe(wallets => {
+      this.wallets = wallets;
+      this.selectedWallet =  this.wallets.length ? this.wallets[0] : null;
 
-    // this.beeWeb3Connect.state.actions.updateTheme('light')
+      if(this.selectedWallet) {
+        console.log('this.selectedWallet', this.selectedWallet)
+        this.transactionForm.patchValue({
+          network: this.selectedWallet.chains[0].id,
+        });
+        this.cdr.detectChanges();
+      }
+    })
+    this.updateTheme(this.appThemeValue);
+  }
+
+
+  sendTransaction = async () => {
+    if (!this.selectedWallet){
+      return this.connect();
+    }
+
+    if (this.transactionForm.valid) {
+      console.log('submit', this.transactionForm.value);
+      // const balanceValue = Object.values(balance)[0]
+      // if using ethers v6 this is:
+      // ethersProvider = new ethers.BrowserProvider(wallet.provider, 'any')
+      const ethersProvider = new ethers.providers.Web3Provider(this.selectedWallet.provider, 'any')
+      const signer = ethersProvider.getSigner()
+      const txDetails = {
+        to:  this.transactionForm.value.address,
+        value: 100000000000000
+      }
+      const sendTransaction = () => {
+        return signer.sendTransaction(txDetails).then(tx => tx.hash)
+      }
+      const gasPrice = () => ethersProvider.getGasPrice().then(res => res.toString());
+      const estimateGas = () => {return ethersProvider.estimateGas(txDetails).then(res => res.toString())}
+
+      const transactionHash = await this.web3Connect.state.actions.preflightNotifications({
+        sendTransaction,
+        gasPrice,
+        estimateGas,
+        balance: '0.0000001',
+        txDetails: txDetails
+      })
+      if(transactionHash){
+        let linkUrl;
+        if(this.selectedWallet.chains[0].id === '0x38') {
+          linkUrl = `https://bscscan.com/tx/${transactionHash}`
+        }if(this.selectedWallet.chains[0].id === '0x1') {
+          linkUrl = `https://etherscan.io/tx/${transactionHash}`
+        }if(this.selectedWallet.chains[0].id === '0x5') {
+          linkUrl = `https://goerli.etherscan.io/tx/${transactionHash}`
+        }
+
+        const customNotification: CustomNotification = {
+          message: `This is a custom DApp success notification hover to see link`,
+          autoDismiss: 0,
+          type: 'success',
+          link: linkUrl,
+        }
+        this.web3Connect.state.actions.customNotification(customNotification);
+      }
+    } else {
+      Object.values(this.transactionForm.controls).forEach(control => {
+        if (control.invalid) {
+          control.markAsDirty();
+          control.updateValueAndValidity({ onlySelf: true });
+        }
+      });
+    }
   }
 
   async connect(): Promise<void> {
     this.isLoading = true;
-    await this.web3Connect.connectWallet();
+    this.wallets = await this.web3Connect.connectWallet();
     this.isLoading = false;
   }
-
-  public disconnectAllWallets(): void {
-    this.wallets.forEach(({ label }) => disconnect({ label }))
+  public async disconnectAllWallets(): Promise<void> {
+    await this.wallets.forEach(({ label }) => disconnect({ label }))
     this.wallets = [];
   }
-
-  public updateTheme = (selectedTheme: Theme) => {
-    console.log('selectedTheme', selectedTheme)
+  public updateTheme = (selectedTheme: Theme): void => {
     this.web3Connect.state.actions.updateTheme(selectedTheme);
   }
-  public updatePosition = (position: AccountCenterPosition) => {
-    console.log('position', position)
+  public updateLanguage = (locale: Locale): void => {
+    this.web3Connect.state.actions.setLocale(locale);
+  }
+  public updatePosition = (position: AccountCenterPosition): void => {
     this.web3Connect.state.actions.updateAccountCenter({ position: position });
   }
+  public backToDocs = (): void=> {
+    this.disconnectAllWallets().then(() => {
+      this.router.navigate(['docs', 'introduction']);
+    })
+  }
 
-
-  pendingNotification(type) {
+  async networkChange(value): Promise<void> {
+    await this.web3Connect.setChain({ chainId: value});
+  }
+  sendNotification(type) {
     if(type === 'success') {
       const { update, dismiss } =
         this.web3Connect.state.actions.customNotification({
@@ -256,78 +323,11 @@ export class DEMOComponent {
 
   }
 
-  dAppNotification() {
-    const customNotification: CustomNotification = {
-      message:
-        'This is a custom DApp success notification to use however you want',
-      autoDismiss: 0,
 
-      onClick:() => console.log('event'),
-    }
-    this.web3Connect.state.actions.customNotification(customNotification)
-
-  }
-
-
-  testNotification() {
-    const customNotification: CustomNotification = {
-      message:
-        'This is a custom DApp success notification to use however you want',
-      autoDismiss: 0,
-      onClick:() => console.log('event'),
-    }
-    this.web3Connect.state.actions.customNotification(customNotification)
-
-  }
 
   async setChain(data) {
     await this.web3Connect.setChain(data);
   }
 
-  sendTransactionWithPreFlight = async () => {
-    await this.web3Connect.setChain({ chainId: '0x38' })
-
-    // const balanceValue = Object.values(balance)[0]
-    // if using ethers v6 this is:
-    // ethersProvider = new ethers.BrowserProvider(wallet.provider, 'any')
-    const ethersProvider = new ethers.providers.Web3Provider(this.wallet.provider, 'any')
-
-    const signer = ethersProvider.getSigner()
-    const txDetails = {
-      to: '0x2f548c7dB757fa6dC60d16c7416b0fE6523345Ae',
-      value: 100000000000000
-    }
-
-    const sendTransaction = () => {
-      return signer.sendTransaction(txDetails).then(tx => tx.hash)
-    }
-
-    const gasPrice = () =>
-      ethersProvider.getGasPrice().then(res => res.toString())
-
-    const estimateGas = () => {
-      return ethersProvider.estimateGas(txDetails).then(res => res.toString())
-    }
-    const transactionHash = await this.web3Connect.state.actions.preflightNotifications({
-      sendTransaction,
-      gasPrice,
-      estimateGas,
-      balance: '0.0000001',
-      txDetails: txDetails
-    })
-
-    if(transactionHash){
-      const customNotification: CustomNotification = {
-        message:
-          `This is a custom DApp success notification hover to see link`,
-        autoDismiss: 0,
-        type: 'success',
-        link: `https://bscscan.com/tx/${transactionHash}`,
-      }
-      this.web3Connect.state.actions.customNotification(customNotification)
-    }
-
-
-  }
 
 }
