@@ -12,12 +12,7 @@
       <div>
         <nz-divider nzOrientation="left" nzText="Connect Users with Web3-Connect"></nz-divider>
         <div class="card-demo card-connect">
-          <button *ngIf="!wallets.length" [nzLoading]="isLoading" nz-button nzType="primary" [nzSize]="'default'" nzShape="round" (click)="connect()">
-            Select a Wallet
-          </button>
-          <button *ngIf="wallets.length" nz-button nzType="primary" [nzSize]="'default'" nzShape="round" (click)="disconnectAllWallets()">
-            Disconnect
-          </button>
+          <app-connect-btn [btnText]="'Select a Wallet'"></app-connect-btn>
         </div>
       </div>
       <div>

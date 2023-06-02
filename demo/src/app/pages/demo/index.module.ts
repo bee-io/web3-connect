@@ -9,6 +9,7 @@ import {NzDividerModule} from "ng-zorro-antd/divider";
 import {NzPageHeaderModule} from "ng-zorro-antd/page-header";
 import {NzFormModule} from "ng-zorro-antd/form";
 import {NzSelectModule} from "ng-zorro-antd/select";
+import {ConnectBtnModule} from "../../share/connect-btn/connect-btn.module";
 
 @NgModule({
   imports: [
@@ -22,7 +23,8 @@ import {NzSelectModule} from "ng-zorro-antd/select";
     NzPageHeaderModule,
     NzFormModule,
     NzSelectModule,
-    NzWaveModule
+    NzWaveModule,
+    ConnectBtnModule
   ],
   declarations:[
     DEMOComponent,

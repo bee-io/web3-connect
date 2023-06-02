@@ -1,5 +1,5 @@
 <button *ngIf="!wallets.length" [nzLoading]="isLoading" nz-button nzType="primary" [nzSize]="'default'" nzShape="round" (click)="connect()">
-  Connect
+  {{btnText}}
 </button>
 
 <button *ngIf="wallets.length" nz-button nzType="primary" [nzSize]="'default'" nzShape="round" (click)="disconnectAllWallets()">

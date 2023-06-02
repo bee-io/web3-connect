@@ -1,6 +1,6 @@
 {
   "name": "@b-ee/web3-connect",
-  "version": "1.0.3",
+  "version": "1.0.5",
   "description": "Easy way to connect users to Decentralized Applications.",
   "keywords": [
     "Angular",
@@ -36,7 +36,7 @@
   "bugs": {
     "url": "https://github.com/bee-io/web3-connect/issues"
   },
-  "homepage": "https://github.com/bee-io/web3-connect.git",
+  "homepage": "https://bee-web3-connect.netlify.app",
   "dependencies": {
     "@angular/material": "^15.2.8",
     "@coinbase/wallet-sdk": "3.0.1",

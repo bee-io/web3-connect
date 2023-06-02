@@ -33541,15 +33541,9 @@ label.api-type-label.service {
   }
 
   .carousel-cell {
-    width: 33%;
+    width: 25%;
     display: flex;
     justify-content: center;
-  }
-
-  .carousel-cell img {
-    max-width: 140px;
-    width: 140px;
-    height: 80px;
   }
 
   .chain-section-content {
@@ -33558,16 +33552,12 @@ label.api-type-label.service {
 
 }
 
-@media (max-width: 500px) {
+
+@media (max-width: 450px) {
   .carousel-cell {
-    width: 50%;
+    width: 33%;
     display: flex;
     justify-content: center;
-  }
-  .carousel-cell img {
-    max-width: 140px;
-    width: 140px;
-    height: 80px;
   }
 }
 

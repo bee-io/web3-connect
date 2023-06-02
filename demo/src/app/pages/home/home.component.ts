@@ -79,13 +79,16 @@ export class AppComponent {
     //   autoPlay: true,
     //   percentPosition: false,
     // });
-    const networkChainCarousel = document.querySelector('.network-chain-carousel');
-    new Flickity( networkChainCarousel, {
-      contain: true,
-      wrapAround: true,
-      autoPlay: false,
-      percentPosition: false,
-    });
+    setTimeout(() => {
+      const networkChainCarousel = document.querySelector('.network-chain-carousel');
+      new Flickity( networkChainCarousel, {
+        contain: true,
+        wrapAround: true,
+        autoPlay: false,
+        percentPosition: false,
+      });
+    },100)
+
 
   }
   public ngAfterViewChecked(): void {
