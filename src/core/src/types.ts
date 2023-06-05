@@ -10,6 +10,7 @@ import type {
 } from '../../common'
 
 import type gas from '../../gas'
+import type unstoppableResolution from'../../wallets/unstoppable-resolution'
 
 import type { EthereumTransactionData, Network } from 'bnc-sdk'
 
@@ -72,7 +73,7 @@ export interface InitOptions {
    * the Theme initialization object or set as css variable
    */
   disableFontDownload?: boolean
-
+  unstoppableResolution?: typeof unstoppableResolution
 }
 
 export type Theme = ThemingMap | BuiltInThemes | 'system'
@@ -133,11 +134,18 @@ export interface WalletState {
   instance?: unknown
 }
 
+export interface SecondaryTokenBalances {
+  name: TokenSymbol
+  balance: string
+  icon?: string
+}
+
 export type Account = {
   address: Address
   ens?: Ens | null
   uns?: Uns | null
   balance: Balances | null
+  secondaryTokens?: SecondaryTokenBalances[] | null
 }
 
 export type Balances = Record<TokenSymbol, string> | null
@@ -176,7 +184,8 @@ export type Configuration = {
   initialWalletInit: WalletInit[]
   appMetadata?: AppMetadata | null
   apiKey?: string
-  gas?: typeof gas
+  gas?: typeof gas,
+  unstoppableResolution?: typeof unstoppableResolution
 }
 
 export type ConnectModalOptions = {

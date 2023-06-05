@@ -2,14 +2,12 @@ import { fromEventPattern, Observable } from 'rxjs'
 import { filter, takeUntil, take, share, switchMap } from 'rxjs/operators'
 import partition from 'lodash.partition'
 import { providers, utils } from 'ethers'
-import { weiToEth } from '../../common'
 import { disconnectWallet$ } from './streams'
 import { updateAccount, updateWallet } from './store/actions'
-import { validEnsChain } from './utils.js'
+import { validEnsChain } from './utils'
 import disconnect from './disconnect'
-import { state } from './store/index'
 import { getBNMulitChainSdk } from './services'
-import { configuration } from './configuration.js'
+import { configuration } from './configuration'
 
 import type {
   ChainId,
@@ -19,7 +17,7 @@ import type {
   Chain,
   AccountsListener,
   ChainListener,
-  SelectAccountsRequest
+  SelectAccountsRequest,
 } from '../../common'
 
 import type {
@@ -29,8 +27,12 @@ import type {
   Ens,
   WalletPermission,
   WalletState
-} from './types'
+} from './types.js'
 
+import type { Uns } from '../../wallets/unstoppable-resolution'
+import { updateSecondaryTokens } from './update-balances'
+import {state} from "./store";
+import {weiToEth} from "../../common";
 
 export const ethersProviders: {
   [key: string]: providers.StaticJsonRpcProvider
@@ -127,7 +129,7 @@ export function trackWallet(
       await syncWalletConnectedAccounts(label)
     } catch (error) {
       console.warn(
-        'Web3Connect: Error whilst trying to sync connected accounts:',
+        'Web3Onboard: Error whilst trying to sync connected accounts:',
         error
       )
     }
@@ -191,9 +193,8 @@ export function trackWallet(
 
         const { wallets, chains } = state.get()
 
-        const { chains: walletChains, accounts } = wallets.find(
-          wallet => wallet.label === label
-        )
+        const primaryWallet = wallets.find(wallet => wallet.label === label)
+        const { chains: walletChains, accounts } = primaryWallet
 
         const [connectedWalletChain] = walletChains
 
@@ -203,30 +204,38 @@ export function trackWallet(
         )
 
         const balanceProm = getBalance(address, chain)
+        const secondaryTokenBal = updateSecondaryTokens(
+          primaryWallet,
+          address,
+          chain
+        )
         const account = accounts.find(account => account.address === address)
 
-        // const ensProm =
-        //   account && account.ens
-        //     ? Promise.resolve(account.ens)
-        //     : validEnsChain(connectedWalletChain.id)
-        //     ? getEns(address, chain)
-        //     : Promise.resolve(null)
+        const ensProm =
+          account && account.ens
+            ? Promise.resolve(account.ens)
+            : validEnsChain(connectedWalletChain.id)
+              ? getEns(address, chain)
+              : Promise.resolve(null)
 
-        // const unsProm =
-        //   account && account.uns
-        //     ? Promise.resolve(account.uns)
-        //     : getUns(address, chain)
+        const unsProm =
+          account && account.uns
+            ? Promise.resolve(account.uns)
+            : getUns(address, chain)
 
         return Promise.all([
           Promise.resolve(address),
-          balanceProm
+          balanceProm,
+          ensProm,
+          unsProm,
+          secondaryTokenBal
         ])
       })
     )
     .subscribe(res => {
       if (!res) return
-      const [address, balance] = res
-      updateAccount(label, address, { balance})
+      const [address, balance, ens, uns, secondaryTokens] = res
+      updateAccount(label, address, { balance, ens, uns, secondaryTokens })
     })
 
   const chainChanged$ = listenChainChanged({ provider, disconnected$ }).pipe(
@@ -295,7 +304,8 @@ export function trackWallet(
     .pipe(
       switchMap(async chainId => {
         const { wallets, chains } = state.get()
-        const { accounts } = wallets.find(wallet => wallet.label === label)
+        const primaryWallet = wallets.find(wallet => wallet.label === label)
+        const { accounts } = primaryWallet
 
         const chain = chains.find(
           ({ namespace, id }) => namespace === 'evm' && id === chainId
@@ -305,21 +315,33 @@ export function trackWallet(
           accounts.map(async ({ address }) => {
             const balanceProm = getBalance(address, chain)
 
-            // const ensProm = validEnsChain(chainId)
-            //   ? getEns(address, chain)
-            //   : Promise.resolve(null)
+            const secondaryTokenBal = updateSecondaryTokens(
+              primaryWallet,
+              address,
+              chain
+            )
 
-            // const unsProm = validEnsChain(chainId)
-            //   ? getUns(address, chain)
-            //   : Promise.resolve(null)
+            const ensProm = validEnsChain(chainId)
+              ? getEns(address, chain)
+              : Promise.resolve(null)
 
-            const [balance] = await Promise.all([
+            const unsProm = validEnsChain(chainId)
+              ? getUns(address, chain)
+              : Promise.resolve(null)
+
+            const [balance, ens, uns, secondaryTokens] = await Promise.all([
               balanceProm,
+              ensProm,
+              unsProm,
+              secondaryTokenBal
             ])
 
             return {
               address,
-              balance
+              balance,
+              ens,
+              uns,
+              secondaryTokens
             }
           })
         )
@@ -374,23 +396,24 @@ export async function getEns(
   }
 }
 
-// export async function getUns(
-//   address: Address,
-//   chain: Chain
-// ): Promise<Uns | null> {
-//   const { unstoppableResolution } = configuration
-//
-//   // check if address is valid ETH address before attempting to resolve
-//   // chain we don't recognize and don't have a rpcUrl for requests
-//   if (!unstoppableResolution || !utils.isAddress(address) || !chain) return null
-//
-//   try {
-//     return await unstoppableResolution(address)
-//   } catch (error) {
-//     console.error(error)
-//     return null
-//   }
-// }
+export async function getUns(
+  address: Address,
+  chain: Chain
+): Promise<Uns | null> {
+  // @ts-ignore
+  const { unstoppableResolution } = configuration
+
+  // check if address is valid ETH address before attempting to resolve
+  // chain we don't recognize and don't have a rpcUrl for requests
+  if (!unstoppableResolution || !utils.isAddress(address) || !chain) return null
+
+  try {
+    return await unstoppableResolution(address)
+  } catch (error) {
+    console.error(error)
+    return null
+  }
+}
 
 export async function getBalance(
   address: string,
@@ -408,7 +431,8 @@ export async function getBalance(
       method: 'eth_getBalance',
       params: [address, 'latest']
     })
-    return balanceHex ? { [chain.token || 'eth']: weiToEth(balanceHex) } : null
+
+    return balanceHex ? { [chain.token || 'eth']:  weiToEth(balanceHex) } : null
   } catch (error) {
     console.error(error)
     return null

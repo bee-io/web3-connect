@@ -1,10 +1,9 @@
-import {ChangeDetectorRef, Component, Inject, NgZone, Renderer2} from '@angular/core';
+import {Component, Inject, NgZone, Renderer2} from '@angular/core';
 import {ROUTER_LIST, RouterList} from "./router";
 import {DOCUMENT} from "@angular/common";
 import {Meta, Title} from "@angular/platform-browser";
 import {Platform} from "@angular/cdk/platform";
 import {NzMessageRef, NzMessageService} from "ng-zorro-antd/message";
-import {NzI18nService} from "ng-zorro-antd/i18n";
 import {NavigationEnd, Router} from "@angular/router";
 import {AppService, SiteTheme} from "./app.service";
 import {debounceTime, fromEvent} from "rxjs";
@@ -122,10 +121,11 @@ export class AppComponent {
       this.addWindowWidthListener();
     }
     this.router.events.subscribe(event => {
-      if(this.router.url !== '/'){
-        this.isLoaded = false;
-      }
+
       if (event instanceof NavigationEnd) {
+        if(this.router.url !== '/'){
+          this.isLoaded = false;
+        }
         const currentIntroComponent = this.routerList.intro.find(component => `/${component.path}` === this.router.url);
         if (currentIntroComponent) {
           if (/docs\/introduce/.test(this.router.url)) {

@@ -6,10 +6,13 @@ import {Component, Input, OnDestroy} from '@angular/core';
   styleUrls: ['./notification-timer.component.scss'],
 })
 
+
 export class NotificationTimerComponent implements OnDestroy{
 
-  @Input() public startTime:  any;
+  @Input() public startTime: any;
+
   public currentTime = Date.now()
+
   public intervalId = setInterval(() => {
     this.currentTime = Date.now()
   }, 1000);

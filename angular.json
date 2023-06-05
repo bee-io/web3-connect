@@ -96,7 +96,11 @@
               "lodash.partition",
               "prismjs",
               "codesandbox/lib/api/define",
-              "flickity"
+              "flickity",
+              "tallyho-detect-provider",
+              "@cedelabs/providers",
+              "fortmatic",
+              "@portis/web3"
             ],
             "outputPath": "dist/demo",
             "index": "demo/src/index.html",

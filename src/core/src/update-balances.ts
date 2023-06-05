@@ -1,6 +1,9 @@
 import { getBalance } from './provider'
 import { updateAllWallets } from './store/actions'
 import {state} from "./store";
+import {WalletState, SecondaryTokenBalances} from "./types";
+import {AccountAddress, Chain, weiToEth} from "../../common";
+import {ethers} from "ethers";
 
 async function updateBalances(addresses?: string[]): Promise<void> {
   const { wallets, chains } = state.get()
@@ -29,6 +32,67 @@ async function updateBalances(addresses?: string[]): Promise<void> {
   )
 
   updateAllWallets(updatedWallets)
+}
+
+
+export const updateSecondaryTokens = async (
+  wallet: WalletState,
+  account: AccountAddress,
+  chain: Chain
+): Promise<SecondaryTokenBalances[]> => {
+  const chainRPC = chain.rpcUrl
+  // @ts-ignore
+  if (!chain.secondaryTokens || !chain.secondaryTokens.length || !chainRPC)
+    return
+
+  const ethersProvider = new ethers.providers.Web3Provider(
+    wallet.provider,
+    'any'
+  )
+  const signer = ethersProvider.getSigner()
+
+  const erc20ABISubset = [
+    {
+      inputs: [{ name: 'owner', type: 'address' }],
+      name: 'balanceOf',
+      outputs: [{ name: '', type: 'uint256' }],
+      stateMutability: 'view',
+      type: 'function'
+    },
+    {
+      inputs: [],
+      name: 'symbol',
+      outputs: [{ name: '', type: 'string' }],
+      stateMutability: 'view',
+      type: 'function'
+    }
+  ]
+
+  const tokenBalances = await Promise.all(
+    // @ts-ignore
+    chain.secondaryTokens.map(async token => {
+      try {
+        const swapContract = new ethers.Contract(
+          token.address,
+          erc20ABISubset,
+          signer
+        )
+        const bigNumBalance = await swapContract.balanceOf(account)
+        const tokenName = await swapContract.symbol()
+        return {
+          name: tokenName,
+          balance: weiToEth(bigNumBalance.toHexString()),
+          icon: token.icon
+        }
+      } catch (error) {
+        console.error(
+          `There was an error fetching balance and/or symbol
+          for token contract: ${token.address} - ${error}`
+        )
+      }
+    })
+  )
+  return tokenBalances
 }
 
 export default updateBalances

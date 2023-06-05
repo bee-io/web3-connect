@@ -1,38 +1,64 @@
 @import '../../../../../assets/styles/variables.scss';
-
+@import '../../../../../assets/styles/animations.scss';
 
 .topRight {
-  top: 0;
+  top: -100vh;
   width: 350px;
-  right: -400px;
-  transition: right 0.3s;
+  right: 0;
+  transition: top 0.5s cubic-bezier(0.17, 0.04, 0.03, 0.94);
+  display: block !important;
+  -webkit-animation-name: fadeIn;
+  -webkit-animation-duration: 0.5s;
+  animation-name: fadeIn;
+  animation-duration: 0.5s;
 }
+.topRight-active {
+  top: 0 !important;
+}
+
 .bottomRight {
-  bottom: 0;
+  bottom: -100vh;
   width: 350px;
-  right: -400px;
-  transition: right 0.3s;
+  right: 0;
+  transition: bottom 0.5s cubic-bezier(0.17, 0.04, 0.03, 0.94);
+  display: block !important;
+  -webkit-animation-name: fadeIn;
+  -webkit-animation-duration: 0.5s;
+  animation-name: fadeIn;
+  animation-duration: 0.5s;
 }
-.topRight-active, .bottomRight-active{
-  right: 0!important;
+.bottomRight-active{
+  bottom: 0!important;
 }
 
 .topLeft{
-  top: 0;
+  top: -100vh;
   width: 350px;
-  left: -400px;
-  transition: left 0.3s;
+  left: 0;
+  transition: top 0.5s cubic-bezier(0.17, 0.04, 0.03, 0.94);
+  display: block !important;
+  -webkit-animation-name: fadeIn;
+  -webkit-animation-duration: 0.5s;
+  animation-name: fadeIn;
+  animation-duration: 0.5s;
+}
+.topLeft-active{
+  top: 0!important;
 }
 
 .bottomLeft{
-  bottom: 0;
+  bottom: -100vh;
   width: 350px;
-  left: -400px;
-  transition: left 0.3s;
+  left: 0;
+  transition: bottom 0.5s cubic-bezier(0.17, 0.04, 0.03, 0.94);
+  display: block !important;
+  -webkit-animation-name: fadeIn;
+  -webkit-animation-duration: 0.5s;
+  animation-name: fadeIn;
+  animation-duration: 0.5s;
 }
-
-.topLeft-active, .bottomLeft-active{
-  left: 0!important;
+.bottomLeft-active{
+  bottom: 0!important;
 }
 
 .topRight .web3-connect-menu__close, .bottomRight .web3-connect-menu__close{
@@ -56,6 +82,7 @@
 }
 
 .web3-connect-menu{
+  display: none;
   z-index: 999999999999;
   position: absolute;
   margin: 7px;
@@ -98,8 +125,6 @@
     border-bottom: solid 1px var(--border-color);
   }
 }
-
-
 
 .status-icon {
   right: -4px; bottom: -4px;

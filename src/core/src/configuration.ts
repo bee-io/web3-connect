@@ -7,6 +7,7 @@ export let configuration: Configuration = {
   device: getDevice(),
   initialWalletInit: [],
   gas: null,
+  unstoppableResolution: null
 }
 
 export function updateConfiguration(update: Partial<Configuration>): void {

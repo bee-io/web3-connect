@@ -4,11 +4,8 @@
 .account-center-container {
   padding: 5px;
   font-family: var(--b-ee-font-family-normal, var(--font-family-normal));
-  //width: 100%;
-  max-width: 350px;
+  width: 350px;
   z-index: 10;
-
-  //height: 100vh;
 }
 
 @media all and (max-width: 740px) {

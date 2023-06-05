@@ -2,7 +2,17 @@ import { HttpClient } from "@angular/common/http";
 import { Injectable } from '@angular/core';
 import { Observable, of, ReplaySubject } from 'rxjs';
 import { tap } from "rxjs/operators";
-import {coinbaseModule, Init, injectedModule, trustModule, walletConnectModule} from "@b-ee/web3-connect";
+import {
+  coinbaseModule,
+  Init,
+  injectedModule,
+  ledgerModule,
+  trustModule,
+  tallyHoModule,
+  walletConnectModule,
+  cedeStoreModule,
+  xdefiWalletModule, sequenceModule, fortmaticModule, portisModule, infinityWalletModule,
+} from "@b-ee/web3-connect";
 import {defaultTestAppIcon} from "./share/connect-btn/b-ee-icon";
 
 export type SiteTheme =  'dark' | 'light';
@@ -27,6 +37,20 @@ export class AppService {
   private trust = trustModule();
   private walletConnect = walletConnectModule({version: 1});
   private coinbase = coinbaseModule();
+
+  private ledger = ledgerModule()
+  private tallyho = tallyHoModule()
+  private cedeStore = cedeStoreModule()
+  private xdefi = xdefiWalletModule()
+  // private torus = torusModule()
+  private sequence = sequenceModule()
+  private infinityWallet = infinityWalletModule()
+  private fortmatic = fortmaticModule({
+    apiKey: 'pk_test_886ADCAB855632AA'
+  })
+  private portis = portisModule({
+    apiKey: 'b2b7586f-2b1e-4c30-a7fb-c2d1533b153b'
+  })
   public web3Connect = Init({
     locale: 'en',
     wallets: [
@@ -34,6 +58,14 @@ export class AppService {
       this.trust,
       this.walletConnect,
       this.coinbase,
+      this.ledger,
+      this.tallyho,
+      this.cedeStore,
+      this.xdefi,
+      this.sequence,
+      this.fortmatic,
+      this.portis,
+      this.infinityWallet,
     ],
     chains: [
       {
@@ -99,8 +131,8 @@ export class AppService {
     ],
     connect: {
       // disableClose: true,
-      autoConnectLastWallet: false,
-      autoConnectAllPreviousWallet: false
+      autoConnectLastWallet: true,
+      autoConnectAllPreviousWallet: true
     },
 
     // | 'topRight'

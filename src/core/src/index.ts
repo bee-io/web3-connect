@@ -95,7 +95,7 @@ export function Init(options: InitOptions): BeeWeb3ConnectAPI {
     // transactionPreview,
     theme,
     disableFontDownload,
-    // unstoppableResolution
+    unstoppableResolution
   } = options
 
 
@@ -182,7 +182,8 @@ export function Init(options: InitOptions): BeeWeb3ConnectAPI {
     appMetadata,
     apiKey,
     initialWalletInit: wallets,
-    gas
+    gas,
+    unstoppableResolution
   })
 
 

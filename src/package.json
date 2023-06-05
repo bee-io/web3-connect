@@ -1,6 +1,6 @@
 {
   "name": "@b-ee/web3-connect",
-  "version": "1.0.5",
+  "version": "1.0.6",
   "description": "Easy way to connect users to Decentralized Applications.",
   "keywords": [
     "Angular",
@@ -43,6 +43,16 @@
     "@ethersproject/providers": "5.5.0",
     "@walletconnect/client": "^1.8.0",
     "@walletconnect/qrcode-modal": "^1.8.0",
+    "@ledgerhq/connect-kit-loader": "^1.0.2",
+    "@unstoppabledomains/resolution": "^8.0",
+    "tallyho-detect-provider": "^1.0.0",
+    "tallyho-onboarding": "^1.0.2",
+    "@cedelabs/providers": "^0.0.7",
+    "@toruslabs/torus-embed": "2.0.0",
+    "0xsequence": "^0.43.1",
+    "fortmatic": "^2.2.1",
+    "@portis/web3": "^4.0.6",
+    "@infinitywallet/infinity-connector": "^1.0.6",
     "bignumber.js": "9.1.1",
     "bnc-sdk": "4.6.7",
     "bowser": "2.11.0",
@@ -55,8 +65,7 @@
     "process": "^0.11.10",
     "web3": "^1.9.0",
     "rxjs": "~7.5.5",
-    "tslib": "^2.3.0",
-    "util": "^0.12.5"
+    "tslib": "^2.3.0"
   },
   "peerDependencies": {
     "@angular/animations": "10.x || 11.x || 12.x || 13.x || 14.x || 15.x",

@@ -21,7 +21,8 @@
     "typeRoots": ["node_modules/@types"],
     "types": ["@angular/localize"],
     "lib": ["es2020", "dom"],
-    "useDefineForClassFields": false
+    "useDefineForClassFields": false,
+
   },
   "angularCompilerOptions": {
     "enableI18nLegacyMessageIdFormat": false,

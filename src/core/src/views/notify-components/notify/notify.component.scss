@@ -1,4 +1,5 @@
 @import '../../../../../assets/styles/variables.scss';
+@import '../../../../../assets/styles/animations.scss';
 
 
 ul {
@@ -23,8 +24,8 @@ ul {
 }
 
 li{
-  -webkit-animation: fade-in 1s;
-  animation: fade-in 1s;
+  -webkit-animation: fadeIn 1s;
+  animation: fadeIn 1s;
 }
 
 .y-scroll {
