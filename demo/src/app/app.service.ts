@@ -11,6 +11,7 @@ import {
   tallyHoModule,
   walletConnectModule,
   cedeStoreModule,
+  ThemingMap,
   xdefiWalletModule, sequenceModule, fortmaticModule, portisModule, infinityWalletModule,
 } from "@b-ee/web3-connect";
 import {defaultTestAppIcon} from "./share/connect-btn/b-ee-icon";
@@ -31,6 +32,16 @@ export class AppService {
 
   language$ = new ReplaySubject<string>(1);
   theme$ = new ReplaySubject<SiteTheme>(1);
+
+  public customTheme: ThemingMap = {
+    '--b-ee-background-color': '#000',
+    '--b-ee-foreground-color': '#242835',
+    '--b-ee-text-color': '#EFF1FC',
+    '--b-ee-border-color': '#33394B',
+    '--b-ee-action-color': '#929bed',
+    '--b-ee-border-radius': '16px',
+    '--b-ee-font-family': 'inherit'
+  }
 
 
   private injected = injectedModule();
@@ -53,6 +64,11 @@ export class AppService {
   })
   public web3Connect = Init({
     locale: 'en',
+    // 'default'	default theme
+    // 'dark'	dark mode
+    // 'light'	light mode
+    // 'system'	automatically switch between 'dark' & 'light' based on the user's system settings
+    theme: 'dark',
     wallets: [
       this.injected,
       this.trust,
@@ -174,10 +190,7 @@ export class AppService {
         }}
       }
     },
-    // 'default'	default theme
-    // 'dark'	dark mode
-    // 'light'	light mode
-    // 'system'	automatically switch between 'dark' & 'light' based on the user's system settings
+
   })
   constructor(private http: HttpClient) {}
 

@@ -40,8 +40,7 @@ export interface InitOptions {
    */
   accountCenter?: AccountCenterOptions
   /**
-   * Opt in to Blocknative value add services (transaction updates) by providing
-   * your Blocknative API key, head to https://explorer.blocknative.com/account
+   * Opt in to BEE value add services (transaction updates) by providing
    */
   apiKey?: string
   /**
@@ -51,7 +50,7 @@ export interface InitOptions {
   /** Gas module */
   gas?: typeof gas
   /**
-   * Object mapping for W3O components with the key being the DOM
+   * Object mapping for W3C components with the key being the DOM
    * element to mount the component to, this defines the DOM container
    *  element for svelte to attach the component
    */
@@ -61,7 +60,7 @@ export interface InitOptions {
    */
   /**
    * Custom or predefined theme for Web3BeeWeb3Connect
-   * BuiltInThemes: ['default', 'dark', 'light', 'system']
+   * BuiltInThemes: ['dark', 'light', 'system']
    * or customize with a ThemingMap object.
    */
   theme?: Theme

@@ -100,7 +100,8 @@
               "tallyho-detect-provider",
               "@cedelabs/providers",
               "fortmatic",
-              "@portis/web3"
+              "@portis/web3",
+              "@infinitywallet/infinity-connector"
             ],
             "outputPath": "dist/demo",
             "index": "demo/src/index.html",

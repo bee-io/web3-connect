@@ -2,7 +2,7 @@
  * TIPS：DEMO
  */
 import {ChangeDetectorRef, Component, ViewChild} from '@angular/core';
-import {CustomNotification, Theme, Locale, AccountCenterPosition,WalletState} from "@b-ee/web3-connect";
+import {CustomNotification, Theme, Locale, AccountCenterPosition, WalletState, ThemingMap} from "@b-ee/web3-connect";
 import {AppService, SiteTheme} from "../../app.service";
 import {ethers} from "ethers";
 import {Router} from "@angular/router";
@@ -19,6 +19,16 @@ import {ConnectBtnComponent} from "../../share/connect-btn";
 })
 export class DEMOComponent extends Destroyable {
   @ViewChild(ConnectBtnComponent) connectBtnComponent: ConnectBtnComponent;
+
+   public customTheme: ThemingMap = {
+    '--b-ee-background-color': '#000000',
+    '--b-ee-foreground-color': '#242835',
+    '--b-ee-text-color': '#EFF1FC',
+    '--b-ee-border-color': '#33394B',
+    '--b-ee-action-color': '#929bed',
+    '--b-ee-border-radius': '16px',
+    '--b-ee-font-family': 'inherit'
+  }
 
   public wallets$: Observable<any> = this.appService.web3Connect.state.select('wallets').pipe(share());
   public wallets: WalletState[] = [];
@@ -107,8 +117,12 @@ export class DEMOComponent extends Destroyable {
       });
     }
   }
-  public updateTheme = (selectedTheme: Theme): void => {
-    this.appService.web3Connect.state.actions.updateTheme(selectedTheme);
+  public updateTheme = (selectedTheme: Theme | 'custom'): void => {
+    if(selectedTheme === 'custom') {
+      this.appService.web3Connect.state.actions.updateTheme(this.appService.customTheme);
+    } else {
+      this.appService.web3Connect.state.actions.updateTheme(selectedTheme);
+    }
   }
   public updateLanguage = (locale: Locale): void => {
     this.appService.web3Connect.state.actions.setLocale(locale);

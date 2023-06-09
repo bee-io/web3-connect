@@ -11,7 +11,7 @@ English | Ukrainian
 - **Wallet Management Center**: A persistent interface for managing wallet connections and networks, with a responsive version designed for mobile devices.
 - **Real-time Notifications**: Receive immediate transaction notifications for all transaction states on the connected wallet addresses.
 - **Standardization of Wallet Providers**: All wallet modules provide a provider that conforms to the specifications of [EIP-1193](https://eips.ethereum.org/EIPS/eip-1193), [EIP-1102](https://eips.ethereum.org/EIPS/eip-1102), [EIP-3085](https://eips.ethereum.org/EIPS/eip-3085) and [EIP-3326](https://ethereum-magicians.org/t/eip-3326-wallet-switchethereumchain/5471) specifications.
-- **Dynamic Loading**: To support multiple wallets in your app, you need many dependencies. Onboard loads a wallet and its dependencies dynamically only when the user selects it, resulting in minimal bandwidth usage.
+- **Dynamic Loading**: To support multiple wallets in your app, you need many dependencies. Web3Connect loads a wallet and its dependencies dynamically only when the user selects it, resulting in minimal bandwidth usage.
 
 ## ☀️ License
 

@@ -129,7 +129,7 @@ export function trackWallet(
       await syncWalletConnectedAccounts(label)
     } catch (error) {
       console.warn(
-        'Web3Onboard: Error whilst trying to sync connected accounts:',
+        'Web3Connect: Error whilst trying to sync connected accounts:',
         error
       )
     }

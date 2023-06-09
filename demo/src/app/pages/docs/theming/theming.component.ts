@@ -8,57 +8,67 @@ import {HighlightService} from "../../../share/services/highlight.service";
 })
 export class ThemingComponent implements AfterViewChecked {
 
-public readonly testOutHTML: string = `$ git clone git@github.com:bee-io/web3-connect.git
-$ cd web3-connect
-$ yarn install
-$ npm run demo
-`
+public readonly exampleHTML: string = `import Init from '@b-ee/web3-connect';
 
-public readonly quickstartHTML: string = `$ ng new PROJECT_NAME
-$ cd PROJECT_NAME
-$ ng add @b-ee/web3-connect
-`
-public readonly importModuleHTML: string = `/** import Web3ConnectModule **/
-import { Web3ConnectModule } from '@b-ee/web3-connect';
-
-/** include Web3ConnectModule to imports **/
-@NgModule({
-  imports: [Web3ConnectModule]
+const web3Connect = Init({
+  theme: 'dark'
+  // other options like wallets, chains, appMetaData, etc.
 })
-
-export class AppModule { }
 `
-public readonly initializeAppHTML: string = `<xmp>import { Init, injectedModule } from '@b-ee/web3-connect';
-const MAINNET_RPC_URL = 'https://mainnet.infura.io/v3/INFURA_KEY';
+public readonly customThemeHTML: string = `import Init, { ThemingMap } from '@b-ee/web3-connect';
 
-@Component({
-  selector: 'app-root',
-  template: \`<web3-connect></web3-connect>
-             <button (click)="connect()"></button>\`,
-  styleUrls: ['./app.component.scss']
-})
-
-export class AppComponent {
-
-  private injected = injectedModule();
-
-  private web3Connect = Init({
-    wallets: [ this.injected ],
-    chains: [{
-      id: '0x1',
-      token: 'ETH',
-      label: 'Ethereum Mainnet',
-      rpcUrl: MAINNET_RPC_URL
-    }]
-  });
-
-  async connect() {
-    const wallets = await this.web3Connect.connectWallet();
-    console.log(wallets);
-  }
+const customTheme: ThemingMap = {
+    '--b-ee-background-color': '#1A1D26',
+    '--b-ee-foreground-color': '#242835',
+    '--b-ee-text-color': '#EFF1FC',
+    '--b-ee-border-color': '#33394B',
+    '--b-ee-action-color': '#929bed',
+    '--b-ee-border-radius': '16px',
+    '--b-ee-font-family': 'inherit'
 }
-</xmp>`
 
+const web3Connect = Init({
+  theme: customTheme
+  // other options like wallets, chains, appMetaData, etc.
+})
+`
+public readonly customThemeUpdateHTML: string = `import Init, { ThemingMap } from '@b-ee/web3-connect';
+
+const web3Connect = Init({
+  theme: 'dark'
+  // other options like wallets, chains, appMetaData, etc.
+})
+
+// after initialization you may want to change the theme based on UI state
+web3Connect.state.actions.updateTheme('light')
+
+// or
+
+const customTheme: ThemingMap = {
+    '--b-ee-background-color': '#1A1D26',
+    '--b-ee-foreground-color': '#242835',
+    '--b-ee-text-color': '#EFF1FC',
+    '--b-ee-border-color': '#33394B',
+    '--b-ee-action-color': '#929bed',
+    '--b-ee-border-radius': '16px',
+    '--b-ee-font-family': 'inherit'
+}
+web3Connect.state.actions.updateTheme(customTheme)
+`
+public readonly customThemeTypesUpdateHTML: string = `export type Theme = ThemingMap | BuiltInThemes | 'system'
+
+export type BuiltInThemes =  'dark' | 'light'
+
+export type ThemingMap = {
+  '--b-ee-background-color'?: string
+  '--b-ee-foreground-color'?: string
+  '--b-ee-text-color'?: string
+  '--b-ee-border-color'?: string
+  '--b-ee-action-color'?: string
+  '--b-ee-border-radius'?: string
+  '--b-ee-font-family'?: string
+}
+`
 private highlighted: boolean = false;
 
   constructor(public appService: AppService, private highlightService: HighlightService) {}

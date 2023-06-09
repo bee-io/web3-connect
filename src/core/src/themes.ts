@@ -3,16 +3,6 @@ import { reset$ } from './streams'
 import type { BuiltInThemes, Theme, ThemingMap } from './types'
 
 export const themes = {
-  default: {
-    '--b-ee-background-color': 'unset',
-    '--b-ee-foreground-color': 'unset',
-    '--b-ee-text-color': 'unset',
-    '--b-ee-border-color': 'unset',
-    '--b-ee-action-color': 'unset',
-    '--b-ee-border-radius': 'unset',
-    '--b-ee-font-family': 'inherit'
-
-  },
   light: {
     '--b-ee-background-color': '#ffffff',
     '--b-ee-foreground-color': '#EFF1FC',

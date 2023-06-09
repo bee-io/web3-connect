@@ -22690,7 +22690,7 @@ span.ant-radio + * {
   position: relative;
   font-weight: 500;
   text-align: left;
-  background: #1d1d1d;
+  background: #1a1d26;
   transition: background .3s ease
 }
 
@@ -25286,7 +25286,8 @@ a.ant-typography-ellipsis, span.ant-typography-ellipsis {
 }
 
 .ant-typography strong {
-  font-weight: 600
+  font-weight: 600;
+  color: #929bed;
 }
 
 .ant-typography-copy, .ant-typography-edit, .ant-typography-expand {
@@ -29912,6 +29913,7 @@ a {
 }
 
 .markdown b, .markdown strong {
+  color: #929bed;
   font-weight: 500
 }
 
@@ -32483,7 +32485,7 @@ ul.anticons-list li.copied::after {
 
 [data-theme=dark] .markdown > table th {
   color: rgba(255, 255, 255, .65);
-  background: #1d1d1d
+  background: #111b26
 }
 
 [data-theme=dark] .copied-code {

@@ -1,7 +1,7 @@
 import type { Chain, WalletInit, WalletModule } from '../../../common'
 import { dispatch } from './index'
 import { configuration } from '../configuration'
-import { handleThemeChange, returnTheme } from '../themes'
+import {handleThemeChange, returnTheme, watchForSystemThemeChange} from '../themes'
 
 import type {
   Account,
@@ -431,9 +431,11 @@ export function uniqueWalletsByLabel(
 }
 
 export function updateTheme(theme: Theme): void {
-  const error = validateUpdateTheme(theme)
-  if (error) {
-    throw error
+  if (typeof theme === 'string' && theme === 'system') {
+    const error = validateUpdateTheme(theme)
+    if (error) {
+      throw error
+    }
   }
 
   const themingObj = returnTheme(theme)
