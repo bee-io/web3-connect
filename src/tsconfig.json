@@ -5,7 +5,15 @@
 		"declaration": true,
 		"declarationMap": true,
 		"inlineSources": true,
-		"types": [],
-	},
-	"exclude": ["test.ts", "**/*.spec.ts"],
+    "forceConsistentCasingInFileNames": true,
+    "moduleResolution": "node",
+    "maxNodeModuleJsDepth": 2,
+    "target": "ES2018",
+    "module": "es2020",
+    "typeRoots": ["node_modules/@types"],
+    "types": ["@angular/localize"],
+    "lib": ["es2020", "dom"]
+  },
+  "include": ["src/**/*.ts", "tests/**/*.ts"],
+  "exclude": ["node_modules", ".vscode"]
 }

@@ -22,6 +22,8 @@
     "fortmatic",
     "@portis/web3",
     "@infinitywallet/infinity-connector",
+    "@walletconnect/modal",
+    "@walletconnect/ethereum-provider",
     "bignumber.js",
     "bnc-sdk",
     "bowser",

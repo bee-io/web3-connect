@@ -1,6 +1,7 @@
 /* To learn more about this file see: https://angular.io/config/tsconfig. */
 {
   "compileOnSave": false,
+  "include": ["src/**/*"],
   "compilerOptions": {
     "rootDir": "./",
     "baseUrl": "./",
@@ -22,7 +23,8 @@
     "types": ["@angular/localize"],
     "lib": ["es2020", "dom"],
     "useDefineForClassFields": false,
-
+    "forceConsistentCasingInFileNames": true,
+    "skipLibCheck": true /* Skip type checking all .d.ts files. */
   },
   "angularCompilerOptions": {
     "enableI18nLegacyMessageIdFormat": false,

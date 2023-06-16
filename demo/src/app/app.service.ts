@@ -46,7 +46,22 @@ export class AppService {
 
   private injected = injectedModule();
   private trust = trustModule();
-  private walletConnect = walletConnectModule({version: 1});
+  private walletConnect =  walletConnectModule({
+    connectFirstChainId: true,
+    version: 2,
+    projectId: 'f6bd6e2911b56f5ac3bc8b2d0e2d7ad5',
+    qrcodeModalOptions: {
+      mobileLinks: [
+        'rainbow',
+        'metamask',
+        'argent',
+        'trust',
+        'imtoken',
+        'pillar'
+      ]
+    },
+    requiredChains:[1, 56]
+  })
   private coinbase = coinbaseModule();
 
   private ledger = ledgerModule()

@@ -17694,7 +17694,7 @@ textarea.ant-mentions {
 .ant-message-notice-content {
   display: inline-block;
   padding: 10px 16px;
-  background: #1f1f1f;
+  background: #1a1d26;
   border-radius: 2px;
   pointer-events: all
 }
@@ -33397,9 +33397,31 @@ label.api-type-label.service {
   display: flex;
 }
 
+
+@-webkit-keyframes fadeIn {
+  0% { opacity: 0; }
+  20% { opacity: 0; }
+  40% { opacity: 0.3; }
+  60% { opacity: 0.5; }
+  80% { opacity: 0.9; }
+  100% { opacity: 1; }
+}
+
+@keyframes fadeIn {
+  0% { opacity: 0; }
+  20% { opacity: 0; }
+  40% { opacity: 0.3; }
+  60% { opacity: 0.5; }
+  80% { opacity: 0.9; }
+  100% { opacity: 1; }
+}
+
+
 .header-section-img{
   position: relative;
   bottom: 0;
+  -webkit-animation: fadeIn 2s;
+  animation: fadeIn 2s;
 }
 
 

@@ -26,8 +26,8 @@
 
     <div style="max-width: 1000px;">
       <ng-container *ngIf="this.appService.theme$ | async as theme">
-        <img *ngIf="theme === 'light'" nz-image class="header-section-img" nzSrc="assets/images/app-group-dark.png" alt="main-img" />
-        <img *ngIf="theme === 'dark'" nz-image class="header-section-img" nzSrc="assets/images/app-group-light.png" alt="main-img" />
+        <img *ngIf="theme === 'light'" class="header-section-img" src="assets/images/app-group-dark.png" alt="main-img" />
+        <img *ngIf="theme === 'dark'"  class="header-section-img" src="assets/images/app-group-light.png" alt="main-img" />
       </ng-container>
     </div>
 

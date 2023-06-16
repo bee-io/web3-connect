@@ -101,7 +101,9 @@
               "@cedelabs/providers",
               "fortmatic",
               "@portis/web3",
-              "@infinitywallet/infinity-connector"
+              "@infinitywallet/infinity-connector",
+              "buffer",
+              "@stablelib/ed25519"
             ],
             "outputPath": "dist/demo",
             "index": "demo/src/index.html",
