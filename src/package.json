@@ -1,6 +1,6 @@
 {
   "name": "@b-ee/web3-connect",
-  "version": "1.0.7",
+  "version": "1.0.8",
   "description": "Easy way to connect users to Decentralized Applications.",
   "keywords": [
     "Angular",
