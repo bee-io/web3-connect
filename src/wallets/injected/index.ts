@@ -13,7 +13,7 @@ import {WalletInit} from "../../common";
 
 declare const window: CustomWindow
 
-export { ProviderIdentityFlag, ProviderLabel } from './types'
+export { ProviderIdentityFlag } from './types'
 
 export  function injectedModule(options?: InjectedWalletOptions): WalletInit {
   if (typeof window === 'undefined') return () => null

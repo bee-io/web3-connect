@@ -11,6 +11,13 @@ import {environment} from "../environments/environment";
 
 const defaultKeywords: string = 'Angular, Ethereum Web3, EVM, dApp, MultiChain, Wallet, Transaction, Provider, Hardware Wallet, Notifications, MetaMask, Coinbase, WalletConnect, Trezor, Connect Wallet, Injected Wallet, Crypto, Crypto Wallet';
 
+interface DocPageMeta {
+  path: string;
+  label: string;
+  order?: number;
+  description: string;
+}
+
 
 @Component({
   selector: 'app-root',
@@ -24,6 +31,7 @@ export class AppComponent {
   public page: 'docs' | 'examples' | 'faq' | string = '';
   public windowWidth: number = 1400;
   public routerList: RouterList = ROUTER_LIST;
+  public componentList: DocPageMeta[] = [];
   public searchComponent = null;
   public theme: SiteTheme = 'dark';
   public language: 'ua' | 'en' = 'en';
@@ -120,13 +128,19 @@ export class AppComponent {
       this.renderer.removeClass(this.document.activeElement, 'preload');
       this.addWindowWidthListener();
     }
+
+    this.routerList.pages.forEach(group => {
+      this.componentList = this.componentList.concat([...group.children]);
+    });
+
+
     this.router.events.subscribe(event => {
 
       if (event instanceof NavigationEnd) {
         if(this.router.url !== '/'){
           this.isLoaded = false;
         }
-        const currentIntroComponent = this.routerList.intro.find(component => `/${component.path}` === this.router.url);
+        const currentIntroComponent = this.componentList.find(component => `/${component.path}` === this.router.url);
         if (currentIntroComponent) {
           if (/docs\/introduce/.test(this.router.url)) {
             this.updateMateTitle(`Web3-Connect - Documentation`);

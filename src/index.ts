@@ -6,4 +6,5 @@ export * from './wallets';
 export * from './gas';
 export * from './core/src';
 export * from './core/src/types';
+export * from './wallets/injected/types';
 export {disconnect}

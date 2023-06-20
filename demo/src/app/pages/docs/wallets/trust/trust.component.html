@@ -1,0 +1,25 @@
+<article class="markdown">
+  <h1>
+    Trust
+    <a class="edit-button" aria-label="Edit this page on Github"
+       href="https://github.com/bee-io/web3-connect/edit/main/docs/wallets/trust.md" target="_blank"
+       rel="noopener noreferrer">
+      <span nz-icon nzType="edit"></span></a>
+  </h1>
+  <nz-affix class="toc-affix" [nzOffsetTop]="16">
+    <nz-anchor [nzAffix]="false" nzShowInkInFixed (nzClick)="goLink($event)">
+      <nz-link nzHref="#init" nzTitle="Init Wallet"></nz-link>
+      <nz-link nzHref="#usage" nzTitle="Usage"></nz-link>
+    </nz-anchor>
+  </nz-affix>
+
+  <section class="markdown">
+    <p>Wallet module for connecting Trust wallet to web3-connect</p>
+
+    <h2 id="init"><span>Init Wallet</span><a onclick="window.location.hash = 'init'" class="anchor">#</a></h2>
+    <app-highlight [appCode]="exampleInit" [appLanguage]="'language-typescript'"></app-highlight>
+
+   <h2 id="usage"><span>Usage</span><a onclick="window.location.hash = 'usage'" class="anchor">#</a></h2>
+    <app-highlight [appCode]="customUsage" [appLanguage]="'language-typescript'"></app-highlight>
+  </section>
+</article>

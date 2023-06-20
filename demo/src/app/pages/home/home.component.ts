@@ -13,7 +13,7 @@ import {AppService} from "../../app.service";
   changeDetection: ChangeDetectionStrategy.OnPush,
   styleUrls: ['home.component.scss']
 })
-export class HomeComponent implements OnInit, AfterContentInit {
+export class HomeComponent implements AfterContentInit {
   private highlighted: boolean = false;
   public readonly themeableHTML: string = `:root {
     --b-ee-background-color: '#1A1D26';
@@ -67,27 +67,17 @@ export class AppComponent {
 </xmp>`
 
   constructor( public appService: AppService, private highlightService: HighlightService) {}
-
-  ngOnInit() {
-  }
-
   ngAfterContentInit() {
-    // const themeCarousel = document.querySelector('.theme-carousel');
-    // new Flickity( themeCarousel, {
-    //   contain: true,
-    //   wrapAround: true,
-    //   autoPlay: true,
-    //   percentPosition: false,
-    // });
     setTimeout(() => {
       const networkChainCarousel = document.querySelector('.network-chain-carousel');
       new Flickity( networkChainCarousel, {
         contain: true,
         wrapAround: true,
-        autoPlay: false,
+        autoPlay: 1500,
         percentPosition: false,
+        pageDots: false
       });
-    },100)
+    },100);
 
 
   }

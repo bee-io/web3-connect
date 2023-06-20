@@ -7,8 +7,16 @@ import { RouterList } from '../../router';
   template: `
     <ul nz-menu [nzMode]="'inline'" class="aside-container menu-site" [nzInlineIndent]="40" [class.ant-menu-rtl]="direction === 'rtl'">
       <ng-container *ngIf="page === 'docs'">
-        <li *ngFor="let intro of routerList.intro" nz-menu-item nzMatchRouter [hidden]="intro.hidden">
-          <a routerLink="{{ intro.path }}">{{ intro.label }}</a>
+        <li nz-menu-group *ngFor="let group of routerList.pages" [nzTitle]="group.name">
+          <ul>
+            <ng-container>
+              <li nz-menu-item nzMatchRouter *ngFor="let component of group.children">
+                <a routerLink="{{ component.path }}">
+                  <span>{{ component.label }}</span>
+                </a>
+              </li>
+            </ng-container>
+          </ul>
         </li>
       </ng-container>
     </ul>

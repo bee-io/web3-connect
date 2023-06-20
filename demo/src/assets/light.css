@@ -33338,6 +33338,10 @@ label.api-type-label.service {
 
 }
 
+.network-chain-carousel{
+  margin-top: 20px;
+}
+
 
 @media (max-width: 450px) {
   .carousel-cell {

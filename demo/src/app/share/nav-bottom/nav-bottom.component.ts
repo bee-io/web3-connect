@@ -26,11 +26,22 @@ export class NzNavBottomComponent implements OnInit {
   constructor(private router: Router, private platform: Platform, private cdr: ChangeDetectorRef) {}
 
   ngOnInit(): void {
+    if (!this.platform.isBrowser) {
+      return;
+    }
     this.router.events.subscribe(event => {
       if (event instanceof NavigationEnd) {
         const url = window.location.pathname.slice(1);
+        const componentsList = ROUTER_LIST.pages
+          .reduce(
+            (pre, cur) => {
+              return pre.concat(cur.children);
+            },
+            // tslint:disable-next-line:no-any
+            [] as any[]
+          );
         this.list = [
-          ...ROUTER_LIST.intro,
+          ...componentsList.filter(item => !item.experimental)
         ];
         this.index = this.list.findIndex(item => item.path === url);
         this.cdr.markForCheck();

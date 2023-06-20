@@ -12,7 +12,11 @@ import {
   walletConnectModule,
   cedeStoreModule,
   ThemingMap,
-  xdefiWalletModule, sequenceModule, fortmaticModule, portisModule, infinityWalletModule,
+  xdefiWalletModule,
+  sequenceModule,
+  fortmaticModule,
+  portisModule,
+  infinityWalletModule,
 } from "@b-ee/web3-connect";
 import {defaultTestAppIcon} from "./share/connect-btn/b-ee-icon";
 
@@ -43,9 +47,10 @@ export class AppService {
     '--b-ee-font-family': 'inherit'
   }
 
-
   private injected = injectedModule();
+  private cedeStore = cedeStoreModule();
   private trust = trustModule();
+  private sequence = sequenceModule();
   private walletConnect =  walletConnectModule({
     connectFirstChainId: true,
     version: 2,
@@ -61,28 +66,20 @@ export class AppService {
       ]
     },
     requiredChains:[1, 56]
-  })
-  private coinbase = coinbaseModule();
-
-  private ledger = ledgerModule()
-  private tallyho = tallyHoModule()
-  private cedeStore = cedeStoreModule()
-  private xdefi = xdefiWalletModule()
-  // private torus = torusModule()
-  private sequence = sequenceModule()
-  private infinityWallet = infinityWalletModule()
+  });
+  private coinbase = coinbaseModule({ darkMode: true });
+  private ledger = ledgerModule();
+  private tallyho = tallyHoModule();
+  private xdefi = xdefiWalletModule();
+  private infinityWallet = infinityWalletModule();
   private fortmatic = fortmaticModule({
     apiKey: 'pk_test_886ADCAB855632AA'
-  })
+  });
   private portis = portisModule({
     apiKey: 'b2b7586f-2b1e-4c30-a7fb-c2d1533b153b'
-  })
+  });
   public web3Connect = Init({
     locale: 'en',
-    // 'default'	default theme
-    // 'dark'	dark mode
-    // 'light'	light mode
-    // 'system'	automatically switch between 'dark' & 'light' based on the user's system settings
     theme: 'dark',
     wallets: [
       this.injected,

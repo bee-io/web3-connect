@@ -1,0 +1,109 @@
+<article class="markdown">
+  <h1>
+    Injected Wallets
+    <a class="edit-button" aria-label="Edit this page on Github"
+       href="https://github.com/bee-io/web3-connect/edit/main/docs/wallets/injected.md" target="_blank"
+       rel="noopener noreferrer">
+      <span nz-icon nzType="edit"></span></a>
+  </h1>
+  <nz-affix class="toc-affix" [nzOffsetTop]="16">
+    <nz-anchor [nzAffix]="false" nzShowInkInFixed (nzClick)="goLink($event)">
+      <nz-link nzHref="#init" nzTitle="Init Wallet"></nz-link>
+      <nz-link nzHref="#quickstart" nzTitle="Quickstart"></nz-link>
+      <nz-link nzHref="#filtering-wallets" nzTitle="Filtering Wallets"></nz-link>
+      <nz-link nzHref="#custom" nzTitle="Adding Custom Injected Wallets"></nz-link>
+      <nz-link nzHref="#display-unavailable-wallets" nzTitle="Display Unavailable Wallets"></nz-link>
+      <nz-link nzHref="#injected-wallets-supported" nzTitle="Injected Wallets Supported Natively"></nz-link>
+    </nz-anchor>
+  </nz-affix>
+
+
+  <section class="markdown">
+    <p>This module lets web3-connect automatically detect Browser Injected Wallets such as Metamask or Coinbase Wallet.
+      We recommend you install this module to get the most out of your w3c implementation. This module supports <a href="https://eips.ethereum.org/EIPS/eip-1193" target="_blank" rel="noopener">EIP-1193</a>  and
+      <a onclick="window.location.hash = 'injected-wallets-supported'"  rel="noopener">recognizes many injected wallets natively.</a></p>
+    <p>Note: Make sure to init the core module before initiation other modules to w3c.</p>
+
+    <h2 id="init"><span>Init Wallet</span><a onclick="window.location.hash = 'init'" class="anchor">#</a></h2>
+    <app-highlight [appCode]="exampleInit" [appLanguage]="'language-typescript'"></app-highlight>
+
+
+    <h2 id="quickstart"><span>Quickstart</span><a onclick="window.location.hash = 'quickstart'" class="anchor">#</a></h2>
+    <p>To allow all injected wallets that are supported, don't pass in any options:</p>
+    <app-highlight [appCode]="quickstart" [appLanguage]="'language-typescript'"></app-highlight>
+    <h2 id="filtering-wallets"><span>Filtering Wallets</span><a onclick="window.location.hash = 'filtering-wallets'" class="anchor">#</a></h2>
+    <p>Injected wallets that you do not want to support can be filtered based on the <strong>"Platform"</strong> the user is on. For example you may not want to support the 'Detected Wallet' that is detected automatically and filter it via all platforms by passing <strong>"false"</strong>:</p>
+    <app-highlight [appCode]="filteringWallets" [appLanguage]="'language-typescript'"></app-highlight>
+    <p>Or you may want to only filter the 'Detected Wallet' on a select few platforms:</p>
+    <app-highlight [appCode]="filteringWalletsDetected" [appLanguage]="'language-typescript'"></app-highlight>
+    <p>The following platforms can be used to filter wallets:</p>
+    <app-highlight [appCode]="platforms" [appLanguage]="'language-typescript'"></app-highlight>
+
+
+    <h2 id="custom"><span>Adding Custom Injected Wallets</span><a onclick="window.location.hash = 'custom'" class="anchor">#</a></h2>
+    <p>If there is an injected wallet that you would like to support in your app, but is not yet included in this repo, you can add a custom wallet module in the <strong>"custom"</strong> field:</p>
+    <app-highlight [appCode]="custom" [appLanguage]="'language-typescript'"></app-highlight>
+    <h2 id="display-unavailable-wallets"><span>Display Unavailable Wallets</span><a onclick="window.location.hash = 'display-unavailable-wallets'" class="anchor">#</a></h2>
+    <p>You may want to display injected wallets that are not currently available to the user and you can use the <strong>"displayUnavailable"</strong> option to do that:</p>
+    <app-highlight [appCode]="displayUnavailable" [appLanguage]="'language-typescript'"></app-highlight>
+    <p>his can be set to an array top specify which unavailable injected wallets to show or set to true to display all unavailable injected wallets regardless of whether it has been detected in the window,
+      happy days. Then the issue of the order of wallets displayed becomes apparent when you have 21 injected wallets at the top of the wallets list. To solve this, all injected wallets are sorted <strong>alphabetically</strong> by default and there is an additional <strong>"sort"</strong> parameter which receives the final list of wallets and then returns the list to be rendered.
+      This allows for example setting MetaMask and Coinbase first and then just the rest alphabetically:</p>
+    <app-highlight [appCode]="displayUnavailableSort" [appLanguage]="'language-typescript'"></app-highlight>
+    <p>You may want to display all unavailable injected wallets, but filter out specific wallets based on their availability. For example I may want to display all unavailable wallets except when Binance and Bitski wallet is unavailable, then don't show them, but if they are available, then do show them. To do this, the filters value has been extended to have a new value: <strong>"'unavailable'"</strong>, as in; remove this wallet if it is unavailable, even though <strong>"displayUnavailable"</strong> wallets is set:</p>
+    <app-highlight [appCode]="displayUnavailableSortOne" [appLanguage]="'language-typescript'"></app-highlight>
+
+    <h2 id="injected-wallets-supported"><span>Injected Wallets Supported Natively</span><a onclick="window.location.hash = 'injected-wallets-supported'" class="anchor">#</a></h2>
+    <ul>
+      <li>Metamask - Desktop & Mobile</li>
+      <li>Binance - Desktop</li>
+      <li>Coinbase - Desktop & Mobile</li>
+      <li>Phantom - Desktop & Mobile</li>
+      <li>Trust - Desktop & Mobile</li>
+      <li>SafePal - Desktop & Mobile</li>
+      <li>Zerion - Desktop & Mobile</li>
+      <li>OKX Wallet - Desktop</li>
+      <li>Taho (Previously named Tally Ho wallet) - Desktop</li>
+      <li>Opera - Desktop & Mobile</li>
+      <li>Status - Mobile</li>
+      <li>Alphawallet - Mobile</li>
+      <li>Atoken - Mobile</li>
+      <li>Bitpie - Mobile</li>
+      <li>Blockwallet - Desktop</li>
+      <li>Brave - Desktop & Mobile</li>
+      <li>D'Cent - Mobile</li>
+      <li>Frame - Desktop</li>
+      <li>Huobiwallet - Mobile</li>
+      <li>Hyperpay - Mobile</li>
+      <li>IMtoken - Mobile</li>
+      <li>Liquality - Desktop</li>
+      <li>Meetone - Mobile</li>
+      <li>Mykey - Mobile</li>
+      <li>Ownbit - Mobile</li>
+      <li>xDefi - Desktop & Mobile</li>
+      <li>Tokenpocket - Desktop & Mobile</li>
+      <li>TP - Mobile</li>
+      <li>1inch - Mobile</li>
+      <li>Tokenary - Mobile</li>
+      <li>GameStop - Desktop</li>
+      <li>Rabby - Desktop</li>
+      <li>MathWallet - Desktop & Mobile</li>
+      <li>Gamestop - Desktop</li>
+      <li>Bitkeep - Desktop & Mobile</li>
+      <li>Sequence - Desktop & Mobile</li>
+      <li>Core - Desktop</li>
+      <li>Bitski - Desktop & Mobile</li>
+      <li>Enkrypt - Desktop & Mobile</li>
+      <li>Zeal - Desktop</li>
+      <li>Exodus - Desktop & Mobile</li>
+      <li>Frontier - Desktop & Mobile</li>
+      <li>Rainbow - Desktop & Mobile</li>
+      <li>DeFiWallet - Desktop & Mobile</li>
+      <li>ApexWallet - Desktop</li>
+      <li>BifrostWallet - Desktop & Mobile</li>
+      <li>Safeheron - Desktop</li>
+      <li>Talisman - Desktop</li>
+      <li>OneKey - Desktop & Mobile</li>
+    </ul>
+  </section>
+</article>

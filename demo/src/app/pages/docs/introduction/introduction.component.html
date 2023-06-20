@@ -77,7 +77,7 @@
     <p>Web3-Connect is compatible with all networks built on the Ethereum Virtual Machine (EVM). Adding support for a
       new network is straightforward by including its specific information in the designated "Chains" section during the
       initialization process. Additional details on
-      <a href="" target="_blank" rel="noopener">initialization options </a>can be found for further guidance.</p>
+      <a [routerLink]="['/docs/core'] "rel="noopener">initialization options </a>can be found for further guidance.</p>
     <ul>
       <li>Ethereum</li>
       <li>Polygon</li>
@@ -147,26 +147,26 @@
       Metamask, Trust, Coinbase Wallet, and others immediately. This module enables seamless integration with these
       wallets, allowing users to easily access their accounts and interact with your application.</p>
 
-    <h3><a href="" target="_blank" rel="noopener">Injected Wallets</a></h3>
+    <h3><a [routerLink]="['/docs/wallets/injected']" rel="noopener">Injected Wallets</a></h3>
     <h3>SDK Wallets</h3>
     <ul>
-      <li><a href="" target="_blank" rel="noopener">Coinbase</a></li>
-      <li><a href="" target="_blank" rel="noopener">WalletConnect</a></li>
-      <li><a href="" target="_blank" rel="noopener">Gnosis</a></li>
-      <li><a href="" target="_blank" rel="noopener">Magic</a></li>
-      <li><a href="" target="_blank" rel="noopener">Fortmatic</a></li>
-      <li><a href="" target="_blank" rel="noopener">MEW</a></li>
-      <li><a href="" target="_blank" rel="noopener">Portis</a></li>
-      <li><a href="" target="_blank" rel="noopener">Web3Auth</a></li>
-      <li><a href="" target="_blank" rel="noopener">Frame</a></li>
+      <li><a [routerLink]="['/docs/wallets/coinbase']" rel="noopener">Coinbase</a></li>
+      <li><a [routerLink]="['/docs/wallets/wallet-connect']" rel="noopener">WalletConnect</a></li>
+      <li><a [routerLink]="['/docs/wallets/fortmatic']" rel="noopener">Fortmatic</a></li>
+      <li><a [routerLink]="['/docs/wallets/taho']" rel="noopener">Taho</a></li>
+      <li><a [routerLink]="['/docs/wallets/portis']" rel="noopener">Portis</a></li>
+      <li><a [routerLink]="['/docs/wallets/sequence']" rel="noopener">Sequence</a></li>
+      <li><a [routerLink]="['/docs/wallets/infinity-wallet']" rel="noopener">Infinity Wallet</a></li>
+      <li><a [routerLink]="['/docs/wallets/trust']" rel="noopener">Trust</a></li>
+      <li><a [routerLink]="['/docs/wallets/xdefi']" rel="noopener">XDEFI</a></li>
     </ul>
     <h3>Hardware Wallets</h3>
     <ul>
-      <li><a href="" target="_blank" rel="noopener">Ledger</a></li>
-      <li><a href="" target="_blank" rel="noopener">Trezor</a></li>
-      <li><a href="" target="_blank" rel="noopener">Keystone</a></li>
-      <li><a href="" target="_blank" rel="noopener">KeepKey</a></li>
-      <li><a href="" target="_blank" rel="noopener">D'cent</a></li>
+      <li><a [routerLink]="['/docs/wallets/ledger']" rel="noopener">Ledger</a></li>
+<!--      <li><a href="" target="_blank" rel="noopener">Trezor</a></li>-->
+<!--      <li><a href="" target="_blank" rel="noopener">Keystone</a></li>-->
+<!--      <li><a href="" target="_blank" rel="noopener">KeepKey</a></li>-->
+<!--      <li><a href="" target="_blank" rel="noopener">D'cent</a></li>-->
     </ul>
 
     <h2 id="test-demo"><span>Test out the demo app</span><a onclick="window.location.hash = 'test-demo'" class="anchor">#</a>
@@ -180,7 +180,7 @@
     </blockquote>
 
     <h2 id="angular-demo"><span>Angular Demo</span><a onclick="window.location.hash = 'angular-demo'" class="anchor">#</a></h2>
-    <p> Checkout our live demo using Angular <a href="" target="_blank" rel="noopener"> click hire</a></p>
+    <p> Checkout our live demo using Angular <a [routerLink]="['/demo']" rel="noopener"> click hire</a></p>
     <p> The demo is open source so you can see a sample implementation of web3-connect:
       <a href="https://github.com/bee-io/web3-connect" target="_blank" rel="noopener">https://github.com/bee-io/web3-connect</a>
     </p>

@@ -1,0 +1,30 @@
+<article class="markdown">
+  <h1>
+    Infinity Wallet
+    <a class="edit-button" aria-label="Edit this page on Github"
+       href="https://github.com/bee-io/web3-connect/edit/main/docs/wallets/infinity-wallet.md" target="_blank"
+       rel="noopener noreferrer">
+      <span nz-icon nzType="edit"></span></a>
+  </h1>
+  <nz-affix class="toc-affix" [nzOffsetTop]="16">
+    <nz-anchor [nzAffix]="false" nzShowInkInFixed (nzClick)="goLink($event)">
+      <nz-link nzHref="#init" nzTitle="Init Wallet"></nz-link>
+      <nz-link nzHref="#usage" nzTitle="Usage"></nz-link>
+    </nz-anchor>
+  </nz-affix>
+
+  <section class="markdown">
+    <h2>Wallet module for connecting Infinity Wallet through web3-connect</h2>
+    <p>Infinity Wallet SDK wallet module for connecting to Web3-Connect. Web3-Connect makes it simple to connect Ethereum hardware and software wallets to your dapp. Features standardized spec compliant web3 providers for all supported wallets,
+      Angular framework, CSS customization, multi-chain and multi-account support, reactive wallet state subscriptions and real-time transaction state change notifications.</p>
+
+    <p>Checkout the official <a href="https://infinitywallet.io/" target="_blank" rel="noopener">Infinity Wallet page </a> for details.</p>
+
+    <h2 id="init"><span>Init Wallet</span><a onclick="window.location.hash = 'init'" class="anchor">#</a></h2>
+    <app-highlight [appCode]="exampleInit" [appLanguage]="'language-typescript'"></app-highlight>
+
+
+   <h2 id="usage"><span>Usage</span><a onclick="window.location.hash = 'usage'" class="anchor">#</a></h2>
+    <app-highlight [appCode]="customUsage" [appLanguage]="'language-typescript'"></app-highlight>
+  </section>
+</article>

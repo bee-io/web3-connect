@@ -33554,6 +33554,10 @@ label.api-type-label.service {
   margin: 10px 0 0 0;
 }
 
+.network-chain-carousel{
+  margin-top: 20px;
+}
+
 @media (max-width: 600px) {
   .header-section{
     height: 600px;
