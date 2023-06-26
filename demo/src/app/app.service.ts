@@ -159,8 +159,8 @@ export class AppService {
     ],
     connect: {
       // disableClose: true,
-      autoConnectLastWallet: true,
-      autoConnectAllPreviousWallet: true
+      autoConnectLastWallet: false,
+      autoConnectAllPreviousWallet: false
     },
 
     // | 'topRight'

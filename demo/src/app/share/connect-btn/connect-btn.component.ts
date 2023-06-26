@@ -1,8 +1,9 @@
-import {Component, Input, OnDestroy, OnInit} from '@angular/core';
+import {ChangeDetectorRef, Component, Input, OnDestroy, OnInit} from '@angular/core';
 import {disconnect, WalletState } from "@b-ee/web3-connect";
 import {AppService, SiteTheme} from "../../app.service";
 import {Destroyable} from "../../utils/destroyable.base";
 import {takeUntil} from "rxjs/operators";
+import {Observable, share} from "rxjs";
 
 @Component({
   selector: 'app-connect-btn',
@@ -11,15 +12,21 @@ import {takeUntil} from "rxjs/operators";
 })
 export class ConnectBtnComponent extends Destroyable implements OnInit, OnDestroy {
 
+  public wallets$: Observable<any> = this.appService.web3Connect.state.select('wallets').pipe(share());
   public wallets: WalletState[] = [];
   @Input() btnText: string = "Connect";
   public isLoading: boolean;
 
-  constructor(public appService: AppService) {
+  constructor(public appService: AppService,private cdr: ChangeDetectorRef) {
     super();
   }
 
   ngOnInit(): void {
+    this.wallets$.pipe(takeUntil(this.unsubscribe$)).subscribe(wallets => {
+      this.wallets = wallets;
+      this.cdr.detectChanges();
+    })
+
     setTimeout(() => {
       const theme = localStorage.getItem('site-theme') as SiteTheme
       this.updateTheme(theme);
