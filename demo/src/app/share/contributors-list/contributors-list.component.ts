@@ -8,7 +8,7 @@ import { filter, take } from 'rxjs/operators';
   selector: 'nz-contributors-list',
   changeDetection: ChangeDetectionStrategy.OnPush,
   template: `
-    <ul class="contributors-list" style="display: flex; list-style: none; margin: 0px; padding: 0px;">
+    <ul *ngIf="list.length" class="contributors-list" style="display: flex; list-style: none; margin: 0px; padding: 0px;">
       <a
         *ngFor="let item of list"
         nz-tooltip
@@ -21,67 +21,26 @@ import { filter, take } from 'rxjs/operators';
     </ul>
   `
 })
-export class NzContributorsListComponent implements OnInit, OnDestroy {
-  language = 'en';
-  // tslint:disable-next-line:no-any
-  list: any[] = [];
-  filePath = '';
-  isIntersecting = false;
-  intersectionObserver!: IntersectionObserver;
+export class NzContributorsListComponent implements OnInit {
+  public list: any[] = [];
 
   constructor(
     private router: Router,
     private platform: Platform,
     private cdr: ChangeDetectorRef,
     private http: HttpClient,
-    private elementRef: ElementRef
   ) {}
 
   ngOnInit(): void {
     if (!this.platform.isBrowser) {
       return;
     }
-    this.intersectionObserver = new IntersectionObserver(entries => {
-      entries.forEach(({ isIntersecting }) => {
-        this.isIntersecting = isIntersecting;
-        this.reloadContributors();
-      });
-    });
-    const navigationEnd$ = this.router.events.pipe(filter(e => e instanceof NavigationEnd));
-    navigationEnd$.pipe(take(1)).subscribe(() => {
-      this.intersectionObserver.observe(this.elementRef.nativeElement);
-    });
-    navigationEnd$.subscribe(() => {
-      const url = window.location.pathname.slice(1);
-      let filePath = '';
-      const docsMatch = /docs\/(.+)\//.exec(url);
-      if (docsMatch && docsMatch[1]) {
-        filePath = `docs/${docsMatch[1]}.en-US.md`;
-      }
-      this.list = [];
-      this.filePath = filePath;
-      this.reloadContributors();
-    });
+    this.getContributors();
+    this.cdr.markForCheck();
   }
-
-  ngOnDestroy(): void {
-    this.intersectionObserver?.unobserve(this.elementRef.nativeElement);
-  }
-
-  reloadContributors(): void {
-    if (this.isIntersecting && this.filePath && this.list.length === 0) {
-      this.getContributors(this.filePath);
-      this.cdr.markForCheck();
-    }
-  }
-
-  getContributors(path: string): void {
+  private getContributors(): void {
     this.http
-      .get(`https://api.github.com/repos/Zelenyuk1993/web3-connect/commits`, {
-        params: {
-          path
-        }
-      })
+      .get(`https://api.github.com/repos/bee-io/web3-connect/commits`)
       .subscribe(data => {
         if (Array.isArray(data)) {
           // tslint:disable-next-line:no-any
