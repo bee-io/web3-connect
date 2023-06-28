@@ -8,11 +8,11 @@ import { filter, take } from 'rxjs/operators';
   selector: 'nz-contributors-list',
   changeDetection: ChangeDetectionStrategy.OnPush,
   template: `
-    <ul *ngIf="list.length" class="contributors-list" style="display: flex; list-style: none; margin: 0px; padding: 0px;">
+    <ul *ngIf="list.length" class="contributors-list" style="display: flex; list-style: none; margin: 0 65px; padding: 0;">
       <a
         *ngFor="let item of list"
         nz-tooltip
-        [nzTooltipTitle]="('Contributors') + item.name"
+        [nzTooltipTitle]="('Contributors ') + item.name"
         [attr.href]="item.url"
         target="_blank"
       >
