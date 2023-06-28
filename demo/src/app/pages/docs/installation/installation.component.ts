@@ -10,11 +10,6 @@ import {HighlightService} from "../../../share/services/highlight.service";
 })
 export class InstallationComponent implements AfterViewChecked {
 
-public readonly testOutHTML: string = `$ git clone git@github.com:bee-io/web3-connect.git
-$ cd web3-connect
-$ yarn install
-$ npm run demo
-`
 
 public readonly installHTML: string = `$ ng new PROJECT_NAME
 $ cd PROJECT_NAME

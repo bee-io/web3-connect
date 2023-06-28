@@ -32340,7 +32340,7 @@ ul.anticons-list li.copied::after {
 .contributors-list {
   display: flex;
   flex-wrap: wrap;
-  margin-top: 120px !important
+  margin-top: 20px !important
 }
 
 .contributors-list .ant-avatar + .ant-avatar, .contributors-list a {

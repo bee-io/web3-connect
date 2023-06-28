@@ -6,23 +6,263 @@
        rel="noopener noreferrer">
       <span nz-icon nzType="edit"></span></a>
   </h1>
-<!--  <nz-affix class="toc-affix" [nzOffsetTop]="16">-->
-<!--    <nz-anchor [nzAffix]="false" nzShowInkInFixed (nzClick)="goLink($event)">-->
-<!--      <nz-link nzHref="#features" nzTitle="Features"></nz-link>-->
-<!--      <nz-link nzHref="#supported-networks" nzTitle="Supported Networks"></nz-link>-->
-<!--      <nz-link nzHref="#version" nzTitle="Version"></nz-link>-->
-<!--      <nz-link nzHref="#angular-support" nzTitle="Angular Support"></nz-link>-->
-<!--      <nz-link nzHref="#quickstart" nzTitle="Quickstart"></nz-link>-->
-<!--      <nz-link nzHref="#wallet-modules" nzTitle="Wallet Modules"></nz-link>-->
-<!--      <nz-link nzHref="#test-demo" nzTitle="Test out the demo app"></nz-link>-->
-<!--      <nz-link nzHref="#angular-demo" nzTitle="Angular Demo"></nz-link>-->
-<!--      <nz-link nzHref="#contributing" nzTitle="Contributing"></nz-link>-->
-<!--      <nz-link nzHref="#need-help" nzTitle="Need Help?"></nz-link>-->
-<!--    </nz-anchor>-->
-<!--  </nz-affix>-->
+  <nz-affix class="toc-affix" [nzOffsetTop]="16">
+    <nz-anchor [nzAffix]="false" nzShowInkInFixed (nzClick)="goLink($event)">
+      <nz-link nzHref="#install" nzTitle="Install"></nz-link>
+      <nz-link nzHref="#quick-start" nzTitle="Quick start"></nz-link>
+      <nz-link nzHref="#chains" nzTitle="Chains"></nz-link>
+      <nz-link nzHref="#appMetadata" nzTitle="AppMetaData"></nz-link>
+      <nz-link nzHref="#connect" nzTitle="Connect"></nz-link>
+      <nz-link nzHref="#locale" nzTitle="Locale"></nz-link>
+      <nz-link nzHref="#theme" nzTitle="Theme"></nz-link>
+      <nz-link nzHref="#accountCenter" nzTitle="AccountCenter"></nz-link>
+      <nz-link nzHref="#notify" nzTitle="Notify"></nz-link>
+      <nz-link nzHref="#initialization-example" nzTitle="Initialization Example"></nz-link>
+      <nz-link nzHref="#connecting-wallet" nzTitle="Connecting a Wallet"></nz-link>
+      <nz-link nzHref="#disconnecting-wallet" nzTitle="Disconnecting a Wallet"></nz-link>
+      <nz-link nzHref="#state" nzTitle="State"></nz-link>
+      <nz-link nzHref="#send-transaction" nzTitle="Send Transaction"></nz-link>
+      <nz-link nzHref="#buffer" nzTitle="Buffer"></nz-link>
+      <nz-link nzHref="#need-help" nzTitle="Need Help?"></nz-link>
+    </nz-anchor>
+  </nz-affix>
 
   <section class="markdown">
     <p>This is the core package that contains all of the UI and logic to be able to seamlessly connect user's wallets to your app and track the state of those wallets.
       Web3-Connect no longer contains any wallet specific code, so wallets need to be passed in upon initialization.</p>
+
+    <h2 id="install"><span>Install</span><a onclick="window.location.hash = 'install'" class="anchor">#</a></h2>
+    <p>You can install <code>@b-ee/web3-connect</code> with npm or yarn</p>
+    <nz-tabset nzType="card">
+      <nz-tab *ngFor="let tab of ['Npm', 'Yarn']" [nzTitle]="tab">
+        <pre *ngIf="tab === 'Npm'" class="language-bash"><code>$ npm install @b-ee/web3-connect</code></pre>
+        <pre *ngIf="tab === 'Yarn'" class="language-bash"><code>$ yarn add @b-ee/web3-connect</code></pre>
+      </nz-tab>
+    </nz-tabset>
+    <h2 id="quick-start"><span>Quick start</span><a onclick="window.location.hash = 'quick-start'" class="anchor">#</a></h2>
+    <p>Import the component modules you want to use into your <code>app.module.ts</code> file and <a
+      href="https://angular.io/guide/feature-modules" target="_blank" rel="noopener">feature modules</a>.</p>
+    <app-highlight [appCode]="importModuleHTML" [appLanguage]="'language-typescript'"></app-highlight>
+    <h3>Configure Wallets</h3>
+    <p>All wallet modules (except for injected-wallets) require extra dependencies and may require polyfilling the node built in modules for the browser.</p>
+    <app-highlight [appCode]="configureWalletsHTML" [appLanguage]="'language-typescript'"></app-highlight>
+    <h3>Initialize Web3-Connect Init</h3>
+    <app-highlight [appCode]="InitializeHTML" [appLanguage]="'language-typescript'"></app-highlight>
+
+
+    <h2 id="chains"><span>Chains</span><a onclick="window.location.hash = 'chains'" class="anchor">#</a></h2>
+    <p>An array of Chains that your app supports:</p>
+    <app-highlight [appCode]="chainsHTML" [appLanguage]="'language-typescript'"></app-highlight>
+
+
+    <h2 id="appMetadata"><span>AppMetaData</span><a onclick="window.location.hash = 'appMetadata'" class="anchor">#</a></h2>
+    <p>An object that defines your app:</p>
+    <app-highlight [appCode]="appMetadataHTML" [appLanguage]="'language-typescript'"></app-highlight>
+    <h3>Update AppMetadata</h3>
+    <p>If you need to update your Application Metadata after initialization, you can call the updateAppMetadata function with the new configuration</p>
+    <app-highlight [appCode]="updateMetadataHTML" [appLanguage]="'language-typescript'"></app-highlight>
+
+
+    <h2 id="connect"><span>Connect</span><a onclick="window.location.hash = 'connect'" class="anchor">#</a></h2>
+    <p>An object that allows for customizing the connect modal layout and behavior</p>
+    <div style="max-width: 1000px;">
+      <img class="header-section-img" src="assets/images/connect-bg.png" alt="main-img" />
+    </div>
+    <app-highlight [appCode]="connectHTML" [appLanguage]="'language-typescript'"></app-highlight>
+
+
+    <h2 id="locale"><span>Locale</span><a onclick="window.location.hash = 'locale'" class="anchor">#</a></h2>
+    <p>An object that defines the display text for different locales. Can also be used to override the default text. To override the default text, pass in an object for the en locale.</p>
+    <app-highlight [appCode]="localeHTML" [appLanguage]="'language-typescript'"></app-highlight>
+
+
+    <h2 id="theme"><span>Theme</span><a onclick="window.location.hash = 'theme'" class="anchor">#</a></h2>
+    <h2 id="available-themes"><span>Available Themes</span><a onclick="window.location.hash = 'available-themes'" class="anchor">#</a></h2>
+    <p>To set the color theme of web3-connect to one of the available native themes, import Init from <strong>'@b-ee/web3-connect'</strong>
+      and pass the theme as a string to the <strong>'theme'</strong> init option.</p>
+    <h3>Supported themes:</h3>
+    <table>
+      <thead>
+      <tr>
+        <th>theme</th>
+        <th>description</th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr>
+        <td>'dark'</td>
+        <td>dark mode</td>
+      </tr>
+      <tr>
+        <td>'light'</td>
+        <td>light mode</td>
+      </tr>
+      <tr>
+        <td>'system'</td>
+        <td>automatically switch between 'dark' & 'light' based on the user's system settings</td>
+      </tr>
+      </tbody></table>
+    <app-highlight [appCode]="themeHTML" [appLanguage]="'language-typescript'"></app-highlight>
+
+
+    <h2 id="accountCenter"><span>AccountCenter</span><a onclick="window.location.hash = 'accountCenter'" class="anchor">#</a></h2>
+    <p>An object that defines whether the account center UI (default and minimal) is enabled and its position on the screen. Currently the account center is enabled for both desktop and mobile devices.</p>
+    <div style="max-width: 1000px;">
+      <img class="header-section-img" src="assets/images/account-center-bg.png" alt="main-img" />
+    </div>
+    <app-highlight [appCode]="accountCenterHTML" [appLanguage]="'language-typescript'"></app-highlight>
+    <h3>updateAccountCenter:</h3>
+    <p>If you need to update your Account Center configuration after initialization, you can call the updateAccountCenter function with the new configuration</p>
+    <app-highlight [appCode]="updateAccountCenterHTML" [appLanguage]="'language-typescript'"></app-highlight>
+
+    <h3>setPrimaryWallet:</h3>
+    <p>The primary wallet (first in the list of connected wallets) and primary account (first in the list of connected accounts for a wallet) can be set by using the <strong>'setPrimaryWallet'</strong> function. The wallet that is set needs to be passed in for the first parameter and if you would like to set the primary account, the address of that account also needs to be passed in:</p>
+    <app-highlight [appCode]="setPrimaryWalletHTML" [appLanguage]="'language-typescript'"></app-highlight>
+
+    <h3># Setting the User's Chain/Network:</h3>
+    <p>When initializing Onboard you define a list of chains/networks that your app supports. If you would like to prompt the user to switch to one of those chains, you can use the <strong>'setChain'</strong> method on an initialized instance of Web3-Connect:</p>
+    <app-highlight [appCode]="setChainHTML" [appLanguage]="'language-typescript'"></app-highlight>
+    <p>The <strong>'setChain'</strong> methods takes an options object with a <strong>'chainId'</strong> property hex encoded string for the chain id to switch to. The chain id must be one of the chains that Onboard was initialized with. If the wallet supports programatically adding and switching the chain, then the user will be prompted to do so, if not, then a modal will be displayed indicating to the user that they need to switch chains to continue. The <strong>'setChain'</strong> method returns a promise that resolves when either the user has confirmed the chain switch, or has dismissed the modal and resolves with a boolean indicating if the switch network was successful or not. The <strong>'setChain'</strong> method will by default switch the first wallet (the most recently connected) in the <strong>'wallets'</strong> array. A specific wallet can be targeted by passing in the <strong>'wallet.label'</strong> in the options object as the <strong>'wallet'</strong> parameter. If a chain was instantiated without an rpcUrl, token, or label, add these options for wallets that require this information for adding a new chain.</p>
+
+
+    <h2 id="notify"><span>Notify</span><a onclick="window.location.hash = 'notify'" class="anchor">#</a></h2>
+    <p>Notify is a feature that provides transaction notifications for all connected wallets on the current blockchain. This document will provide you with an overview of Notify and guide you through the process of integrating it into your decentralized application (DApp).
+    </p>
+    <div style="max-width: 1000px;">
+      <img class="header-section-img" src="assets/images/notifications.png" alt="main-img" />
+    </div>
+    <h3>Notify Configuration:</h3>
+    <table>
+      <thead>
+      <tr>
+        <th>Property</th>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr>
+        <td>enabled</td>
+        <td>boolean</td>
+        <td>Indicates whether transaction notifications will be displayed</td>
+      </tr>
+      <tr>
+        <td>transactionHandler</td>
+        <td>function</td>
+        <td>Optional callback for customizations of notifications</td>
+      </tr>
+      <tr>
+        <td>position</td>
+        <td>same as account center</td>
+        <td>Position of the notification on the screen if wallet connected</td>
+      </tr>
+      </tbody></table>
+    <h3>Customizing Notification:</h3>
+    <table>
+      <thead>
+      <tr>
+        <th>message</th>
+        <th>string</th>
+        <th>Customizes the message shown</th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr>
+        <td>eventCode</td>
+        <td>string</td>
+        <td>Allows handling codes in a custom way</td>
+      </tr>
+      <tr>
+        <td>type</td>
+        <td>string</td>
+        <td>Represents the icon type displayed</td>
+      </tr>
+      <tr>
+        <td>autoDismiss</td>
+        <td>number</td>
+        <td>Time (in ms) after which the notification will be dismissed</td>
+      </tr>
+      <tr>
+        <td>link</td>
+        <td>string</td>
+        <td>Adds a link to the transaction hash</td>
+      </tr> <tr>
+        <td>onClick</td>
+        <td>function</td>
+        <td>onClick handler for the notification element</td>
+      </tr>
+      </tbody></table>
+    <h3>Styling Notify:</h3>
+    <p>Notify automatically will match the <strong>'theme'</strong> defined in the web3-connect config.</p>
+    <h3>Handling Notifications:</h3>
+    <p>If notifications are enabled, they can be fielded and handled through the web3-connect app state as seen in the example below - although this is not required for notifications to display:</p>
+    <app-highlight [appCode]="handlingNotificationsHTML" [appLanguage]="'language-typescript'"></app-highlight>
+    <h3>Notifications as Toast Messages:</h3>
+    <p>The Notifications messages can also be used to send fully customized Dapp toast messages and updated. </p>
+    <app-highlight [appCode]="notificationsHTML" [appLanguage]="'language-typescript'"></app-highlight>
+
+
+    <h2 id="initialization-example"><span>Initialization Example</span><a onclick="window.location.hash = 'initialization-example'" class="anchor">#</a></h2>
+    <p>Putting it all together, here is an example initialization with the injected wallet modules:</p>
+    <app-highlight [appCode]="initializationExample" [appLanguage]="'language-typescript'"></app-highlight>
+
+
+    <h2 id="connecting-wallet"><span>Connecting a Wallet</span><a onclick="window.location.hash = 'connecting-wallet'" class="anchor">#</a></h2>
+    <p>To initiate a user to select and connect a wallet you can call the connectWallet function on an initialized Web3-Connect instance. It will return a Promise that will resolve when the user either successfully connects a wallet, or when they dismiss the UI. The resolved value from the promise will be the latest state of the wallets array. The order of the wallets array is last to first, so the most recently selected wallet will be the first item in the array and can be thought of as the "primary wallet". If no wallet was selected, then the wallets array will have the same state as it had before calling connectWallet.</p>
+    <h3>Example:</h3>
+    <app-highlight [appCode]="connectingWalletHTML" [appLanguage]="'language-typescript'"></app-highlight>
+    <h3>Auto Selecting a Wallet:</h3>
+    <p>A common UX pattern is to remember the last wallet that a user has previously connected by storing it in localStorage and then automatically selecting them for the user next time they visit your app. You can enable this in your app by using the autoConnectLastWallet parameter when initializing and Web3-Connect will take care of it:</p>
+    <app-highlight [appCode]="autoSelectWalletHTML" [appLanguage]="'language-typescript'"></app-highlight>
+
+
+    <h2 id="disconnecting-wallet"><span>Disconnecting a Wallet</span><a onclick="window.location.hash = 'disconnecting-wallet'" class="anchor">#</a></h2>
+    <p>A wallet can be disconnected, which will cleanup any background operations the wallet may be doing and will also remove it from the Web3-Connect wallets array:</p>
+    <app-highlight [appCode]="disconnectingWalletHTML" [appLanguage]="'language-typescript'"></app-highlight>
+    <p>The disconnectWallet method takes the wallet.label value and returns a Promise that resolves to the current state of the wallets array.</p>
+
+
+    <h2 id="state"><span>State</span><a onclick="window.location.hash = 'state'" class="anchor">#</a></h2>
+    <p>Web3-Connect currently keeps track of the following state:</p>
+    <ul>
+      <li><strong>wallets </strong>The wallets connected to Web3-Connect
+      </li>
+      <li><strong>chains </strong> The chains that Web3-Connect has been initialized with
+      </li>
+      <li><strong>accountCenter </strong>The current state of the account center UI
+      </li>
+      <li><strong>walletModules </strong>The wallet modules that are currently set and will be rendered in the wallet selection modal
+      </li>
+    </ul>
+    <app-highlight [appCode]="stateHTML" [appLanguage]="'language-typescript'"></app-highlight>
+    <h3>Get Current State:</h3>
+    <p>The current state of Web3-Connect can be accessed at any time using the state.get() method:</p>
+    <app-highlight [appCode]="getStateHTML" [appLanguage]="'language-typescript'"></app-highlight>
+    <h3>Subscribe to State Updates:</h3>
+    <p>State can also be subscribed to using the <strong>'state.select()'</strong> method. The <strong>'select'</strong> method will return an <a href="https://rxjs.dev/guide/observable" target="_blank">RXJS Observable</a>. Understanding of RXJS observables is not necessary to subscribe to state updates, but allows for composable functionality if wanted. The key point to understand is that if you subscribe for updates, remember to unsubscribe when you are finished to prevent memory leaks.</p>
+    <p>To subscribe to all state updates, call the <strong>'select'</strong> method with no arguments:</p>
+    <app-highlight [appCode]="subscribeStateHTML" [appLanguage]="'language-typescript'"></app-highlight>
+    <p>Specific top level slices of state can be subscribed to. For example you may want to just subscribe to receive updates to the wallets array only:</p>
+    <app-highlight [appCode]="specificSubscribeStateHTML" [appLanguage]="'language-typescript'"></app-highlight>
+    <h3>Actions to Modify State:</h3>
+    <p>A limited subset of internal actions are exposed to update the Web3-Connect state.</p>
+
+
+    <h2 id="send-transaction"><span>Send Transaction</span><a onclick="window.location.hash = 'send-transaction'" class="anchor">#</a></h2>
+    <p>This API call will return a promise that resolves to the transaction hash (if <strong>'sendTransaction'</strong> resolves the transaction hash and is successful), the internal notification id (if no <strong>'sendTransaction'</strong> function is provided) or return nothing if an error occurs or <strong>'sendTransaction'</strong> is not provided or doesn't resolve to a string.</p>
+
+    <h3>Example:</h3>
+    <app-highlight [appCode]="sendTransactionHTML" [appLanguage]="'language-typescript'"></app-highlight>
+    <app-highlight [appCode]="sendTransactionInterfaceHTML" [appLanguage]="'language-typescript'"></app-highlight>
+
+
+    <h2 id="buffer"><span>Buffer</span><a onclick="window.location.hash = 'buffer'" class="anchor">#</a></h2>
+    <p> Buffer polyfill It seems some component or dependency requires Node's Buffer. Include this in yore polyfills.ts</p>
+    <app-highlight [appCode]="bufferHTML" [appLanguage]="'language-typescript'"></app-highlight>
+
+    <h2 id="need-help"><span>Need Help?</span><a onclick="window.location.hash = 'need-help'" class="anchor">#</a></h2>
+    <p>As always, we encourage experienced users to help those who are not familiar with <code>web3-connect</code>
+      <a href="https://b-ee.io/" target="_blank" rel="noopener">Contact us</a>!</p>
+
   </section>
 </article>
