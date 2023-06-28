@@ -16571,6 +16571,7 @@ nz-list, nz-list nz-spin, nz-list-empty, nz-list-footer, nz-list-header, nz-list
   line-height: 0;
   list-style: none;
   outline: 0;
+  background: #1a1d26;
   transition: background .3s, width .3s cubic-bezier(.2, 0, 0, 1) 0s
 }
 
