@@ -8,7 +8,8 @@ import { filter, take } from 'rxjs/operators';
   selector: 'nz-contributors-list',
   changeDetection: ChangeDetectionStrategy.OnPush,
   template: `
-    <ul *ngIf="list.length" class="contributors-list" style="display: flex; list-style: none; margin: 0 65px; padding: 0;">
+    <h3 style="margin-top: 50px">Contributors list:</h3>
+    <ul *ngIf="list.length" class="contributors-list" style="display: flex; list-style: none; padding: 0;">
       <a
         *ngFor="let item of list"
         nz-tooltip

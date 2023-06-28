@@ -34,12 +34,12 @@ export const ROUTER_LIST: RouterList = {
           hidden: false,
           description: "Get up and running with Web3-Connect.",
         },
-        // {
-        //   path: "docs/core",
-        //   label: "Core",
-        //   hidden: false,
-        //   description: "This is the core package.",
-        // },
+        {
+          path: "docs/core",
+          label: "Core",
+          hidden: false,
+          description: "This is the core package.",
+        },
         {
           path: "docs/theming",
           label: "Theming",

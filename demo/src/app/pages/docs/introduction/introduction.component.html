@@ -25,7 +25,7 @@
     <p>Easy way to connect users to Decentralized Applications.</p>
 
     <div style="max-width: 1000px;">
-      <ng-container *ngIf="this.appService.theme$ | async as theme">
+      <ng-container *ngIf="appService.theme$ | async as theme">
         <img *ngIf="theme === 'light'" class="header-section-img" src="assets/images/app-group-dark.png" alt="main-img" />
         <img *ngIf="theme === 'dark'"  class="header-section-img" src="assets/images/app-group-light.png" alt="main-img" />
       </ng-container>
