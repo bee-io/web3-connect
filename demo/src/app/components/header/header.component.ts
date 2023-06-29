@@ -39,12 +39,12 @@ const RESPONSIVE_SM = 1200;
           <app-logo [isMobile]="isMobile"></app-logo>
         </div>
         <div nz-col [nzXs]="20" [nzSm]="20" [nzMd]="18" [nzLg]="18" [nzXl]="19" [nzXXl]="20" class="menu-row">
-          <div
-            app-searchbar
-            [language]="language"
-            [responsive]="responsive"
-            (focusChange)="onFocusChange($event)"
-          ></div>
+<!--          <div-->
+<!--            app-searchbar-->
+<!--            [language]="language"-->
+<!--            [responsive]="responsive"-->
+<!--            (focusChange)="onFocusChange($event)"-->
+<!--          ></div>-->
           <ng-container *ngIf="!isMobile" [ngTemplateOutlet]="menu"></ng-container>
 
           <web3-connect-github-btn [responsive]="responsive"></web3-connect-github-btn>
